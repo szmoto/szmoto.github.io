@@ -1,0 +1,1061 @@
+<!doctype html>
+
+
+
+  
+
+
+<html class="theme-next mist use-motion" lang="zh-Hans">
+<head>
+  <meta charset="UTF-8"/>
+<meta http-equiv="X-UA-Compatible" content="IE=edge" />
+<meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1"/>
+
+
+
+<meta http-equiv="Cache-Control" content="no-transform" />
+<meta http-equiv="Cache-Control" content="no-siteapp" />
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+  
+  
+  <link href="/lib/fancybox/source/jquery.fancybox.css?v=2.1.5" rel="stylesheet" type="text/css" />
+
+
+
+
+  
+  
+  
+  
+
+  
+    
+    
+  
+
+  
+
+  
+
+  
+
+  
+
+  
+    
+    
+    <link href="//fonts.googleapis.com/css?family=Lato:300,300italic,400,400italic,700,700italic&subset=latin,latin-ext" rel="stylesheet" type="text/css">
+  
+
+
+
+
+
+
+<link href="/lib/font-awesome/css/font-awesome.min.css?v=4.6.2" rel="stylesheet" type="text/css" />
+
+<link href="/css/main.css?v=5.1.0" rel="stylesheet" type="text/css" />
+
+
+  <meta name="keywords" content="android,cocos2d," />
+
+
+
+
+
+
+
+
+  <link rel="shortcut icon" type="image/x-icon" href="/favicon.ico?v=5.1.0" />
+
+
+
+
+
+
+<meta name="description" content="http://blog.csdn.net/yuxikuo_1/article/details/41746869">
+<meta name="keywords" content="android,cocos2d">
+<meta property="og:type" content="article">
+<meta property="og:title" content="将Cocos2d-x的libcurl单独打包到Android">
+<meta property="og:url" content="http://blog.idingsong.cn/2017/03/04/e5-b0-86cocos2d-x-e7-9a-84libcurl-e5-8d-95-e7-8b-ac-e6-89-93-e5-8c-85-e5-88-b0android/index.html">
+<meta property="og:site_name" content="会思考的生活">
+<meta property="og:description" content="http://blog.csdn.net/yuxikuo_1/article/details/41746869">
+<meta property="og:updated_time" content="2017-06-24T10:59:25.348Z">
+<meta name="twitter:card" content="summary">
+<meta name="twitter:title" content="将Cocos2d-x的libcurl单独打包到Android">
+<meta name="twitter:description" content="http://blog.csdn.net/yuxikuo_1/article/details/41746869">
+
+
+
+<script type="text/javascript" id="hexo.configurations">
+  var NexT = window.NexT || {};
+  var CONFIG = {
+    root: '/',
+    scheme: 'Mist',
+    sidebar: {"position":"left","display":"post","offset":12,"offset_float":0,"b2t":false,"scrollpercent":false},
+    fancybox: true,
+    motion: true,
+    duoshuo: {
+      userId: '0',
+      author: '博主'
+    },
+    algolia: {
+      applicationID: '',
+      apiKey: '',
+      indexName: '',
+      hits: {"per_page":10},
+      labels: {"input_placeholder":"Search for Posts","hits_empty":"We didn't find any results for the search: ${query}","hits_stats":"${hits} results found in ${time} ms"}
+    }
+  };
+</script>
+
+
+
+  <link rel="canonical" href="http://blog.idingsong.cn/2017/03/04/e5-b0-86cocos2d-x-e7-9a-84libcurl-e5-8d-95-e7-8b-ac-e6-89-93-e5-8c-85-e5-88-b0android/"/>
+
+
+
+
+
+  <title> 将Cocos2d-x的libcurl单独打包到Android | 会思考的生活 </title>
+</head>
+
+<body itemscope itemtype="http://schema.org/WebPage" lang="zh-Hans">
+
+  
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+  
+  
+    
+  
+
+  <div class="container sidebar-position-left page-post-detail ">
+    <div class="headband"></div>
+
+    <header id="header" class="header" itemscope itemtype="http://schema.org/WPHeader">
+      <div class="header-inner"><div class="site-brand-wrapper">
+  <div class="site-meta ">
+    
+
+    <div class="custom-logo-site-title">
+      <a href="/"  class="brand" rel="start">
+        <span class="logo-line-before"><i></i></span>
+        <span class="site-title">会思考的生活</span>
+        <span class="logo-line-after"><i></i></span>
+      </a>
+    </div>
+      
+        <p class="site-subtitle">Thinking about Me.</p>
+      
+  </div>
+
+  <div class="site-nav-toggle">
+    <button>
+      <span class="btn-bar"></span>
+      <span class="btn-bar"></span>
+      <span class="btn-bar"></span>
+    </button>
+  </div>
+</div>
+
+<nav class="site-nav">
+  
+
+  
+    <ul id="menu" class="menu">
+      
+        
+        <li class="menu-item menu-item-home">
+          <a href="/" rel="section">
+            
+              <i class="menu-item-icon fa fa-fw fa-home"></i> <br />
+            
+            首页
+          </a>
+        </li>
+      
+        
+        <li class="menu-item menu-item-archives">
+          <a href="/archives" rel="section">
+            
+              <i class="menu-item-icon fa fa-fw fa-archive"></i> <br />
+            
+            归档
+          </a>
+        </li>
+      
+        
+        <li class="menu-item menu-item-tags">
+          <a href="/tags" rel="section">
+            
+              <i class="menu-item-icon fa fa-fw fa-tags"></i> <br />
+            
+            标签
+          </a>
+        </li>
+      
+
+      
+        <li class="menu-item menu-item-search">
+          
+            <a href="javascript:;" class="popup-trigger">
+          
+            
+              <i class="menu-item-icon fa fa-search fa-fw"></i> <br />
+            
+            搜索
+          </a>
+        </li>
+      
+    </ul>
+  
+
+  
+    <div class="site-search">
+      
+  <div class="popup search-popup local-search-popup">
+  <div class="local-search-header clearfix">
+    <span class="search-icon">
+      <i class="fa fa-search"></i>
+    </span>
+    <span class="popup-btn-close">
+      <i class="fa fa-times-circle"></i>
+    </span>
+    <div class="local-search-input-wrapper">
+      <input autocapitalize="off" autocomplete="off" autocorrect="off"
+             placeholder="搜索..." spellcheck="false"
+             type="text" id="local-search-input">
+    </div>
+  </div>
+  <div id="local-search-result"></div>
+</div>
+
+
+
+    </div>
+  
+</nav>
+
+
+
+ </div>
+    </header>
+
+    <main id="main" class="main">
+      <div class="main-inner">
+        <div class="content-wrap">
+          <div id="content" class="content">
+            
+
+  <div id="posts" class="posts-expand">
+    
+
+  
+
+  
+  
+  
+
+  <article class="post post-type-normal " itemscope itemtype="http://schema.org/Article">
+    <link itemprop="mainEntityOfPage" href="http://blog.idingsong.cn/2017/03/04/e5-b0-86cocos2d-x-e7-9a-84libcurl-e5-8d-95-e7-8b-ac-e6-89-93-e5-8c-85-e5-88-b0android/">
+
+    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
+      <meta itemprop="name" content="i_D.S.">
+      <meta itemprop="description" content="">
+      <meta itemprop="image" content="/images/avatar.gif">
+    </span>
+
+    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
+      <meta itemprop="name" content="会思考的生活">
+    </span>
+
+    
+      <header class="post-header">
+
+        
+        
+          <h1 class="post-title" itemprop="name headline">
+            
+            
+              
+                将Cocos2d-x的libcurl单独打包到Android
+              
+            
+          </h1>
+        
+
+        <div class="post-meta">
+          <span class="post-time">
+            
+              <span class="post-meta-item-icon">
+                <i class="fa fa-calendar-o"></i>
+              </span>
+              
+                <span class="post-meta-item-text">发表于</span>
+              
+              <time title="创建于" itemprop="dateCreated datePublished" datetime="2017-03-04T15:22:46+08:00">
+                2017-03-04
+              </time>
+            
+
+            
+
+            
+          </span>
+
+          
+            <span class="post-category" >
+            
+              <span class="post-meta-divider">|</span>
+            
+              <span class="post-meta-item-icon">
+                <i class="fa fa-folder-o"></i>
+              </span>
+              
+                <span class="post-meta-item-text">分类于</span>
+              
+              
+                <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
+                  <a href="/categories/Android/" itemprop="url" rel="index">
+                    <span itemprop="name">Android</span>
+                  </a>
+                </span>
+
+                
+                
+                  ， 
+                
+              
+                <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
+                  <a href="/categories/Android/Cocos2d/" itemprop="url" rel="index">
+                    <span itemprop="name">Cocos2d</span>
+                  </a>
+                </span>
+
+                
+                
+              
+            </span>
+          
+
+          
+            
+          
+
+          
+          
+
+          
+
+          
+
+          
+
+        </div>
+      </header>
+    
+
+
+    <div class="post-body" itemprop="articleBody">
+
+      
+      
+
+      
+        <blockquote>
+<p><a href="http://blog.csdn.net/yuxikuo_1/article/details/41746869" target="_blank" rel="external">http://blog.csdn.net/yuxikuo_1/article/details/41746869</a><br><a id="more"></a></p>
+</blockquote>
+<p>研究了N久+N次，终于在这一周解决了，感谢度娘。感觉第一次快要跑通时，心里真是万分紧张，感觉什么都不会再爱了。点下按钮，返回预期的值，OK。搞定，为此，放松了一个上午，现在来写写一些我是怎么搞通的吧。不敢保证，每个库都能这么搞，但是对一些刚入门者，应该有帮助。好的，开讲！</p>
+<h2 id="1、研究背景与意义"><a href="#1、研究背景与意义" class="headerlink" title="1、研究背景与意义"></a><a name="t0"></a>1、研究背景与意义</h2><div>公司要单独封装网络库，所以，首先想到的libcurl，因为搞过半年Cocos2d-x，所以，直接找到了Cocos2d-x引擎源码的预编译第三方库里的libcurl。什么是预编译库？下面来解释解释。</div>
+
+<h3 id="1-1预编译库"><a href="#1-1预编译库" class="headerlink" title="1.1预编译库"></a><a name="t1"></a>1.1预编译库</h3><div>所谓预编译库其实就是静态库，是一种可执行代码的二进制形式，可以被操作系统载入内存执行。在Linux或Unix下是以.a结尾的库文件。库文件首先会进行编译，当我们把库文件导入自己的动态或静态文件或工程中时，会提高代码的编译速度。静态库在代码编译的时候是已经被载入可执行程序的，体积较大，动态库是在执行程序时才载入内存，在编译的过程中简单的引用，因此代码体积较小。</div><br><div>这篇文章详细讲解了Linux下静态和动态库的基础知识。<a href="http://blog.csdn.net/abc19842008/article/details/1923159" target="_blank" rel="external">Linux库详解</a></div>
+
+<h3 id="1-2libcurl"><a href="#1-2libcurl" class="headerlink" title="1.2libcurl"></a><a name="t2"></a>1.2libcurl</h3><div>Libcurl是一个开源免费的库文件，客户端传输库，支持FTP、FTPS、TFTP、HTTP、HTTPS、GOPHER、TELENT、DICT、FILE、LDAP等，C语言编写，跨平台，支持Windows、Unix、Linux等，线程安全，支持Ipv6，易于使用。</div><br><div>官网下载地址：<a href="http://curl.haxx.se/download.html" target="_blank" rel="external">http://curl.haxx.se/download.html</a></div><br><div>官网API详解：<a href="http://curl.haxx.se/libcurl/c/" target="_blank" rel="external">http://curl.haxx.se/libcurl/c/</a></div><br><div>其实主要是4个函数：1）curl_easy_init()初始化;2）curl_easy_setopt()设置属性;3）curl_easy_perform，连接。4）curl_easy_getinfo</div><br><div>这篇文章详细介绍了如何使用libcurl将下载内容写入内存：<a href="http://blog.163.com/xu_chao2000/blog/static/27770610200801303252802/" target="_blank" rel="external">http://blog.163.com/xu_chao2000/blog/static/27770610200801303252802/</a></div>
+
+<h2 id="2、打包Android版libcurl包"><a href="#2、打包Android版libcurl包" class="headerlink" title="2、打包Android版libcurl包"></a><a name="t3"></a>2、打包Android版libcurl包</h2><div>关于打包libcurl包，网上有非常多的教程，由于Cocos2d-x已经为我们提供了几乎大部分平台的预编译库，即.a文件。所以，这一步我就在这省略了，虽然可能网上的教程有的比较坑爹，不过，多花些时间，综合起来，就会凑成一个完美的解决方案。</div>
+
+<h2 id="3、开始打包"><a href="#3、开始打包" class="headerlink" title="3、开始打包"></a><a name="t4"></a>3、开始打包</h2><div>在打包之前，我们可能需要学一下JNI和NDK编程的知识，不过，这些知识，也不是一篇两篇文章能解释清楚的，所以，这里也不打算讲解，有兴趣的可以翻看本人之前的博客，或者网上百度会有大篇大篇的文章。</div>
+
+<h3 id="3-1新建Android空工程"><a href="#3-1新建Android空工程" class="headerlink" title="3.1新建Android空工程"></a><a name="t5"></a>3.1新建Android空工程</h3><div>使用Eclipse新建Android工程。</div><br><div>1）由于Android本身新建工程并不包含jni目录，所以，我们需要自己添加该目录，并在该目录下添加两个文件。Android.mk和Application.mk这两个文件是ndk-build使用的文件。</div><br><div>2）拷贝Cocos2d-x的预编译库。我们需要的libcurl预编译库在Cocos2d-x引擎cocos2d-x-3.3rc0/external/curl目录下，将该目录下的两个文件include和prebuilt拷贝到我们上一步新建的android工程中。</div><br><div>3）删除include和prebuilt两个目录中android目录之外的的平台目录。因为我们用不到那些</div><br><div>4）更新Eclipse，可以看到，我们刚才的操作过后的目录如下：重点是jni目录下的改变（网络限制，暂时传不上来照片）</div>
+
+<h3 id=""><a href="#" class="headerlink" title=""></a><a name="t6"></a></h3><h3 id="3-2先来一个简单例子，抛砖引玉"><a href="#3-2先来一个简单例子，抛砖引玉" class="headerlink" title="3.2先来一个简单例子，抛砖引玉"></a><a name="t7"></a>3.2先来一个简单例子，抛砖引玉</h3><p><a href="http://lib.csdn.net/base/15" title="undefined" target="_blank" rel="external">Android</a>.mk文件可以说是本文最终要的一部分。我们先一步一步去讲一讲它。</p>
+<p>首先阅读下这篇文章，预热一下，了解了解打包静态库和动态库的方法。</p>
+<p>其次我们从NDK的samples的two-libs例子入手，分析mk的写法。（即搭建Android环境时，解压的NDK目录下的samples/two-libs）</p>
+<p>先上代码</p>
+<p>1）first文件：定义了一个加法的方法</p>
+<p><div class="dp-highlighter bg_cpp"></div></p>
+<p><div class="bar"></div></p>
+<p><div class="tools"></div></p>
+<p><pre class="lang:java decode:true ">//first.h  </pre></p>
+<p>#ifndef FIRST_H  </p>
+<p>#define FIRST_H  </p>
+<p>extern int first(int  x, int  y);  </p>
+<p>#endif /<em> FIRST_H </em>/  </p>
+<p>//first.c  </p>
+<p>#include “first.h”<br>int  first(int  x, int  y)<br>{<br>    return x + y;<br>}<br>2）second.c：这个文件是Jni的相关的文件。</p>
+<p><br><br></p>
+<p><div class="dp-highlighter bg_cpp"></div></p>
+<p><div class="bar"></div></p>
+<p><div class="tools"></div></p>
+<p><pre class="lang:java decode:true ">//second.c  </pre></p>
+<p>#include “first.h”  </p>
+<p>#include &lt;jni.h&gt; //添加jni头文件<br>//下面这个函数的意思就是com.example.twolibs包com.example.androidlibcurldemo下MainActivity.java中的add方法。<br>jint<br>Java_com_example_androidlibcurldemo_MainActivity_add( JNIEnv*  env,<br>                                      jobject  this,<br>                                      jint     x,<br>                                      jint     y )<br>{<br>    return first(x, y);<br>}<br>这个add方法，是在我们上一步创建工程的src目录下的MainActivity.java中声明的两个native方法，说白了，second.c的作用就是，定义java中的native方法，并在实现中调用C的代码，如first.c中的first函数。相当于一个中介的样子。</p>
+<p><br><br><br>3）Android.mk：例子中的Android.mk文件</p>
+<p><div class="dp-highlighter bg_cpp"></div></p>
+<p><div class="bar"></div></p>
+<p><div class="tools"></div></p>
+<p><pre class="lang:java decode:true ">#定义变量LOCAL_PATH指向mk所在的路径，如Android.mk文件在/usr/lib/curl/Android.mk  </pre></p>
+<p>#那么LOCAL_PATH代表的值就是：/usr/lib/curl  </p>
+<p>#注意，这个变量没有清理，如果在后面引入其他mk文件，这个变量是可以传递到引入的mk文件中的  </p>
+<p>LOCAL_PATH:= $(call my-dir)  </p>
+<h1 id="first-lib-which-will-be-built-statically"><a href="#first-lib-which-will-be-built-statically" class="headerlink" title="first lib, which will be built statically"></a>first lib, which will be built statically</h1><p>#CLEAR_VARS清理变量，因为这些变量都是静态全局的，如果不清了，下次编译时用到这些变量就会造成错误的<br>include $(CLEAR_VARS)  </p>
+<p>#本地静态库模块名字，如果在别处导入库文件时，会用到这个名字  </p>
+<p>#此处名字的使用是libXXX.so或libXXX.a中的XXX的名字，也可以libXXX，不过，这两种在使用上还是有点区别的，  </p>
+<p>#使用XXX或libXXX最后打包库后都是libXXX.a/so,在导入库模块时要使用LOCAL_LDLIBS := -lz来指明导入的是本地库  </p>
+<p>#否则会报找不到库的错误<br>LOCAL_MODULE    := libtwolib-first<br>LOCAL_SRC_FILES := first.c  </p>
+<p>#创建静态库，注意，这个库是我们第一次创建，所以使用BUILD_STATIC_LIBRARY  </p>
+<p>#如果LOCAL_SRC_FILES（即源码文件）使用的是.a则使用include $(PREBUILT_STATIC_LIBRARY)，见下面代码  </p>
+<p>#如果使用的是.so文件，则使用include $(PREBUILT_SHARED_LIBRARY)，PREBUILT表示使用的是预编译库里的源文件<br>include $(BUILD_STATIC_LIBRARY)  </p>
+<h1 id="second-lib-which-will-depend-on-and-include-the-first-one"><a href="#second-lib-which-will-depend-on-and-include-the-first-one" class="headerlink" title="second lib, which will depend on and include the first one"></a>second lib, which will depend on and include the first one</h1><p>#清理变量<br>include $(CLEAR_VARS)  </p>
+<p>#模块名称<br>LOCAL_MODULE    := libtwolib-second  </p>
+<p>#源码文件<br>LOCAL_SRC_FILES := second.c  </p>
+<p>#导入关联的静态库，如果还有其它静态库，直接在后面添加即可，注意空格隔开<br>LOCAL_STATIC_LIBRARIES := libtwolib-first  </p>
+<p>#最终创建动态库文件，libtwolib-second.so  </p>
+<p>#如果最终创建静态库文件，是需要把SHARED改为STATIC即可，如libtwolib-first<br>include $(BUILD_SHARED_LIBRARY)<br>4）Application.mk</p>
+<p><br><br><br>我们在这个mk文件中只添加APP_ABI := all NDK就会为我们自动打包对应不同平台ABI的库文件，不同平台的库文件还是有区别的。</p>
+<p>不过现在的Android手机大部分都是armeabi的，所以，如果不添加这句话，NDK默认的就会生成armeabi目录，并编译这个平台下使用的库文件。</p>
+<p>5）编译库文件</p>
+<p>我们进入到创建的Android工程，根目录即可，打开终端，如我使用的mac，打开终端后输入：</p>
+<p>$ cd /Users/yuxikuo/Android_WorkPlace/AndroidLibcurlDemo</p>
+<p>$  ndk-build</p>
+<p><div class="dp-highlighter bg_cpp"></div></p>
+<p><div class="bar"></div></p>
+<p><div class="tools"></div></p>
+<p><pre class="lang:java decode:true ">Android NDK: WARNING: APP_PLATFORM android-19 is larger than android:minSdkVersion 8 in ./AndroidManifest.xml<br>[armeabi] Compile thumb  : twolib-second &lt;= second.c<br>[armeabi] Compile thumb  : twolib-first &lt;= first.c<br>[armeabi] StaticLibrary  : libtwolib-first.a<br>[armeabi] SharedLibrary  : libtwolib-second.so<br>[armeabi] Install        : libtwolib-second.so =&gt; libs/armeabi/libtwolib-second.so</pre><br>打包后的结果如上：Android中NDK将打包后的包文件拷贝到1）工程目录下的libs/下对应ABI目录下面，ABI表示当前机器的操作系统，一共有4类，不同的目标系统ABI有不同的打包方式和兼容性。2）同时还会在工程目录新建obj/local目录，该目录下同样根据不同的ABI拷贝对应的库文件。不过，不同的ABI目录是需要自己新建的，默认下是armeabi，因为大部分Android使用的是这个，并且它可以运行在所有ARM CPU上。</p>
+<p><br><br><br>armeabi   =&gt;    ARMv5TE以上</p>
+<p>armeabi-v7a  =&gt;  ARMv7以上</p>
+<p>x86   =&gt;   x86平台</p>
+<p>mips =&gt; mips</p>
+<p>由于根据不同的ABI进行打包，那么我们每次都会生成4个包，打包过程见下面代码。</p>
+<p>而且现在其他的平台并不常见，而且armeabi对其他平台也有兼容，所以，我们这里暂时只考虑armeabi平台下库文件的打包。</p>
+<p><div class="dp-highlighter bg_cpp"></div></p>
+<p><div class="bar"></div></p>
+<p><div class="tools"></div></p>
+<p><pre class="lang:java decode:true ">Android NDK: WARNING: APP_PLATFORM android-19 is larger than android:minSdkVersion 8 in ./AndroidManifest.xml<br>[armeabi-v7a] Compile thumb  : twolib-second &lt;= second.c<br>[armeabi-v7a] Compile thumb  : twolib-first &lt;= first.c<br>[armeabi-v7a] StaticLibrary  : libtwolib-first.a<br>[armeabi-v7a] SharedLibrary  : libtwolib-second.so<br>[armeabi-v7a] Install        : libtwolib-second.so =&gt; libs/armeabi-v7a/libtwolib-second.so //armeabi-v7a<br>[armeabi] Compile thumb  : twolib-second &lt;= second.c<br>[armeabi] Compile thumb  : twolib-first &lt;= first.c<br>[armeabi] StaticLibrary  : libtwolib-first.a<br>[armeabi] SharedLibrary  : libtwolib-second.so<br>[armeabi] Install        : libtwolib-second.so =&gt; libs/armeabi/libtwolib-second.so  //armeabi<br>[x86] Compile        : twolib-second &lt;= second.c<br>[x86] Compile        : twolib-first &lt;= first.c<br>[x86] StaticLibrary  : libtwolib-first.a<br>[x86] SharedLibrary  : libtwolib-second.so<br>[x86] Install        : libtwolib-second.so =&gt; libs/x86/libtwolib-second.so  //x86<br>[mips] Compile        : twolib-second &lt;= second.c<br>[mips] Compile        : twolib-first &lt;= first.c<br>[mips] StaticLibrary  : libtwolib-first.a<br>[mips] SharedLibrary  : libtwolib-second.so<br>[mips] Install        : libtwolib-second.so =&gt; libs/mips/libtwolib-second.so   //mips</pre><br>6）在Java代码中调用。</p>
+<p><br><br><br>在MainActivity.java中添加如下代码</p>
+<p><div class="dp-highlighter bg_java"></div></p>
+<p><div class="bar"></div></p>
+<p><div class="tools"></div></p>
+<p><pre class="lang:java decode:true ">@Override<br>   protected void onCreate(Bundle savedInstanceState) {<br>       super.onCreate(savedInstanceState);  </pre></p>
+<pre><code>//super.onCreate(savedInstanceState);  
+
+TextView  tv = new TextView(this);  
+int       x  = 1000;  
+int       y  = 42;  
+
+// here, we dynamically load the library at runtime  
+// before calling the native method.  
+//把生成的库load进来，注意去掉libXXX.so中的lib和so。只保留XXX  
+System.loadLibrary(&quot;twolib-second&quot;);  
+
+int  z = add(x, y);  
+
+tv.setText( &quot;The sum of &quot; + x + &quot; and &quot; + y + &quot; is &quot; + z );  
+setContentView(tv);  
+</code></pre><p>   }  </p>
+<p>   public native int add(int  x, int  y);//native函数声明，在我们的second.c文件中定义，并使用了first.c中的first函数，实现加法<br>注意，如果出现错误或崩溃，看看second.c的函数包名是不是错误，然后看看有没有在java中声明native的add方法</p>
+<p><br><br><br>截图稍后上传。</p>
+<h3 id="3-3重头戏-使用libcurl-a打包的so库到Android"><a href="#3-3重头戏-使用libcurl-a打包的so库到Android" class="headerlink" title="3.3重头戏:使用libcurl.a打包的so库到Android"></a><a name="t8"></a>3.3重头戏:使用libcurl.a打包的so库到Android</h3><p>1）首先，看看我们之前拷贝到jni目录下的两个文件夹include和prebuilt。对了，这两个目录是我阉割的，把其它无关平台的目录删除了。</p>
+<p>2）include目录下是libcurl.a库中源文件的头文件。我们也需要将它打包进包里面，才能在涉及到包时，自动引入头文件。</p>
+<p>3）prebuilt目录是存放libcurl.a的目录，我们暂时保存Cocos2d-x的目录结构，这样，我们就免得修改下面的Android.mk文件了</p>
+<p>4）/prebuilt/android目录下的Android.mk分析：</p>
+<p>注意为了减少路径上的问题，我将include文件夹拷贝到了和该Android.mk文件相同的路径下了</p>
+<p><div class="dp-highlighter bg_java"></div></p>
+<p><div class="bar"></div></p>
+<p><div class="tools"></div></p>
+<p><pre class="lang:java decode:true ">LOCAL_PATHA:=$(call my-dir)//当前路径变量，注意，我在该处设置的变量名是LOCAL_PATHA，因为后面需要导入这个mk文件，防止变量冲突<br>include $(CLEAR_VARS)//清理变量<br>LOCAL_MODULE := cocos_curl_static //模块名称<br>LOCAL_MODULE_FILENAME := curl  //生成的包名<br>LOCAL_SRC_FILES := prebuilt/android/$(TARGET_ARCH_ABI)/libcurl.a  //依赖的源文件，注意：路径一定要为相对路径，这一块比较容易出错<br>LOCAL_EXPORT_C_INCLUDES := $(LOCAL_PATHA)/include/android  //为了能在库外面使用库的方法，需要引入头文件<br>include $(PREBUILT_STATIC_LIBRARY)//预编译成静态库</pre><br>4）目录下的Android.mk分析：</p>
+<p><br><br></p>
+<p><div class="dp-highlighter bg_java"></div></p>
+<p><div class="bar"></div></p>
+<p><div class="tools"></div></p>
+<p><pre class="lang:java decode:true ">LOCAL_PATH:=$(call my-dir)  </pre></p>
+<p>#修改1<br>include $(LOCAL_PATH)/prebuilt/android/Android.mk  </p>
+<h1 id="first-lib-which-will-be-built-statically-1"><a href="#first-lib-which-will-be-built-statically-1" class="headerlink" title="first lib, which will be built statically"></a>first lib, which will be built statically</h1><h1 id="-1"><a href="#-1" class="headerlink" title=" "></a> </h1><p>include $(CLEAR_VARS)  </p>
+<p>LOCAL_MODULE    := libtwolib-first<br>LOCAL_SRC_FILES := first.c  </p>
+<p>include $(BUILD_STATIC_LIBRARY)  </p>
+<h1 id="second-lib-which-will-depend-on-and-include-the-first-one-1"><a href="#second-lib-which-will-depend-on-and-include-the-first-one-1" class="headerlink" title="second lib, which will depend on and include the first one"></a>second lib, which will depend on and include the first one</h1><h1 id="-2"><a href="#-2" class="headerlink" title=" "></a> </h1><p>include $(CLEAR_VARS)  </p>
+<p>LOCAL_MODULE    := libtwolib-second<br>LOCAL_SRC_FILES := second.c  </p>
+<p>#修改2，尤其是-lz的作用，非常大<br>LOCAL_C_INCLUDES := $(LOCAL_PATH)<br>LOCAL_LDLIBS := -llog \<br>        -lz  </p>
+<p>#修改3，增加cocos_curl_static库的导入，这就是我们在上面mk定义的<br>LOCAL_STATIC_LIBRARIES := libtwolib-first cocos_curl_static  </p>
+<p>include $(BUILD_SHARED_LIBRARY)<br>5）重写second.c，调用libcurl中的方法，进行网络请求</p>
+<p><br><br></p>
+<p><div class="dp-highlighter bg_java"></div></p>
+<p><div class="bar"></div></p>
+<p><div class="tools"></div></p>
+<p><pre class="lang:java decode:true">#include “first.h”  </pre></p>
+<p>#include &lt;jni.h&gt;  </p>
+<p>#include &lt;curl/curl.h&gt;  </p>
+<p>jint<br>Java_com_example_androidlibcurldemo_MainActivity_add( JNIEnv<em>  env,<br>                                      jobject  this,<br>                                      jint     x,<br>                                      jint     y )<br>{<br>    CURL</em> curl;<br>    CURLcode res;<br>    curl = curl_easy_init();<br>    if(NULL == curl)//如果初始化失败，返回1000<br>    {<br>        return first(1,999);<br>    }<br>    curl_easy_setopt(curl, CURLOPT_URL,”<a href="http://www.baidu.com&quot;);//以get请求www.baidu.com" target="_blank" rel="external">http://www.baidu.com&quot;);//以get请求www.baidu.com</a><br>    curl_easy_setopt(curl, CURLOPT_READFUNCTION,NULL);<br>    curl_easy_setopt(curl, CURLOPT_NOSIGNAL,1);<br>    curl_easy_setopt(curl, CURLOPT_CONNECTTIMEOUT,20);//连接时间，由于网络不好，为了达到测试效果，我设置的时间较长<br>    curl_easy_setopt(curl, CURLOPT_TIMEOUT,20);<br>    res = curl_easy_perform(curl);//执行<br>    curl_easy_cleanup(curl);//清除<br>&lt;span style=”white-space:pre”&gt;    &lt;/span&gt;<br>    return first(res,res);//根据res值返回到Android中的TextView中，如果res是0，表示请求成功，如果是6表示无法解析主机，即没联网<br>}<br>6）编译库文件</p>
+<p><br><br><br>同样还是在终端中，先进入到Android工程目录，然后执行ndk-build。最终在obj和libs目录下生成了我们的libtwolib-second库</p>
+<h3 id="3-4如何使用库"><a href="#3-4如何使用库" class="headerlink" title="3.4如何使用库"></a><a name="t9"></a>3.4如何使用库</h3><p><div>1）首先，还是要修改我们的MainActivity.java类，修改如下：</div></p>
+<p><div></div></p>
+<p><div class="dp-highlighter bg_java"></div></p>
+<p><div class="bar"></div></p>
+<p><div class="tools"></div></p>
+<p><pre class="lang:java decode:true ">private Button button;<br>    private TextView tv;<br>    private int x  = 123;<br>    private int y  = 456;<br>    @Override<br>    protected void onCreate(Bundle savedInstanceState) {<br>        super.onCreate(savedInstanceState);<br>        setContentView(R.layout.activity_main);<br>        // here, we dynamically load the library at runtime<br>        // before calling the native method.<br>        //<br>        System.loadLibrary(“twolib-second”);  </pre></p>
+<pre><code>    tv = (TextView)findViewById(R.id.textView2);  
+    button = (Button) this.findViewById(R.id.button1);  
+    this.button.setOnClickListener(new OnClickListener() {  
+
+        @Override  
+        public void onClick(View arg0) {                  
+             int  z = add(x, y);  
+             tv.setText( &quot;网络请求结果&quot; + z );  
+        }  
+    });  
+}  
+
+public native int add(int  x, int  y);&lt;/pre&gt;
+</code></pre><p>我们要在activity_main布局中，添加一个按钮和一个TextView，按钮用于出发网络请求，TextView用于显示请求结果。</p>
+<p><br><br><br></p>
+<p><div>显示0表示请求成功。显示12表示无法解析主机，没联网。</div></p>
+<p><div>2）在AndroidManifest.xml中添加网络权限。否则会在TextView显示12</div></p>
+<div>
+
+<p><u>&lt;</u><u>uses-permission</u><u> </u><u>android:name</u><u>=</u>“android.permission.INTERNET”<u>/&gt;</u></p>
+<p>至此，我们就完成了库的编译和使用。</p>
+<p></p></div><p></p>
+<p><div>Ctrl+R 打包APK到手机，点击button测试吧。不过这是同步请求，异步暂时还未研究。</div></p>
+<p><div></div></p>
+<p><div>以上步骤是经过真机测试，截图如下：网络限制，稍后上传。</div></p>
+<p><div></div></p>
+<p><div>疑惑：打包时，如果我没有在second.c中引用&lt;curl/curl.h&gt;进行打包，包只有几十kb，引用后就1.2MB了，但是，我看了下libcurl.a的库本身就4点几MB，不知道什么原因，如有知道，烦请告知。</div><br>参考资料：</p>
+<p>1）<a href="http://blog.csdn.net/sozell/article/details/10551309" target="_blank" rel="external">http://blog.csdn.net/sozell/article/details/10551309</a></p>
+<p>2）<a href="http://www.2cto.com/kf/201204/125939.html" target="_blank" rel="external">http://www.2cto.com/kf/201204/125939.html</a></p>
+<p>3）<a href="http://jingyan.baidu.com/article/c910274bffa502cd361d2da0.html" target="_blank" rel="external">http://jingyan.baidu.com/article/c910274bffa502cd361d2da0.html</a></p>
+<p>4）<a href="http://blog.csdn.net/smfwuxiao/article/details/6591927" target="_blank" rel="external">http://blog.csdn.net/smfwuxiao/article/details/6591927</a></p>
+<p>5）<a href="http://www.cnblogs.com/lyout/archive/2013/06/03/3115799.html" target="_blank" rel="external">http://www.cnblogs.com/lyout/archive/2013/06/03/3115799.html</a></p>
+<p>6）<a href="http://www.linuxidc.com/Linux/2012-07/66105.htm" target="_blank" rel="external">http://www.linuxidc.com/Linux/2012-07/66105.htm</a></p>
+<p>7）<a href="http://blog.csdn.net/smfwuxiao/article/details/8523479" target="_blank" rel="external">http://blog.csdn.net/smfwuxiao/article/details/8523479</a></p>
+<p>8）<a href="http://blog.csdn.net/yuxikuo_1/article/details/39577257" target="_blank" rel="external">http://blog.csdn.net/yuxikuo_1/article/details/39577257</a></p>
+<p>9）<a href="http://bbs.csdn.net/topics/370006153" target="_blank" rel="external">http://bbs.csdn.net/topics/370006153</a></p>
+<p>10）<a href="http://blog.csdn.net/huyiyang2010/article/details/7664201" target="_blank" rel="external">http://blog.csdn.net/huyiyang2010/article/details/7664201</a></p>
+<p>11）<a href="http://blog.csdn.net/cjj198561/article/details/33417965" target="_blank" rel="external">http://blog.csdn.net/cjj198561/article/details/33417965</a></p>
+<p>12）<a href="http://bbs.chinaunix.net/thread-4096875-1-1.html" target="_blank" rel="external">http://bbs.chinaunix.net/thread-4096875-1-1.html</a></p>
+
+      
+    </div>
+
+    <div>
+      
+        
+
+      
+    </div>
+
+    <div>
+      
+        
+
+      
+    </div>
+
+    <div>
+      
+        
+
+      
+    </div>
+
+    <footer class="post-footer">
+      
+        <div class="post-tags">
+          
+            <a href="/tags/android/" rel="tag"># android</a>
+          
+            <a href="/tags/cocos2d/" rel="tag"># cocos2d</a>
+          
+        </div>
+      
+
+      
+        
+      
+
+      
+        <div class="post-nav">
+          <div class="post-nav-next post-nav-item">
+            
+              <a href="/2017/03/03/e4-bd-bf-e7-94-a8ndk-e8-87-aa-e5-b8-a6-e7-9a-84iconv-e8-bf-9b-e8-a1-8c-e7-bc-96-e7-a0-81-e8-bd-ac-e6-8d-a2/" rel="next" title="使用NDK自带的iconv进行编码转换">
+                <i class="fa fa-chevron-left"></i> 使用NDK自带的iconv进行编码转换
+              </a>
+            
+          </div>
+
+          <span class="post-nav-divider"></span>
+
+          <div class="post-nav-prev post-nav-item">
+            
+              <a href="/2017/03/04/Android-NDK编译选项设置/" rel="prev" title="Android NDK编译选项设置">
+                Android NDK编译选项设置 <i class="fa fa-chevron-right"></i>
+              </a>
+            
+          </div>
+        </div>
+      
+
+      
+      
+    </footer>
+  </article>
+
+
+
+    <div class="post-spread">
+      
+    </div>
+  </div>
+
+
+          </div>
+          
+
+
+          
+  <div class="comments" id="comments">
+    
+  </div>
+
+
+        </div>
+        
+          
+  
+  <div class="sidebar-toggle">
+    <div class="sidebar-toggle-line-wrap">
+      <span class="sidebar-toggle-line sidebar-toggle-line-first"></span>
+      <span class="sidebar-toggle-line sidebar-toggle-line-middle"></span>
+      <span class="sidebar-toggle-line sidebar-toggle-line-last"></span>
+    </div>
+  </div>
+
+  <aside id="sidebar" class="sidebar">
+    <div class="sidebar-inner">
+
+      
+
+      
+        <ul class="sidebar-nav motion-element">
+          <li class="sidebar-nav-toc sidebar-nav-active" data-target="post-toc-wrap" >
+            文章目录
+          </li>
+          <li class="sidebar-nav-overview" data-target="site-overview">
+            站点概览
+          </li>
+        </ul>
+      
+
+      <section class="site-overview sidebar-panel">
+        <div class="site-author motion-element" itemprop="author" itemscope itemtype="http://schema.org/Person">
+          <img class="site-author-image" itemprop="image"
+               src="/images/avatar.gif"
+               alt="i_D.S." />
+          <p class="site-author-name" itemprop="name">i_D.S.</p>
+           
+              <p class="site-description motion-element" itemprop="description">不奋斗的人生，和咸鱼有什么分别</p>
+          
+        </div>
+        <nav class="site-state motion-element">
+
+          
+            <div class="site-state-item site-state-posts">
+              <a href="/archives">
+                <span class="site-state-item-count">17</span>
+                <span class="site-state-item-name">日志</span>
+              </a>
+            </div>
+          
+
+          
+            
+            
+            <div class="site-state-item site-state-categories">
+              
+                <span class="site-state-item-count">6</span>
+                <span class="site-state-item-name">分类</span>
+              
+            </div>
+          
+
+          
+            
+            
+            <div class="site-state-item site-state-tags">
+              
+                <span class="site-state-item-count">18</span>
+                <span class="site-state-item-name">标签</span>
+              
+            </div>
+          
+
+        </nav>
+
+        
+
+        <div class="links-of-author motion-element">
+          
+        </div>
+
+        
+        
+
+        
+        
+
+        
+
+
+      </section>
+
+      
+      <!--noindex-->
+        <section class="post-toc-wrap motion-element sidebar-panel sidebar-panel-active">
+          <div class="post-toc">
+
+            
+              
+            
+
+            
+              <div class="post-toc-content"><ol class="nav"><li class="nav-item nav-level-2"><a class="nav-link" href="#1、研究背景与意义"><span class="nav-number">1.</span> <span class="nav-text">1、研究背景与意义</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#1-1预编译库"><span class="nav-number">1.1.</span> <span class="nav-text">1.1预编译库</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#1-2libcurl"><span class="nav-number">1.2.</span> <span class="nav-text">1.2libcurl</span></a></li></ol></li><li class="nav-item nav-level-2"><a class="nav-link" href="#2、打包Android版libcurl包"><span class="nav-number">2.</span> <span class="nav-text">2、打包Android版libcurl包</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#3、开始打包"><span class="nav-number">3.</span> <span class="nav-text">3、开始打包</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#3-1新建Android空工程"><span class="nav-number">3.1.</span> <span class="nav-text">3.1新建Android空工程</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#"><span class="nav-number">3.2.</span> <span class="nav-text"></span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#3-2先来一个简单例子，抛砖引玉"><span class="nav-number">3.3.</span> <span class="nav-text">3.2先来一个简单例子，抛砖引玉</span></a></li></ol></li></ol></li><li class="nav-item nav-level-1"><a class="nav-link" href="#first-lib-which-will-be-built-statically"><span class="nav-number"></span> <span class="nav-text">first lib, which will be built statically</span></a></li><li class="nav-item nav-level-1"><a class="nav-link" href="#second-lib-which-will-depend-on-and-include-the-first-one"><span class="nav-number"></span> <span class="nav-text">second lib, which will depend on and include the first one</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#3-3重头戏-使用libcurl-a打包的so库到Android"><span class="nav-number">0.1.</span> <span class="nav-text">3.3重头戏:使用libcurl.a打包的so库到Android</span></a></li></ol></li></ol></li><li class="nav-item nav-level-1"><a class="nav-link" href="#first-lib-which-will-be-built-statically-1"><span class="nav-number"></span> <span class="nav-text">first lib, which will be built statically</span></a></li><li class="nav-item nav-level-1"><a class="nav-link" href="#-1"><span class="nav-number"></span> <span class="nav-text"> </span></a></li><li class="nav-item nav-level-1"><a class="nav-link" href="#second-lib-which-will-depend-on-and-include-the-first-one-1"><span class="nav-number"></span> <span class="nav-text">second lib, which will depend on and include the first one</span></a></li><li class="nav-item nav-level-1"><a class="nav-link" href="#-2"><span class="nav-number"></span> <span class="nav-text"> </span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#3-4如何使用库"><span class="nav-number">0.1.</span> <span class="nav-text">3.4如何使用库</span></a></li></ol></li></ol></div>
+            
+
+          </div>
+        </section>
+      <!--/noindex-->
+      
+
+      
+
+    </div>
+  </aside>
+
+
+        
+      </div>
+    </main>
+
+    <footer id="footer" class="footer">
+      <div class="footer-inner">
+        <div class="copyright" >
+  
+  &copy; 
+  <span itemprop="copyrightYear">2017</span>
+  <span class="with-love">
+    <i class="fa fa-heart"></i>
+  </span>
+  <span class="author" itemprop="copyrightHolder">i_D.S.</span>
+</div>
+
+
+<div class="powered-by">
+  由 <a class="theme-link" href="https://hexo.io">Hexo</a> 强力驱动
+</div>
+
+<div class="theme-info">
+  主题 -
+  <a class="theme-link" href="https://github.com/iissnan/hexo-theme-next">
+    NexT.Mist
+  </a>
+</div>
+
+
+        
+
+        
+      </div>
+    </footer>
+
+    
+      <div class="back-to-top">
+        <i class="fa fa-arrow-up"></i>
+        
+      </div>
+    
+
+  </div>
+
+  
+
+<script type="text/javascript">
+  if (Object.prototype.toString.call(window.Promise) !== '[object Function]') {
+    window.Promise = null;
+  }
+</script>
+
+
+
+
+
+
+
+
+
+  
+
+
+  
+
+
+
+
+
+  
+  <script type="text/javascript" src="/lib/jquery/index.js?v=2.1.3"></script>
+
+  
+  <script type="text/javascript" src="/lib/fastclick/lib/fastclick.min.js?v=1.0.6"></script>
+
+  
+  <script type="text/javascript" src="/lib/jquery_lazyload/jquery.lazyload.js?v=1.9.7"></script>
+
+  
+  <script type="text/javascript" src="/lib/velocity/velocity.min.js?v=1.2.1"></script>
+
+  
+  <script type="text/javascript" src="/lib/velocity/velocity.ui.min.js?v=1.2.1"></script>
+
+  
+  <script type="text/javascript" src="/lib/fancybox/source/jquery.fancybox.pack.js?v=2.1.5"></script>
+
+  
+  <script type="text/javascript" src="/lib/canvas-nest/canvas-nest.min.js"></script>
+
+
+  
+
+
+  <script type="text/javascript" src="/js/src/utils.js?v=5.1.0"></script>
+
+  <script type="text/javascript" src="/js/src/motion.js?v=5.1.0"></script>
+
+
+
+  
+  
+
+  
+  <script type="text/javascript" src="/js/src/scrollspy.js?v=5.1.0"></script>
+<script type="text/javascript" src="/js/src/post-details.js?v=5.1.0"></script>
+
+
+
+  
+
+
+  <script type="text/javascript" src="/js/src/bootstrap.js?v=5.1.0"></script>
+
+
+
+  
+
+
+  
+
+
+
+
+	
+
+
+
+
+
+  
+
+
+
+
+
+  
+
+
+
+
+
+  
+
+
+
+
+
+
+  
+
+  <script type="text/javascript">
+    // Popup Window;
+    var isfetched = false;
+    // Search DB path;
+    var search_path = "search.xml";
+    if (search_path.length == 0) {
+      search_path = "search.xml";
+    }
+    var path = "/" + search_path;
+    // monitor main search box;
+
+    function proceedsearch() {
+      $("body")
+        .append('<div class="search-popup-overlay local-search-pop-overlay"></div>')
+        .css('overflow', 'hidden');
+      $('.popup').toggle();
+    }
+    // search function;
+    var searchFunc = function(path, search_id, content_id) {
+      'use strict';
+      $.ajax({
+        url: path,
+        dataType: "xml",
+        async: true,
+        success: function( xmlResponse ) {
+          // get the contents from search data
+          isfetched = true;
+          $('.popup').detach().appendTo('.header-inner');
+          var datas = $( "entry", xmlResponse ).map(function() {
+            return {
+              title: $( "title", this ).text(),
+              content: $("content",this).text(),
+              url: $( "url" , this).text()
+            };
+          }).get();
+          var $input = document.getElementById(search_id);
+          var $resultContent = document.getElementById(content_id);
+          $input.addEventListener('input', function(){
+            var matchcounts = 0;
+            var str='<ul class=\"search-result-list\">';
+            var keywords = this.value.trim().toLowerCase().split(/[\s\-]+/);
+            $resultContent.innerHTML = "";
+            if (this.value.trim().length > 1) {
+              // perform local searching
+              datas.forEach(function(data) {
+                var isMatch = false;
+                var content_index = [];
+                var data_title = data.title.trim().toLowerCase();
+                var data_content = data.content.trim().replace(/<[^>]+>/g,"").toLowerCase();
+                var data_url = decodeURIComponent(data.url);
+                var index_title = -1;
+                var index_content = -1;
+                var first_occur = -1;
+                // only match artiles with not empty titles and contents
+                if(data_title != '') {
+                  keywords.forEach(function(keyword, i) {
+                    index_title = data_title.indexOf(keyword);
+                    index_content = data_content.indexOf(keyword);
+                    if( index_title >= 0 || index_content >= 0 ){
+                      isMatch = true;
+                      if (i == 0) {
+                        first_occur = index_content;
+                      }
+                    }
+
+                  });
+                }
+                // show search results
+                if (isMatch) {
+                  matchcounts += 1;
+                  str += "<li><a href='"+ data_url +"' class='search-result-title'>"+ data_title +"</a>";
+                  var content = data.content.trim().replace(/<[^>]+>/g,"");
+                  if (first_occur >= 0) {
+                    // cut out 100 characters
+                    var start = first_occur - 20;
+                    var end = first_occur + 80;
+                    if(start < 0){
+                      start = 0;
+                    }
+                    if(start == 0){
+                      end = 50;
+                    }
+                    if(end > content.length){
+                      end = content.length;
+                    }
+                    var match_content = content.substring(start, end);
+                    // highlight all keywords
+                    keywords.forEach(function(keyword){
+                      var regS = new RegExp(keyword, "gi");
+                      match_content = match_content.replace(regS, "<b class=\"search-keyword\">"+keyword+"</b>");
+                    });
+
+                    str += "<p class=\"search-result\">" + match_content +"...</p>"
+                  }
+                  str += "</li>";
+                }
+              })};
+            str += "</ul>";
+            if (matchcounts == 0) { str = '<div id="no-result"><i class="fa fa-frown-o fa-5x" /></div>' }
+            if (keywords == "") { str = '<div id="no-result"><i class="fa fa-search fa-5x" /></div>' }
+            $resultContent.innerHTML = str;
+          });
+          proceedsearch();
+        }
+      });}
+
+    // handle and trigger popup window;
+    $('.popup-trigger').click(function(e) {
+      e.stopPropagation();
+      if (isfetched == false) {
+        searchFunc(path, 'local-search-input', 'local-search-result');
+      } else {
+        proceedsearch();
+      };
+    });
+
+    $('.popup-btn-close').click(function(e){
+      $('.popup').hide();
+      $(".local-search-pop-overlay").remove();
+      $('body').css('overflow', '');
+    });
+    $('.popup').click(function(e){
+      e.stopPropagation();
+    });
+  </script>
+
+
+
+
+
+  
+
+  
+
+  
+
+  
+
+</body>
+</html>

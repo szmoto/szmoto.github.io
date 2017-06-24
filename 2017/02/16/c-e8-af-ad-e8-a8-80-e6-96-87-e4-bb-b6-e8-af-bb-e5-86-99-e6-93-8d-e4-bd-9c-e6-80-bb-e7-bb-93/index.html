@@ -1,0 +1,1026 @@
+<!doctype html>
+
+
+
+  
+
+
+<html class="theme-next mist use-motion" lang="zh-Hans">
+<head>
+  <meta charset="UTF-8"/>
+<meta http-equiv="X-UA-Compatible" content="IE=edge" />
+<meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1"/>
+
+
+
+<meta http-equiv="Cache-Control" content="no-transform" />
+<meta http-equiv="Cache-Control" content="no-siteapp" />
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+  
+  
+  <link href="/lib/fancybox/source/jquery.fancybox.css?v=2.1.5" rel="stylesheet" type="text/css" />
+
+
+
+
+  
+  
+  
+  
+
+  
+    
+    
+  
+
+  
+
+  
+
+  
+
+  
+
+  
+    
+    
+    <link href="//fonts.googleapis.com/css?family=Lato:300,300italic,400,400italic,700,700italic&subset=latin,latin-ext" rel="stylesheet" type="text/css">
+  
+
+
+
+
+
+
+<link href="/lib/font-awesome/css/font-awesome.min.css?v=4.6.2" rel="stylesheet" type="text/css" />
+
+<link href="/css/main.css?v=5.1.0" rel="stylesheet" type="text/css" />
+
+
+  <meta name="keywords" content="Hexo, NexT" />
+
+
+
+
+
+
+
+
+  <link rel="shortcut icon" type="image/x-icon" href="/favicon.ico?v=5.1.0" />
+
+
+
+
+
+
+<meta name="description" content="http://blog.csdn.net/strongwangjiawei/article/details/7786085">
+<meta property="og:type" content="article">
+<meta property="og:title" content="C语言文件读写操作总结">
+<meta property="og:url" content="http://blog.idingsong.cn/2017/02/16/c-e8-af-ad-e8-a8-80-e6-96-87-e4-bb-b6-e8-af-bb-e5-86-99-e6-93-8d-e4-bd-9c-e6-80-bb-e7-bb-93/index.html">
+<meta property="og:site_name" content="会思考的生活">
+<meta property="og:description" content="http://blog.csdn.net/strongwangjiawei/article/details/7786085">
+<meta property="og:updated_time" content="2017-06-24T10:59:25.348Z">
+<meta name="twitter:card" content="summary">
+<meta name="twitter:title" content="C语言文件读写操作总结">
+<meta name="twitter:description" content="http://blog.csdn.net/strongwangjiawei/article/details/7786085">
+
+
+
+<script type="text/javascript" id="hexo.configurations">
+  var NexT = window.NexT || {};
+  var CONFIG = {
+    root: '/',
+    scheme: 'Mist',
+    sidebar: {"position":"left","display":"post","offset":12,"offset_float":0,"b2t":false,"scrollpercent":false},
+    fancybox: true,
+    motion: true,
+    duoshuo: {
+      userId: '0',
+      author: '博主'
+    },
+    algolia: {
+      applicationID: '',
+      apiKey: '',
+      indexName: '',
+      hits: {"per_page":10},
+      labels: {"input_placeholder":"Search for Posts","hits_empty":"We didn't find any results for the search: ${query}","hits_stats":"${hits} results found in ${time} ms"}
+    }
+  };
+</script>
+
+
+
+  <link rel="canonical" href="http://blog.idingsong.cn/2017/02/16/c-e8-af-ad-e8-a8-80-e6-96-87-e4-bb-b6-e8-af-bb-e5-86-99-e6-93-8d-e4-bd-9c-e6-80-bb-e7-bb-93/"/>
+
+
+
+
+
+  <title> C语言文件读写操作总结 | 会思考的生活 </title>
+</head>
+
+<body itemscope itemtype="http://schema.org/WebPage" lang="zh-Hans">
+
+  
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+  
+  
+    
+  
+
+  <div class="container sidebar-position-left page-post-detail ">
+    <div class="headband"></div>
+
+    <header id="header" class="header" itemscope itemtype="http://schema.org/WPHeader">
+      <div class="header-inner"><div class="site-brand-wrapper">
+  <div class="site-meta ">
+    
+
+    <div class="custom-logo-site-title">
+      <a href="/"  class="brand" rel="start">
+        <span class="logo-line-before"><i></i></span>
+        <span class="site-title">会思考的生活</span>
+        <span class="logo-line-after"><i></i></span>
+      </a>
+    </div>
+      
+        <p class="site-subtitle">Thinking about Me.</p>
+      
+  </div>
+
+  <div class="site-nav-toggle">
+    <button>
+      <span class="btn-bar"></span>
+      <span class="btn-bar"></span>
+      <span class="btn-bar"></span>
+    </button>
+  </div>
+</div>
+
+<nav class="site-nav">
+  
+
+  
+    <ul id="menu" class="menu">
+      
+        
+        <li class="menu-item menu-item-home">
+          <a href="/" rel="section">
+            
+              <i class="menu-item-icon fa fa-fw fa-home"></i> <br />
+            
+            首页
+          </a>
+        </li>
+      
+        
+        <li class="menu-item menu-item-archives">
+          <a href="/archives" rel="section">
+            
+              <i class="menu-item-icon fa fa-fw fa-archive"></i> <br />
+            
+            归档
+          </a>
+        </li>
+      
+        
+        <li class="menu-item menu-item-tags">
+          <a href="/tags" rel="section">
+            
+              <i class="menu-item-icon fa fa-fw fa-tags"></i> <br />
+            
+            标签
+          </a>
+        </li>
+      
+
+      
+        <li class="menu-item menu-item-search">
+          
+            <a href="javascript:;" class="popup-trigger">
+          
+            
+              <i class="menu-item-icon fa fa-search fa-fw"></i> <br />
+            
+            搜索
+          </a>
+        </li>
+      
+    </ul>
+  
+
+  
+    <div class="site-search">
+      
+  <div class="popup search-popup local-search-popup">
+  <div class="local-search-header clearfix">
+    <span class="search-icon">
+      <i class="fa fa-search"></i>
+    </span>
+    <span class="popup-btn-close">
+      <i class="fa fa-times-circle"></i>
+    </span>
+    <div class="local-search-input-wrapper">
+      <input autocapitalize="off" autocomplete="off" autocorrect="off"
+             placeholder="搜索..." spellcheck="false"
+             type="text" id="local-search-input">
+    </div>
+  </div>
+  <div id="local-search-result"></div>
+</div>
+
+
+
+    </div>
+  
+</nav>
+
+
+
+ </div>
+    </header>
+
+    <main id="main" class="main">
+      <div class="main-inner">
+        <div class="content-wrap">
+          <div id="content" class="content">
+            
+
+  <div id="posts" class="posts-expand">
+    
+
+  
+
+  
+  
+  
+
+  <article class="post post-type-normal " itemscope itemtype="http://schema.org/Article">
+    <link itemprop="mainEntityOfPage" href="http://blog.idingsong.cn/2017/02/16/c-e8-af-ad-e8-a8-80-e6-96-87-e4-bb-b6-e8-af-bb-e5-86-99-e6-93-8d-e4-bd-9c-e6-80-bb-e7-bb-93/">
+
+    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
+      <meta itemprop="name" content="i_D.S.">
+      <meta itemprop="description" content="">
+      <meta itemprop="image" content="/images/avatar.gif">
+    </span>
+
+    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
+      <meta itemprop="name" content="会思考的生活">
+    </span>
+
+    
+      <header class="post-header">
+
+        
+        
+          <h1 class="post-title" itemprop="name headline">
+            
+            
+              
+                C语言文件读写操作总结
+              
+            
+          </h1>
+        
+
+        <div class="post-meta">
+          <span class="post-time">
+            
+              <span class="post-meta-item-icon">
+                <i class="fa fa-calendar-o"></i>
+              </span>
+              
+                <span class="post-meta-item-text">发表于</span>
+              
+              <time title="创建于" itemprop="dateCreated datePublished" datetime="2017-02-16T16:28:34+08:00">
+                2017-02-16
+              </time>
+            
+
+            
+
+            
+          </span>
+
+          
+            <span class="post-category" >
+            
+              <span class="post-meta-divider">|</span>
+            
+              <span class="post-meta-item-icon">
+                <i class="fa fa-folder-o"></i>
+              </span>
+              
+                <span class="post-meta-item-text">分类于</span>
+              
+              
+                <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
+                  <a href="/categories/CPlus/" itemprop="url" rel="index">
+                    <span itemprop="name">CPlus</span>
+                  </a>
+                </span>
+
+                
+                
+              
+            </span>
+          
+
+          
+            
+          
+
+          
+          
+
+          
+
+          
+
+          
+
+        </div>
+      </header>
+    
+
+
+    <div class="post-body" itemprop="articleBody">
+
+      
+      
+
+      
+        <blockquote>
+<p><a href="http://blog.csdn.net/strongwangjiawei/article/details/7786085" target="_blank" rel="external">http://blog.csdn.net/strongwangjiawei/article/details/7786085</a><br><a id="more"></a></p>
+</blockquote>
+<h2 id="C语言文件读写操作总结"><a href="#C语言文件读写操作总结" class="headerlink" title="C语言文件读写操作总结"></a><a href="http://www.cnblogs.com/xiajun/archive/2010/08/14/2282881.html" target="_blank" rel="external">C语言文件读写操作总结</a></h2><div class="postText"><br><div id="cnblogs_post_body"><br><br>C语言文件操作<br><br>一、标准文件的读写<br><br>1.文件的打开<br><br>fopen() 文件的打开操作表示将给用户指定的文件在内存分配一个FILE结构区，并将该结构的指针返回给用户程序，以后用户程序就可用此FILE指针来实现对指定文件的存取操作了。当使用打开函数时，必须给出文件名、文件操作方式(读、写或读写),如果该文件名不存在，就意味着建立(只对写文件而言，对读文件则出错)，并将文件指针指向文件开头。若已有一个同名文件存在，则删除该文件，若无同名文件，则建立该文件，并将文件指针指向文件开头。<br><br>fopen(char <em>filename,char </em>type);<br><br>其中<em>filename是要打开文件的文件名指针，一般用双引号括起来的文件名表示，也可使用双反斜杠隔开的路径名。而</em>type参数表示了对打开文件的操作方式。其可采用的操作方式如下： 方式 含义 “r” 打开，只读； “w” 打开，文件指针指到头，只写； “a” 打开，指向文件尾，在已存在文件中追加； “rb” 打开一个二进制文件，只读； “wb” 打开一个二进制文件，只写； “ab” 打开一个二进制文件，进行追加 ；”r+” 以读/写方式打开一个已存在的文件； “w+” 以读/写方式建立一个新的文本文件 ；”a+” 以读/写方式打开一个文件文件进行追加 ；”rb+” 以读/写方式打开一个二进制文件； “wb+” 以读/写方式建立一个新的二进制文件 ；”ab+” 以读/写方式打开一个二进制文件进行追加 ；当用fopen()成功的打开一个文件时，该函数将返回一个FILE指针，如果文件打开失败，将返回一个NULL指针。如想打开test文件，进行写：<br><div class="dp-highlighter bg_cpp"><br><div class="bar"></div>
+
+<ol>
+<li><span class="datatypes">FILE</span> *fp;</li>
+<li><span class="keyword">if</span>((fp=fopen(<span class="string">“test”</span>,<span class="string">“w”</span>))==NULL) {</li>
+<li>printf(<span class="string">“File cannot be opened/n”</span>);</li>
+<li>exit();</li>
+<li>}</li>
+<li><span class="keyword">else</span></li>
+<li>printf(<span class="string">“File opened for writing/n”</span>);</li>
+<li>……</li>
+<li>fclose(fp);<br><div><embed src="http://static.blog.csdn.net/scripts/ZeroClipboard/ZeroClipboard.swf" type="application/x-shockwave-flash" width="0" height="0" data-mce-fragment="1"></div><br></li></ol></div><br>DOS操作系统对同时打开的文件数目是有限制的，缺省值为5，可以通过修改CONFIG.SYS文件改变这个设置。
+
+<p>2.关闭文件函数fclose()</p>
+<p>文件操作完成后，必须要用fclose()函数进行关闭，这是因为对打开的文件进行写入时，若文件缓冲区的空间未被写入的内容填满，这些内容不会写到打开的文件中去而丢失。只有对打开的文件进行关闭操作时，停留在文件缓冲区的内容才能写到该文件中去，从而使文件完整。再者一旦关闭了文件，该文件对应的FILE结构将被释放，从而使关闭的文件得到保护，因为这时对该文件的存取操作将不会进行。文件的关闭也意味着释放了该文件的缓冲区。</p>
+<p>int fclose(FILE *stream);</p>
+<p>它表示该函数将关闭FILE指针对应的文件，并返回一个整数值。若成功地关闭了文件，则返回一个0值，否则返回一个非0值。常用以下方法进行测试：</p>
+<div class="dp-highlighter bg_cpp"><br><div class="bar"></div>
+
+<ol>
+<li><span class="keyword">if</span>(fclose(fp)!=0) {</li>
+<li>printf(<span class="string">“File cannot be closed/n”</span>);</li>
+<li>exit(1);</li>
+<li>}</li>
+<li><span class="keyword">else</span></li>
+<li>printf(<span class="string">“File is now closed/n”</span>);<br></li></ol></div><br>当打开多个文件进行操作，而又要同时关闭时，可采用fcloseall()函数，它将关闭所有在程序中打开的文件。 int fcloseall(); 该函数将关闭所有已打开的文件，将各文件缓冲区未装满的内容写到相应的文件中去，接着释放这些缓冲区，并返回关闭文件的数目。如关闭了4个文件，则当执行： n=fcloseall(); 时，n应为4。3.文件的读写
+
+<p>(1).读写文件中字符的函数(一次只读写文件中的一个字符)：</p>
+<p>int fgetc(FILE *stream);</p>
+<p>int getchar(void);</p>
+<p>int fputc(int ch,FILE *stream);</p>
+<p>int putchar(int ch);</p>
+<p>int getc(FILE *stream);</p>
+<p>int putc(int ch,FILE *stream);</p>
+<p>其中fgetc()函数将把由流指针指向的文件中的一个字符读出，例如： ch=fgetc(fp); 将把流指针fp指向的文件中的一个字符读出，并赋给ch，当执行fgetc()函数时，若当时文件指针指到文件尾，即遇到文件结束标志EOF(其对应值为-1)，该函数返回一个-1给ch，在程序中常用检查该函数返回值是否为-1来判断是否已读到文件尾，从而决定是否继续。</p>
+<div class="dp-highlighter bg_cpp"><br><div class="bar"></div>
+
+<ol>
+<li><span class="preprocessor">#include “stdio.h” </span></li>
+<li><span class="preprocessor">#include &lt;stdlib.h&gt;</span></li>
+<li><span class="datatypes">int</span> main() {</li>
+<li><span class="datatypes">FILE</span> *fp;</li>
+<li><span class="datatypes">char</span> ch;</li>
+<li><span class="keyword">if</span>((fp=fopen(<span class="string">“myfile.txt”</span>,<span class="string">“r”</span>))==NULL) {</li>
+<li>printf(<span class="string">“file cannot be opened/n”</span>);</li>
+<li>exit(1);</li>
+<li>}</li>
+<li><span class="keyword">while</span>((ch=fgetc(fp))!=EOF)</li>
+<li>fputc(ch,stdout);</li>
+<li>fclose(fp);</li>
+<li>}<br></li></ol></div><br>该程序以只读方式打开myfile.txt文件，在执行while循环时，文件指针每循环一次后移一个字符位置。用fgetc()函数将文件指针指定的字符读到ch变量中，然后用fputc()函数在屏幕上显示，当读到文件结束标志EOF时，关闭该文件。 上面的程序用到了fputc()函数，该函数将字符变量ch的值写到流指针指定的文件中去，由于流指针用的是标准输出(显示器)的FILE指针stdout，故读出的字符将在显示器上显示。又比如： fputc(ch,fp); 该函数执行结构，将把ch表示的字符送到流指针fp指向的文件中去。 在TC中，putc()等价于fputc(),getc()等价于fgetc()。 putchar(c)相当于fputc(c,stdout)；getchar()相当于fgetc(stdin)。 注意，这里使用char ch,其实是不科学的，因为最后判断结束标志时，是看ch!=EOF,而EOF的值为-1，这显然和char是不能比较的。所以，某些使用，我们都定义成int ch。
+
+<p>(2).读写文件中字符串的函数</p>
+<p>char <em>fgets(char </em>string,int n,FILE *stream);</p>
+<p>char <em>gets(char </em>s);</p>
+<p>int fprintf(FILE <em>stream,char </em>format,variable-list);</p>
+<p>int fputs(char <em>string,FILE </em>stream);</p>
+<p>int fscanf(FILE <em>stream,char </em>format,variable-list);</p>
+<p>其中fgets()函数将把由流指针指定的文件中n-1个字符，读到由指针string指向的字符数组中去，例如： fgets(buffer,9,fp); 将把fp指向的文件中的8个字符读到buffer内存区，buffer可以是定义的字符数组，也可以是动态分配的内存区。 注意，fgets()函数读到’/n’就停止，而不管是否达到数目要求。同时在读取字符串的最后加上’/0’。 fgets()函数执行完以后，返回一个指向该串的指针。如果读到文件尾或出错，则均返回一个空指针NULL，所以长用feof()函数来测定是否到了文件尾或者是ferror()函数来测试是否出错，例如下面的程序用fgets()函数读test.txt文件中的第一行并显示出来：</p>
+<div class="dp-highlighter bg_cpp"><br><div class="bar"><br><div class="tools"><br><br><strong>[cpp]</strong> <a href="http://blog.csdn.net/strongwangjiawei/article/details/7786085#" title="view plain" target="_blank" rel="external">view plain</a><span data-mod="popu_168"> <a href="http://blog.csdn.net/strongwangjiawei/article/details/7786085#" title="copy" target="_blank" rel="external">copy</a></span><br><div><embed id="ZeroClipboardMovie_4" src="http://static.blog.csdn.net/scripts/ZeroClipboard/ZeroClipboard.swf" type="application/x-shockwave-flash" width="18" height="18" align="middle" name="ZeroClipboardMovie_4" data-mce-fragment="1"></div><br></div><br></div>
+
+<ol>
+<li><span class="preprocessor">#include “stdio.h” </span></li>
+<li><span class="datatypes">int</span> main() {</li>
+<li><span class="datatypes">FILE</span> *fp;</li>
+<li><span class="datatypes">char</span> str[128];</li>
+<li><span class="keyword">if</span>((fp=fopen(<span class="string">“test.txt”</span>,<span class="string">“r”</span>))==NULL) {</li>
+<li>printf(<span class="string">“cannot open file/n”</span>); exit(1);</li>
+<li>}</li>
+<li><span class="keyword">while</span>(!feof(fp)) {</li>
+<li><span class="keyword">if</span>(fgets(str,128,fp)!=NULL)</li>
+<li>printf(<span class="string">“%s”</span>,str);</li>
+<li>}</li>
+<li>fclose(fp);</li>
+<li>}<br></li></ol></div><br>gets()函数执行时，只要未遇到换行符或文件结束标志，将一直读下去。因此读到什么时候为止，需要用户进行控制，否则可能造成存储区的溢出。 fputs()函数想指定文件写入一个由string指向的字符串，’/0’不写入文件。 fprintf()和fscanf()同printf()和scanf()函数类似，不同之处就是printf()函数是想显示器输出，fprintf()则是向流指针指向的文件输出；fscanf()是从文件输入。 下面程序是向文件test.dat里输入一些字符：<br><div class="dp-highlighter bg_cpp"><br><div class="bar"><div class="tools">
+
+
+
+<p><strong>[cpp]</strong> <a href="http://blog.csdn.net/strongwangjiawei/article/details/7786085#" title="view plain" target="_blank" rel="external">view plain</a><span data-mod="popu_168"> <a href="http://blog.csdn.net/strongwangjiawei/article/details/7786085#" title="copy" target="_blank" rel="external">copy</a></span></p>
+<div><embed id="ZeroClipboardMovie_5" src="http://static.blog.csdn.net/scripts/ZeroClipboard/ZeroClipboard.swf" type="application/x-shockwave-flash" width="18" height="18" align="middle" name="ZeroClipboardMovie_5" data-mce-fragment="1"></div><br></div><br></div>
+
+<ol>
+<li><span class="preprocessor">#include &lt;stdio.h&gt;</span></li>
+<li><span class="preprocessor">#include &lt;stdlib.h&gt;</span></li>
+<li><span class="datatypes">int</span> main() {</li>
+<li><span class="datatypes">char</span> *s=<span class="string">“That’s good news”</span>;</li>
+<li><span class="datatypes">int</span> i=617;</li>
+<li><span class="datatypes">FILE</span> *fp;</li>
+<li>fp=fopen(<span class="string">“test.dat”</span>, <span class="string">“w”</span>); <span class="comment">/<em>建立一个文字文件只写</em>/</span></li>
+<li>fputs(<span class="string">“Your score of TOEFL is”</span>,fp); <span class="comment">/<em>向所建文件写入一串字符</em>/</span></li>
+<li>fputc(<span class="string">‘:’</span>, fp); <span class="comment">/<em>向所建文件写冒号:</em>/</span></li>
+<li>fprintf(fp, <span class="string">“%d/n”</span>, i); <span class="comment">/<em>向所建文件写一整型数</em>/</span></li>
+<li>fprintf(fp, <span class="string">“%s”</span>, s); <span class="comment">/<em>向所建文件写一字符串</em>/</span></li>
+<li>fclose(fp);</li>
+<li><p>}<br></p></li></ol></div><br>用DOS的TYPE命令显示TEST.DAT的内容如下所示: 屏幕显示 Your score of TOEFL is: 617 That’s good news 下面的程序是把上面的文件test.dat里的内容在屏幕上显示出来：<p></p>
+<div class="dp-highlighter bg_cpp"><br><div class="bar"></div>
+
+<li><p><span class="preprocessor">#include &lt;stdio.h&gt;</span></p>
+</li>
+<li><span class="datatypes">int</span> main() {</li>
+<li><span class="datatypes">char</span> s[24], m[20];</li>
+<li><span class="datatypes">int</span> i;</li>
+<li><span class="datatypes">FILE</span> *fp;</li>
+<li>fp=fopen(<span class="string">“test.dat”</span>, <span class="string">“r”</span>); <span class="comment">/<em>打开文字文件只读</em>/</span></li>
+<li>fgets(s, 24, fp); <span class="comment">/<em>从文件中读取23个字符</em>/</span></li>
+<li>printf(<span class="string">“%s”</span>, s);</li>
+<li>fscanf(fp, <span class="string">“%d”</span>, &amp;i); <span class="comment">/<em>读取整型数</em>/</span></li>
+<li>printf(<span class="string">“%d”</span>, i);</li>
+<li>putchar(fgetc(fp)); <span class="comment">/<em>读取一个字符同时输出</em>/</span></li>
+<li>fgets(m, 17, fp); <span class="comment">/<em>读取16个字符</em>/</span></li>
+<li>puts(m); <span class="comment">/<em>输出所读字符串</em>/</span></li>
+<li>fclose(fp);</li>
+<li>}<br></li></div><br>运行后屏幕显示: Your score of TOEFL is: 617 That’s good news
+
+<p>4.清除和设置文件缓冲区</p>
+<p>(1).清除文件缓冲区函数：</p>
+<p>int fflush(FILE *stream);</p>
+<p>int flushall();</p>
+<p>fflush()函数将清除由stream指向的文件缓冲区里的内容，常用于写完一些数据后，立即用该函数清除缓冲区，以免误操作时，破坏原来的数据。 flushall()将清除所有打开文件所对应的文件缓冲区。</p>
+<p>(2).设置文件缓冲区函数</p>
+<p>void setbuf(FILE <em>stream,char </em>buf);</p>
+<p>void setvbuf(FILE <em>stream,char </em>buf,int type,unsigned size);</p>
+<p>这两个函数将使得打开文件后，用户可建立自己的文件缓冲区，而不使用fopen()函数打开文件设定的默认缓冲区。 对于setbuf()函数，buf指出的缓冲区长度由头文件stdio.h中定义的宏BUFSIZE的值决定，缺省值为512字节。当选定buf为空时，setbuf函数将使的文件I/O不带缓冲。而对setvbuf函数，则由malloc函数来分配缓冲区。参数size指明了缓冲区的长度(必须大于0),而参数type则表示了缓冲的类型，其值可以取如下值： type 值 含义 _IOFBF 文件全部缓冲，即缓冲区装满后，才能对文件读写 _IOLBF 文件行缓冲，即缓冲区接收到一个换行符时，才能对文件读写 _IONBF 文件不缓冲，此时忽略buf,size的值，直接读写文件，不再经过文件缓冲区缓冲。</p>
+<p>5.文件的随机读写函数</p>
+<p>前面介绍的文件的字符/字符串读写，均是进行文件的顺序读写，即总是从文件的开头开始进行读写。这显然不能满足我们的要求，C语言提供了移动文件指针和随机读写的函数，它们是：</p>
+<p>(1).移动文件指针函数：</p>
+<p>long ftell(FILE *stream);</p>
+<p>int rewind(FILE *stream);</p>
+<p>fseek(FILE *stream,long offset,int origin);</p>
+<p>函数ftell()用来得到文件指针离文件开头的偏移量。当返回值是-1时表示出错。 rewind()函数用于文件指针移到文件的开头，当移动成功时，返回0，否则返回一个非0值。 fseek()函数用于把文件指针以origin为起点移动offset个字节，其中origin指出的位置可有以下几种：</p>
+<p>origin 数值 代表的具体位置</p>
+<p>SEEK_SET 0 文件开头</p>
+<p>SEEK_CUR 1 文件指针当前位置</p>
+<p>SEEK_END 2 文件尾</p>
+<p>例如： fseek(fp,10L,0); 把文件指针从文件开头移到第10字节处，由于offset参数要求是长整型数，故其数后带L。</p>
+<p>fseek(fp,-15L,2); 把文件指针从文件尾向前移动15字节。</p>
+<p>(2).文件随机读写函数</p>
+<p>int fread(void <em>ptr,int size,int nitems,FILE </em>stream);</p>
+<p>int fwrite(void <em>ptr,int size,int nitems,FILE </em>stream);</p>
+<p>fread()函数从流指针指定的文件中读取nitems个数据项，每个数据项的长度为size个字节，读取的nitems数据项存入由ptr指针指向的内存缓冲区中，在执行fread()函数时，文件指针随着读取的字节数而向后移动，最后移动结束的位置等于实际读出的字节数。该函数执行结束后，将返回实际读出的数据项数，这个数据项数不一定等于设置的nitems，因为若文件中没有足够的数据项，或读中间出错，都会导致返回的数据项数少于设置的nitems。当返回数不等于nitems时，可以用feof()或ferror()函数进行检查。 fwrite()函数从ptr指向的缓冲区中取出长度为size字节的nitems个数据项，写入到流指针stream指向的文件中，执行该操作后，文件指针将向后移动，移动的字节数等于写入文件的字节数目。该函数操作完成后，也将返回写入的数据项数。</p>
+<p>二、非标准文件的读写</p>
+<p>这类函数最早用于UNIX操作系统,ANSI标准未定义,但有时也经常用到,DOS 3.0以上版本支持这些函数。它们的头文件为io.h。 由于我们不常用这些函数，所以在这里就简单说一下。</p>
+<p>1.文件的打开和关闭</p>
+<p>open()函数的作用是打开文件,其调用格式为: int open(char *filename, int access); 该函数表示按access的要求打开名为filename的文件,返回值为文件描述字,其中access有两部分内容: 基本模式和修饰符, 两者用” “(“或”)方式连接。修饰符可以有多个, 但基本模式只能有一个。 access的规定 ——————————————————– 基本模式 含义 修饰符 含 义 ——————————————————– O_RDONLY 只读 O_APPEND 文件指针指向末尾 O_WRONLY 只写 O_CREAT 文件不存在时创建文件, 属性按基本模式属性 O_RDWR 读写 O_TRUNC 若文件存在, 将其长度缩为0, 属性不变 O_BINARY 打开一个二进制文件 O_TEXT 打开一个文字文件 ——————————————————— open()函数打开成功, 返回值就是文件描述字的值(非负值), 否则返回-1。 close()函数的作用是关闭由open()函数打开的文件, 其调用格式为: int close(int handle); 该函数关闭文件描述字handle相连的文件。</p>
+<p>2.读写函数</p>
+<p>int read(int handle, void *buf, int count);</p>
+<p>read()函数从handle(文件描述字)相连的文件中, 读取count个字节放到buf所指的缓冲区中, 返回值为实际所读字节数, 返回-1表示出错。返回0 表示文件结束。 write()函数的调用格式为: int write(int handle, void *buf, int count); write()函数把count个字节从buf指向的缓冲区写入与handle相连的文件中, 返回值为实际写入的字节数。</p>
+<p>3.随机定位函数</p>
+<p>lseek()函数的调用格式为: int lseek(int handle, long offset, int fromwhere);</p>
+<p>该函数对与handle相连的文件位置指针进行定位,功能和用法与fseek()函数相同。 tell()函数的调用格式为: long tell(int handle); 该函数返回与handle相连的文件现生位置指针, 功能和用法与ftell()相同</p>
+<p>5. read 函数和 write 函数</p>
+<p>来源：蚂蚁的 C/C++ 标准编程 作者：antigloss</p>
+<p>1. read</p>
+<p>#include ssize_t read(int filedes, void *buf, size_t nbytes); 返回值：读取到的字节数；0（读到 EOF）；-1（出错） read 函数从 filedes 指定的已打开文件中读取 nbytes 字节到 buf 中。以下几种情况会导致读取到的字节数小于 nbytes ：</p>
+<p>A. 读取普通文件时，读到文件末尾还不够 nbytes 字节。例如：如果文件只有 30 字节，而我们想读取 100 字节，那么实际读到的只有 30 字节，read 函数返回 30 。此时再使用 read 函数作用于这个文件会导致 read 返回 0 。</p>
+<p>B. 从终端设备（terminal device）读取时，一般情况下每次只能读取一行。</p>
+<p>C. 从网络读取时，网络缓存可能导致读取的字节数小于 nbytes 字节。</p>
+<p>D. 读取 pipe 或者 FIFO 时，pipe 或 FIFO 里的字节数可能小于 nbytes 。</p>
+<p>E. 从面向记录（record-oriented）的设备读取时，某些面向记录的设备（如磁带）每次最多只能返回一个记录。 F. 在读取了部分数据时被信号中断。读操作始于 cfo 。在成功返回之前，cfo 增加，增量为实际读取到的字节数。</p>
+<p>2. write</p>
+<p>#include ssize_t write(int filedes, const void *buf, size_t nbytes); 返回值：写入文件的字节数（成功）；-1（出错）write 函数向 filedes 中写入 nbytes 字节数据，数据来源为 buf 。返回值一般总是等于 nbytes，否则就是出错了。常见的出错原因是磁盘空间满了或者超过了文件大小限制。 对于普通文件，写操作始于 cfo 。如果打开文件时使用了 O_APPEND，则每次写操作都将数据写入文件末尾。成功写入后，cfo 增加，增量为实际写入的字节数。</p>
+<p></p></div><br></div><p></p>
+
+      
+    </div>
+
+    <div>
+      
+        
+
+      
+    </div>
+
+    <div>
+      
+        
+
+      
+    </div>
+
+    <div>
+      
+        
+
+      
+    </div>
+
+    <footer class="post-footer">
+      
+
+      
+        
+      
+
+      
+        <div class="post-nav">
+          <div class="post-nav-next post-nav-item">
+            
+              <a href="/2017/02/12/e5-a6-82-e4-bd-95-e4-bc-98-e9-9b-85-e5-9c-b0-e4-bd-bf-e7-94-a8sublime-text3/" rel="next" title="如何优雅地使用Sublime Text3">
+                <i class="fa fa-chevron-left"></i> 如何优雅地使用Sublime Text3
+              </a>
+            
+          </div>
+
+          <span class="post-nav-divider"></span>
+
+          <div class="post-nav-prev post-nav-item">
+            
+              <a href="/2017/02/16/c-e8-af-ad-e8-a8-80-e6-96-87-e4-bb-b6-e6-93-8d-e4-bd-9c-e8-af-a6-e8-a7-a3/" rel="prev" title="C语言文件操作详解">
+                C语言文件操作详解 <i class="fa fa-chevron-right"></i>
+              </a>
+            
+          </div>
+        </div>
+      
+
+      
+      
+    </footer>
+  </article>
+
+
+
+    <div class="post-spread">
+      
+    </div>
+  </div>
+
+
+          </div>
+          
+
+
+          
+  <div class="comments" id="comments">
+    
+  </div>
+
+
+        </div>
+        
+          
+  
+  <div class="sidebar-toggle">
+    <div class="sidebar-toggle-line-wrap">
+      <span class="sidebar-toggle-line sidebar-toggle-line-first"></span>
+      <span class="sidebar-toggle-line sidebar-toggle-line-middle"></span>
+      <span class="sidebar-toggle-line sidebar-toggle-line-last"></span>
+    </div>
+  </div>
+
+  <aside id="sidebar" class="sidebar">
+    <div class="sidebar-inner">
+
+      
+
+      
+        <ul class="sidebar-nav motion-element">
+          <li class="sidebar-nav-toc sidebar-nav-active" data-target="post-toc-wrap" >
+            文章目录
+          </li>
+          <li class="sidebar-nav-overview" data-target="site-overview">
+            站点概览
+          </li>
+        </ul>
+      
+
+      <section class="site-overview sidebar-panel">
+        <div class="site-author motion-element" itemprop="author" itemscope itemtype="http://schema.org/Person">
+          <img class="site-author-image" itemprop="image"
+               src="/images/avatar.gif"
+               alt="i_D.S." />
+          <p class="site-author-name" itemprop="name">i_D.S.</p>
+           
+              <p class="site-description motion-element" itemprop="description">不奋斗的人生，和咸鱼有什么分别</p>
+          
+        </div>
+        <nav class="site-state motion-element">
+
+          
+            <div class="site-state-item site-state-posts">
+              <a href="/archives">
+                <span class="site-state-item-count">17</span>
+                <span class="site-state-item-name">日志</span>
+              </a>
+            </div>
+          
+
+          
+            
+            
+            <div class="site-state-item site-state-categories">
+              
+                <span class="site-state-item-count">6</span>
+                <span class="site-state-item-name">分类</span>
+              
+            </div>
+          
+
+          
+            
+            
+            <div class="site-state-item site-state-tags">
+              
+                <span class="site-state-item-count">18</span>
+                <span class="site-state-item-name">标签</span>
+              
+            </div>
+          
+
+        </nav>
+
+        
+
+        <div class="links-of-author motion-element">
+          
+        </div>
+
+        
+        
+
+        
+        
+
+        
+
+
+      </section>
+
+      
+      <!--noindex-->
+        <section class="post-toc-wrap motion-element sidebar-panel sidebar-panel-active">
+          <div class="post-toc">
+
+            
+              
+            
+
+            
+              <div class="post-toc-content"><ol class="nav"><li class="nav-item nav-level-2"><a class="nav-link" href="#C语言文件读写操作总结"><span class="nav-number">1.</span> <span class="nav-text">C语言文件读写操作总结</span></a></li></ol></div>
+            
+
+          </div>
+        </section>
+      <!--/noindex-->
+      
+
+      
+
+    </div>
+  </aside>
+
+
+        
+      </div>
+    </main>
+
+    <footer id="footer" class="footer">
+      <div class="footer-inner">
+        <div class="copyright" >
+  
+  &copy; 
+  <span itemprop="copyrightYear">2017</span>
+  <span class="with-love">
+    <i class="fa fa-heart"></i>
+  </span>
+  <span class="author" itemprop="copyrightHolder">i_D.S.</span>
+</div>
+
+
+<div class="powered-by">
+  由 <a class="theme-link" href="https://hexo.io">Hexo</a> 强力驱动
+</div>
+
+<div class="theme-info">
+  主题 -
+  <a class="theme-link" href="https://github.com/iissnan/hexo-theme-next">
+    NexT.Mist
+  </a>
+</div>
+
+
+        
+
+        
+      </div>
+    </footer>
+
+    
+      <div class="back-to-top">
+        <i class="fa fa-arrow-up"></i>
+        
+      </div>
+    
+
+  </div>
+
+  
+
+<script type="text/javascript">
+  if (Object.prototype.toString.call(window.Promise) !== '[object Function]') {
+    window.Promise = null;
+  }
+</script>
+
+
+
+
+
+
+
+
+
+  
+
+
+  
+
+
+
+
+
+  
+  <script type="text/javascript" src="/lib/jquery/index.js?v=2.1.3"></script>
+
+  
+  <script type="text/javascript" src="/lib/fastclick/lib/fastclick.min.js?v=1.0.6"></script>
+
+  
+  <script type="text/javascript" src="/lib/jquery_lazyload/jquery.lazyload.js?v=1.9.7"></script>
+
+  
+  <script type="text/javascript" src="/lib/velocity/velocity.min.js?v=1.2.1"></script>
+
+  
+  <script type="text/javascript" src="/lib/velocity/velocity.ui.min.js?v=1.2.1"></script>
+
+  
+  <script type="text/javascript" src="/lib/fancybox/source/jquery.fancybox.pack.js?v=2.1.5"></script>
+
+  
+  <script type="text/javascript" src="/lib/canvas-nest/canvas-nest.min.js"></script>
+
+
+  
+
+
+  <script type="text/javascript" src="/js/src/utils.js?v=5.1.0"></script>
+
+  <script type="text/javascript" src="/js/src/motion.js?v=5.1.0"></script>
+
+
+
+  
+  
+
+  
+  <script type="text/javascript" src="/js/src/scrollspy.js?v=5.1.0"></script>
+<script type="text/javascript" src="/js/src/post-details.js?v=5.1.0"></script>
+
+
+
+  
+
+
+  <script type="text/javascript" src="/js/src/bootstrap.js?v=5.1.0"></script>
+
+
+
+  
+
+
+  
+
+
+
+
+	
+
+
+
+
+
+  
+
+
+
+
+
+  
+
+
+
+
+
+  
+
+
+
+
+
+
+  
+
+  <script type="text/javascript">
+    // Popup Window;
+    var isfetched = false;
+    // Search DB path;
+    var search_path = "search.xml";
+    if (search_path.length == 0) {
+      search_path = "search.xml";
+    }
+    var path = "/" + search_path;
+    // monitor main search box;
+
+    function proceedsearch() {
+      $("body")
+        .append('<div class="search-popup-overlay local-search-pop-overlay"></div>')
+        .css('overflow', 'hidden');
+      $('.popup').toggle();
+    }
+    // search function;
+    var searchFunc = function(path, search_id, content_id) {
+      'use strict';
+      $.ajax({
+        url: path,
+        dataType: "xml",
+        async: true,
+        success: function( xmlResponse ) {
+          // get the contents from search data
+          isfetched = true;
+          $('.popup').detach().appendTo('.header-inner');
+          var datas = $( "entry", xmlResponse ).map(function() {
+            return {
+              title: $( "title", this ).text(),
+              content: $("content",this).text(),
+              url: $( "url" , this).text()
+            };
+          }).get();
+          var $input = document.getElementById(search_id);
+          var $resultContent = document.getElementById(content_id);
+          $input.addEventListener('input', function(){
+            var matchcounts = 0;
+            var str='<ul class=\"search-result-list\">';
+            var keywords = this.value.trim().toLowerCase().split(/[\s\-]+/);
+            $resultContent.innerHTML = "";
+            if (this.value.trim().length > 1) {
+              // perform local searching
+              datas.forEach(function(data) {
+                var isMatch = false;
+                var content_index = [];
+                var data_title = data.title.trim().toLowerCase();
+                var data_content = data.content.trim().replace(/<[^>]+>/g,"").toLowerCase();
+                var data_url = decodeURIComponent(data.url);
+                var index_title = -1;
+                var index_content = -1;
+                var first_occur = -1;
+                // only match artiles with not empty titles and contents
+                if(data_title != '') {
+                  keywords.forEach(function(keyword, i) {
+                    index_title = data_title.indexOf(keyword);
+                    index_content = data_content.indexOf(keyword);
+                    if( index_title >= 0 || index_content >= 0 ){
+                      isMatch = true;
+                      if (i == 0) {
+                        first_occur = index_content;
+                      }
+                    }
+
+                  });
+                }
+                // show search results
+                if (isMatch) {
+                  matchcounts += 1;
+                  str += "<li><a href='"+ data_url +"' class='search-result-title'>"+ data_title +"</a>";
+                  var content = data.content.trim().replace(/<[^>]+>/g,"");
+                  if (first_occur >= 0) {
+                    // cut out 100 characters
+                    var start = first_occur - 20;
+                    var end = first_occur + 80;
+                    if(start < 0){
+                      start = 0;
+                    }
+                    if(start == 0){
+                      end = 50;
+                    }
+                    if(end > content.length){
+                      end = content.length;
+                    }
+                    var match_content = content.substring(start, end);
+                    // highlight all keywords
+                    keywords.forEach(function(keyword){
+                      var regS = new RegExp(keyword, "gi");
+                      match_content = match_content.replace(regS, "<b class=\"search-keyword\">"+keyword+"</b>");
+                    });
+
+                    str += "<p class=\"search-result\">" + match_content +"...</p>"
+                  }
+                  str += "</li>";
+                }
+              })};
+            str += "</ul>";
+            if (matchcounts == 0) { str = '<div id="no-result"><i class="fa fa-frown-o fa-5x" /></div>' }
+            if (keywords == "") { str = '<div id="no-result"><i class="fa fa-search fa-5x" /></div>' }
+            $resultContent.innerHTML = str;
+          });
+          proceedsearch();
+        }
+      });}
+
+    // handle and trigger popup window;
+    $('.popup-trigger').click(function(e) {
+      e.stopPropagation();
+      if (isfetched == false) {
+        searchFunc(path, 'local-search-input', 'local-search-result');
+      } else {
+        proceedsearch();
+      };
+    });
+
+    $('.popup-btn-close').click(function(e){
+      $('.popup').hide();
+      $(".local-search-pop-overlay").remove();
+      $('body').css('overflow', '');
+    });
+    $('.popup').click(function(e){
+      e.stopPropagation();
+    });
+  </script>
+
+
+
+
+
+  
+
+  
+
+  
+
+  
+
+</body>
+</html>
