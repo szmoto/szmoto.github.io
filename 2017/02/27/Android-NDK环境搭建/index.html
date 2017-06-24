@@ -1,0 +1,327 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <meta charset="utf-8">
+  
+  <title>Android NDK环境搭建 | 会思考的生活</title>
+  <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
+  <meta name="description" content="http://jingyan.baidu.com/article/5d6edee22d908799eadeec9f.html   使用最新ndk，直接抛弃cygwin，以前做Android的项目要用到NDK就必须要下载NDK，下载安装Cygwin(模拟Linux环境用的)，下载CDT（Eclipse C/C++开发插件），还要配置编译器，环境变量，特别麻烦，新版就不需要了## 工具/原料*">
+<meta name="keywords" content="Android,ndk,android">
+<meta property="og:type" content="article">
+<meta property="og:title" content="Android NDK环境搭建">
+<meta property="og:url" content="http://blog.idingsong.cn/2017/02/27/Android-NDK环境搭建/index.html">
+<meta property="og:site_name" content="会思考的生活">
+<meta property="og:description" content="http://jingyan.baidu.com/article/5d6edee22d908799eadeec9f.html   使用最新ndk，直接抛弃cygwin，以前做Android的项目要用到NDK就必须要下载NDK，下载安装Cygwin(模拟Linux环境用的)，下载CDT（Eclipse C/C++开发插件），还要配置编译器，环境变量，特别麻烦，新版就不需要了## 工具/原料*">
+<meta property="og:image" content="http://e.hiphotos.baidu.com/exp/w=500/sign=039b836f7b310a55c424def487444387/6f061d950a7b02088f59267d60d9f2d3562cc89e.jpg">
+<meta property="og:image" content="http://b.hiphotos.baidu.com/exp/w=500/sign=4b3edaaf718da9774e2f862b8050f872/63d0f703918fa0ec09547d91249759ee3c6ddb9e.jpg">
+<meta property="og:image" content="http://e.hiphotos.baidu.com/exp/w=500/sign=8ae12ba42a381f309e198da999004c67/730e0cf3d7ca7bcb1e88deb3bc096b63f724a8be.jpg">
+<meta property="og:image" content="http://d.hiphotos.baidu.com/exp/w=500/sign=8b58db9aadc379317d688629dbc5b784/4d086e061d950a7bf1a0575808d162d9f3d3c991.jpg">
+<meta property="og:image" content="http://a.hiphotos.baidu.com/exp/w=500/sign=4d716d98950a304e5222a0fae1c9a7c3/b7fd5266d01609241b76bb87d60735fae7cd34de.jpg">
+<meta property="og:updated_time" content="2017-06-24T10:21:17.969Z">
+<meta name="twitter:card" content="summary">
+<meta name="twitter:title" content="Android NDK环境搭建">
+<meta name="twitter:description" content="http://jingyan.baidu.com/article/5d6edee22d908799eadeec9f.html   使用最新ndk，直接抛弃cygwin，以前做Android的项目要用到NDK就必须要下载NDK，下载安装Cygwin(模拟Linux环境用的)，下载CDT（Eclipse C/C++开发插件），还要配置编译器，环境变量，特别麻烦，新版就不需要了## 工具/原料*">
+<meta name="twitter:image" content="http://e.hiphotos.baidu.com/exp/w=500/sign=039b836f7b310a55c424def487444387/6f061d950a7b02088f59267d60d9f2d3562cc89e.jpg">
+  
+    <link rel="alternate" href="/atom.xml" title="会思考的生活" type="application/atom+xml">
+  
+  
+    <link rel="icon" href="/favicon.png">
+  
+  
+    <link href="//fonts.googleapis.com/css?family=Source+Code+Pro" rel="stylesheet" type="text/css">
+  
+  <link rel="stylesheet" href="/css/style.css">
+  
+
+</head>
+
+<body>
+  <div id="container">
+    <div id="wrap">
+      <header id="header">
+  <div id="banner"></div>
+  <div id="header-outer" class="outer">
+    <div id="header-title" class="inner">
+      <h1 id="logo-wrap">
+        <a href="/" id="logo">会思考的生活</a>
+      </h1>
+      
+        <h2 id="subtitle-wrap">
+          <a href="/" id="subtitle">Thinking about Me.</a>
+        </h2>
+      
+    </div>
+    <div id="header-inner" class="inner">
+      <nav id="main-nav">
+        <a id="main-nav-toggle" class="nav-icon"></a>
+        
+          <a class="main-nav-link" href="/">Home</a>
+        
+          <a class="main-nav-link" href="/archives">Archives</a>
+        
+      </nav>
+      <nav id="sub-nav">
+        
+          <a id="nav-rss-link" class="nav-icon" href="/atom.xml" title="Flux RSS"></a>
+        
+        <a id="nav-search-btn" class="nav-icon" title="Rechercher"></a>
+      </nav>
+      <div id="search-form-wrap">
+        <form action="//google.com/search" method="get" accept-charset="UTF-8" class="search-form"><input type="search" name="q" class="search-form-input" placeholder="Search"><button type="submit" class="search-form-submit">&#xF002;</button><input type="hidden" name="sitesearch" value="http://blog.idingsong.cn"></form>
+      </div>
+    </div>
+  </div>
+</header>
+      <div class="outer">
+        <section id="main"><article id="post-Android-NDK环境搭建" class="article article-type-post" itemscope itemprop="blogPost">
+  <div class="article-meta">
+    <a href="/2017/02/27/Android-NDK环境搭建/" class="article-date">
+  <time datetime="2017-02-27T13:02:36.000Z" itemprop="datePublished">2017-02-27</time>
+</a>
+    
+  </div>
+  <div class="article-inner">
+    
+    
+      <header class="article-header">
+        
+  
+    <h1 class="article-title" itemprop="name">
+      Android NDK环境搭建
+    </h1>
+  
+
+      </header>
+    
+    <div class="article-entry" itemprop="articleBody">
+      
+        <blockquote>
+<p><a href="http://jingyan.baidu.com/article/5d6edee22d908799eadeec9f.html" target="_blank" rel="external">http://jingyan.baidu.com/article/5d6edee22d908799eadeec9f.html</a></p>
+</blockquote>
+<p><span id="more-56"></span></p>
+<div class="exp-content-block"><br><div class="exp-content-body exp-brief-step"><br><div class="exp-content-listblock"><br><div class="content-listblock-text"><br><br>使用最新ndk，直接抛弃cygwin，以前做Android的项目要用到NDK就必须要下载NDK，下载安装Cygwin(模拟Linux环境用的)，下载CDT（Eclipse C/C++开发插件），还要配置编译器，环境变量，特别麻烦，新版就不需要了<br><br></div><br></div><br></div><br></div><br><div class="exp-content-block"><br><br>## <a name="section-2"></a>工具/原料<br><br><div class="audio-wp audio-wp-2" data-text="" data-for="" data-index="1"></div><br><div class="exp-content-body"><br><br>*   <div class="content-list-text"><br><br>ADT<br><br>    </div>
+
+<ul>
+<li><div class="content-list-text">
+
+</div></li>
+</ul>
+<p>NDK</p>
+<pre><code>&lt;/div&gt;
+</code></pre><p></p></div><br></div><p></p>
+<div class="exp-content-block"><br><br>## <a name="section-3"></a>方法/步骤<br><br><div class="audio-wp audio-wp-2" data-text="" data-for="" data-index="2"></div><br><div class="exp-content-body"><br><br>1.  <div class="list-icon">1</div><br><div class="content-list-text"><br><br>Android官网下载Android的开发工具ADT(Android Development Tool的缩写)，该工具集成了最新的ADT和NDK插件以及Eclipse，还有一个最新版本SDK。解压之后就可以用了<br><br>    </div>
+
+<ol>
+<li><div class="list-icon">2</div><div class="content-list-text">
+
+</div></li>
+</ol>
+<p>ADT插件：管理Android SDK和相关的开发工具的</p>
+<pre><code>NDK插件：用于开发Android NDK的插件，ADT版本在20以上，就能安装NDK插件，另外NDK集成了CDT插件
+
+下载链接见：http://developer.android.com/sdk/index.html
+
+&lt;/div&gt;
+</code></pre><ol>
+<li><div class="list-icon">3</div><div class="content-list-text">
+
+</div></li>
+</ol>
+<p>Android官网下载最新的NDK，注：NDK版本在r7以上之后就集成了Cygwin，而且还是十分精简版。</p>
+<pre><code>下载链接见：http://developer.android.com/tools/sdk/ndk/index.html
+
+&lt;/div&gt;
+</code></pre><div class="last-item"><span class="last-item-end">END</span></div><br></div><br></div><br><div class="exp-content-block"><br><br>## <a name="section-4"></a>eclipse配置<br><br><div class="audio-wp audio-wp-2" data-text="" data-for="" data-index="3"></div><br><div class="exp-content-body"><br><br>1.  <div class="list-icon"></div><br><div class="content-list-text"><br><br>打开Eclipse，点Window-&gt;Preferences-&gt;Android-&gt;NDK,设置NDK路径，例如Shamoo的是E:\android-ndk-r9c<br><br>    </div><br><div class="content-list-media"><br><div class="content-list-image clearfix"><a href="http://jingyan.baidu.com/album/5d6edee22d908799eadeec9f.html?picindex=1" target="_blank" rel="external"><img src="http://e.hiphotos.baidu.com/exp/w=500/sign=039b836f7b310a55c424def487444387/6f061d950a7b02088f59267d60d9f2d3562cc89e.jpg" alt="Android NDK环境搭建"></a></div><br></div>
+
+<ol>
+<li><div class="list-icon"></div><div class="content-list-text">
+
+</div></li>
+</ol>
+<p>新建一个Android工程，在工程上右键点击Android Tools-&gt;Add Native Support&#8230;,然后给我们的.so文件取个名字，例如:my-ndk</p>
+<pre><code>&lt;/div&gt;
+</code></pre><div class="content-list-media"><br><div class="content-list-image clearfix"><a href="http://jingyan.baidu.com/album/5d6edee22d908799eadeec9f.html?picindex=2" target="_blank" rel="external"><img src="http://b.hiphotos.baidu.com/exp/w=500/sign=4b3edaaf718da9774e2f862b8050f872/63d0f703918fa0ec09547d91249759ee3c6ddb9e.jpg" alt="Android NDK环境搭建"></a></div><br></div>
+
+<ol>
+<li><div class="list-icon"></div><div class="content-list-text">
+
+</div></li>
+</ol>
+<p>这时候工程就会多一个jni的文件夹，jni下有Android.mk和my-ndk.cpp文件。Android.mk是NDK工程的Makefile，my-ndk.cpp就是NDK的源文件。</p>
+<pre><code>&lt;/div&gt;
+</code></pre><ol>
+<li><div class="list-icon"></div><div class="content-list-text">
+
+</div></li>
+</ol>
+<p>接下来仿着NDK的demo,Hello-JNI工程写一下。使用Alt + &#8216;/&#8217;可以代码提示！很爽！有木有？之前用CDT时候死活都按不出代码提示，郁闷&#8230;</p>
+<pre><code>&lt;/div&gt;
+</code></pre><ol>
+<li><div class="list-icon"></div><div class="content-list-text">
+
+</div></li>
+</ol>
+<p>JNI接口的命名规范是：Java<em> + 调用该方法的包名(包名的点用</em>代替) + <em> + 调用该接口的类名 + </em> + 方法名，对于实例方法，有两个参数是必要的，一个JNI的环境指针JNIEnv *</p>
+<pre><code>&lt;/div&gt;
+</code></pre><div class="content-list-media"><br><div class="content-list-image clearfix"><a href="http://jingyan.baidu.com/album/5d6edee22d908799eadeec9f.html?picindex=3" target="_blank" rel="external"><img src="http://e.hiphotos.baidu.com/exp/w=500/sign=8ae12ba42a381f309e198da999004c67/730e0cf3d7ca7bcb1e88deb3bc096b63f724a8be.jpg" alt="Android NDK环境搭建"></a></div><br></div>
+
+<ol>
+<li><div class="list-icon"></div><div class="content-list-text">
+
+</div></li>
+</ol>
+<p>完成了，然后运行。运行之前先编译NDK，然后在编译JAVA代码。编译也许会遇到Unable to launch cygpath. Is Cygwin on the path?如何解决？如下</p>
+<pre><code>&lt;/div&gt;
+</code></pre><ol>
+<li><div class="list-icon"></div><div class="content-list-text">
+
+</div></li>
+</ol>
+<p>工程右键，点Properties-&gt;C/C++ Build的Building Settings中去掉Use default build command，然后输入${NDKROOT}/ndk-build.cmd</p>
+<pre><code>&lt;/div&gt;
+</code></pre><div class="content-list-media"><br><div class="content-list-image clearfix"><a href="http://jingyan.baidu.com/album/5d6edee22d908799eadeec9f.html?picindex=4" target="_blank" rel="external"><img src="http://d.hiphotos.baidu.com/exp/w=500/sign=8b58db9aadc379317d688629dbc5b784/4d086e061d950a7bf1a0575808d162d9f3d3c991.jpg" alt="Android NDK环境搭建"></a></div><br></div>
+
+<ol>
+<li><div class="list-icon"></div><div class="content-list-text">
+
+</div></li>
+</ol>
+<p>在C/C++ Build中点击Environment，点Add&#8230;添加环境变量NDKROOT，值为NDK的根目录</p>
+<pre><code>&lt;/div&gt;
+</code></pre><div class="content-list-media"><br><div class="content-list-image clearfix"><a href="http://jingyan.baidu.com/album/5d6edee22d908799eadeec9f.html?picindex=5" target="_blank" rel="external"><img src="http://a.hiphotos.baidu.com/exp/w=500/sign=4d716d98950a304e5222a0fae1c9a7c3/b7fd5266d01609241b76bb87d60735fae7cd34de.jpg" alt="Android NDK环境搭建"></a></div><br></div><br><div class="last-item"><span class="last-item-end">END</span></div><br></div><br></div><br><div class="prompt">经验内容仅供参考，如果您需解决具体问题(尤其法律、医学等领域)，建议您详细咨询相关领域专业人士。</div><br><div class="f12 origin-notice" data-test="1"><a id="report-t-exp" class="jubao" target="_blank" rel="nofollow"></a>举报<em>作者声明：</em>本篇经验系本人依照真实经历原创，未经许可，谢绝转载。</div>
+      
+    </div>
+    <footer class="article-footer">
+      <a data-url="http://blog.idingsong.cn/2017/02/27/Android-NDK环境搭建/" data-id="cj4b50iyh001bigplkt6gu7hn" class="article-share-link">Partager</a>
+      
+      
+  <ul class="article-tag-list"><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/Android/">Android</a></li><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/android/">android</a></li><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/ndk/">ndk</a></li></ul>
+
+    </footer>
+  </div>
+  
+    
+<nav id="article-nav">
+  
+    <a href="/2017/03/03/使用NDK自带的iconv进行编码转换/" id="article-nav-newer" class="article-nav-link-wrap">
+      <strong class="article-nav-caption">Récent</strong>
+      <div class="article-nav-title">
+        
+          使用NDK自带的iconv进行编码转换
+        
+      </div>
+    </a>
+  
+  
+    <a href="/2017/02/26/更好的安装软件的方法（Windows：Chocolatey，Mac：Homebrew）/" id="article-nav-older" class="article-nav-link-wrap">
+      <strong class="article-nav-caption">Ancien</strong>
+      <div class="article-nav-title">更好的安装软件的方法（Windows：Chocolatey，Mac：Homebrew）</div>
+    </a>
+  
+</nav>
+
+  
+</article>
+
+</section>
+        
+          <aside id="sidebar">
+  
+    
+
+  
+    
+  <div class="widget-wrap">
+    <h3 class="widget-title">Mot-clés</h3>
+    <div class="widget">
+      <ul class="tag-list"><li class="tag-list-item"><a class="tag-list-link" href="/tags/Android/">Android</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/Cocos2d/">Cocos2d</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/JSP/">JSP</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/Java/">Java</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/JavaEE/">JavaEE</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/VS/">VS</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/VisualStudio/">VisualStudio</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/Wordpress/">Wordpress</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/android/">android</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/choco/">choco</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/cocos2d/">cocos2d</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/game/">game</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/ide/">ide</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/libgdx/">libgdx</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/ndk/">ndk</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/tools/">tools</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/visualstudio/">visualstudio</a></li></ul>
+    </div>
+  </div>
+
+
+  
+    
+  <div class="widget-wrap">
+    <h3 class="widget-title">Nuage de mot-clés</h3>
+    <div class="widget tagcloud">
+      <a href="/tags/Android/" style="font-size: 20px;">Android</a> <a href="/tags/Cocos2d/" style="font-size: 15px;">Cocos2d</a> <a href="/tags/JSP/" style="font-size: 10px;">JSP</a> <a href="/tags/Java/" style="font-size: 15px;">Java</a> <a href="/tags/JavaEE/" style="font-size: 10px;">JavaEE</a> <a href="/tags/VS/" style="font-size: 10px;">VS</a> <a href="/tags/VisualStudio/" style="font-size: 10px;">VisualStudio</a> <a href="/tags/Wordpress/" style="font-size: 10px;">Wordpress</a> <a href="/tags/android/" style="font-size: 15px;">android</a> <a href="/tags/choco/" style="font-size: 10px;">choco</a> <a href="/tags/cocos2d/" style="font-size: 15px;">cocos2d</a> <a href="/tags/game/" style="font-size: 15px;">game</a> <a href="/tags/ide/" style="font-size: 10px;">ide</a> <a href="/tags/libgdx/" style="font-size: 10px;">libgdx</a> <a href="/tags/ndk/" style="font-size: 15px;">ndk</a> <a href="/tags/tools/" style="font-size: 10px;">tools</a> <a href="/tags/visualstudio/" style="font-size: 10px;">visualstudio</a>
+    </div>
+  </div>
+
+  
+    
+  <div class="widget-wrap">
+    <h3 class="widget-title">Archives</h3>
+    <div class="widget">
+      <ul class="archive-list"><li class="archive-list-item"><a class="archive-list-link" href="/archives/2017/06/">六月 2017</a></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2017/04/">四月 2017</a></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2017/03/">三月 2017</a></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2017/02/">二月 2017</a></li></ul>
+    </div>
+  </div>
+
+
+  
+    
+  <div class="widget-wrap">
+    <h3 class="widget-title">Articles récents</h3>
+    <div class="widget">
+      <ul>
+        
+          <li>
+            <a href="/2017/06/24/Test/">Test</a>
+          </li>
+        
+          <li>
+            <a href="/2017/06/24/hello-world/">Hello World</a>
+          </li>
+        
+          <li>
+            <a href="/2017/04/08/wordpress中文路径出现404错误的解决办法/">wordpress中文路径出现404错误的解决办法</a>
+          </li>
+        
+          <li>
+            <a href="/2017/04/08/java-IO流文件的读写具体实例/">java IO流文件的读写具体实例</a>
+          </li>
+        
+          <li>
+            <a href="/2017/03/25/IntelliJ-IDEA-2016-1建立Strut2工程并使用Tomcat调试/">IntelliJ IDEA 2016.1建立Strut2工程并使用Tomcat调试</a>
+          </li>
+        
+      </ul>
+    </div>
+  </div>
+
+  
+</aside>
+        
+      </div>
+      <footer id="footer">
+  
+  <div class="outer">
+    <div id="footer-info" class="inner">
+      &copy; 2017 i_D.S.<br>
+      Propulsé by <a href="http://hexo.io/" target="_blank">Hexo</a>
+    </div>
+  </div>
+</footer>
+    </div>
+    <nav id="mobile-nav">
+  
+    <a href="/" class="mobile-nav-link">Home</a>
+  
+    <a href="/archives" class="mobile-nav-link">Archives</a>
+  
+</nav>
+    
+
+<script src="//ajax.googleapis.com/ajax/libs/jquery/2.0.3/jquery.min.js"></script>
+
+
+  <link rel="stylesheet" href="/fancybox/jquery.fancybox.css">
+  <script src="/fancybox/jquery.fancybox.pack.js"></script>
+
+
+<script src="/js/script.js"></script>
+
+  </div>
+</body>
+</html>

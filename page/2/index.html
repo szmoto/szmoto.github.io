@@ -1,0 +1,442 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <meta charset="utf-8">
+  
+  <title>会思考的生活</title>
+  <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
+  <meta name="description" content="不奋斗的人生，和咸鱼有什么分别">
+<meta property="og:type" content="website">
+<meta property="og:title" content="会思考的生活">
+<meta property="og:url" content="http://blog.idingsong.cn/page/2/index.html">
+<meta property="og:site_name" content="会思考的生活">
+<meta property="og:description" content="不奋斗的人生，和咸鱼有什么分别">
+<meta name="twitter:card" content="summary">
+<meta name="twitter:title" content="会思考的生活">
+<meta name="twitter:description" content="不奋斗的人生，和咸鱼有什么分别">
+  
+    <link rel="alternate" href="/atom.xml" title="会思考的生活" type="application/atom+xml">
+  
+  
+    <link rel="icon" href="/favicon.png">
+  
+  
+    <link href="//fonts.googleapis.com/css?family=Source+Code+Pro" rel="stylesheet" type="text/css">
+  
+  <link rel="stylesheet" href="/css/style.css">
+  
+
+</head>
+
+<body>
+  <div id="container">
+    <div id="wrap">
+      <header id="header">
+  <div id="banner"></div>
+  <div id="header-outer" class="outer">
+    <div id="header-title" class="inner">
+      <h1 id="logo-wrap">
+        <a href="/" id="logo">会思考的生活</a>
+      </h1>
+      
+        <h2 id="subtitle-wrap">
+          <a href="/" id="subtitle">Thinking about Me.</a>
+        </h2>
+      
+    </div>
+    <div id="header-inner" class="inner">
+      <nav id="main-nav">
+        <a id="main-nav-toggle" class="nav-icon"></a>
+        
+          <a class="main-nav-link" href="/">Home</a>
+        
+          <a class="main-nav-link" href="/archives">Archives</a>
+        
+      </nav>
+      <nav id="sub-nav">
+        
+          <a id="nav-rss-link" class="nav-icon" href="/atom.xml" title="Flux RSS"></a>
+        
+        <a id="nav-search-btn" class="nav-icon" title="Rechercher"></a>
+      </nav>
+      <div id="search-form-wrap">
+        <form action="//google.com/search" method="get" accept-charset="UTF-8" class="search-form"><input type="search" name="q" class="search-form-input" placeholder="Search"><button type="submit" class="search-form-submit">&#xF002;</button><input type="hidden" name="sitesearch" value="http://blog.idingsong.cn"></form>
+      </div>
+    </div>
+  </div>
+</header>
+      <div class="outer">
+        <section id="main">
+  
+    <article id="post-更好的安装软件的方法（Windows：Chocolatey，Mac：Homebrew）" class="article article-type-post" itemscope itemprop="blogPost">
+  <div class="article-meta">
+    <a href="/2017/02/26/更好的安装软件的方法（Windows：Chocolatey，Mac：Homebrew）/" class="article-date">
+  <time datetime="2017-02-26T02:13:21.000Z" itemprop="datePublished">2017-02-26</time>
+</a>
+    
+  </div>
+  <div class="article-inner">
+    
+    
+      <header class="article-header">
+        
+  
+    <h1 itemprop="name">
+      <a class="article-title" href="/2017/02/26/更好的安装软件的方法（Windows：Chocolatey，Mac：Homebrew）/">更好的安装软件的方法（Windows：Chocolatey，Mac：Homebrew）</a>
+    </h1>
+  
+
+      </header>
+    
+    <div class="article-entry" itemprop="articleBody">
+      
+        <blockquote>
+<p><a href="https://ninghao.net/blog/2071" target="_blank" rel="external">https://ninghao.net/blog/2071</a></p>
+</blockquote>
+<p><span id="more-52"></span></p>
+<p>你决定要把 Web 当成自己的事业，并且已经开始学习了。你听到的，看到的，或者自己感觉的，很可能是错的。一开始，我们就用更好的方法去学习与做事，会节省很多时间，也能减轻痛苦。找不到方向，不知道从哪里下手，今天就跟宁皓一起，一切都在这里开始：）</p>
+<h2 id="遇到的问题"><a href="#遇到的问题" class="headerlink" title="遇到的问题"></a>遇到的问题</h2><p>学习 Web 设计与开发得去安装很多软件，Git，Node，Ruby，Virtualbox，Vagrant，Atom，Brackets，Chrome&#8230;  有些软件是你要直接用的，有些是其它软件所依赖的。安装这些东西，你得先找到它们的官方网站，然后下载适合自己系统的版本，双击安装，Next，Next，下一步，下一步  &#8230;  完成！安装完以后，你发现还不能用，因为你不知道这个软件还需要你去安装一个其它的东西。</p>
+<h2 id="解决的方法"><a href="#解决的方法" class="headerlink" title="解决的方法"></a>解决的方法</h2><p>正确的做法是使用包管理工具（Package Manager）去管理这些软件，这里说的是操作系统级别的包管理工具，也就是管理想要安装到操作系统上的软件的工具。在以后，你还会听到项目级别的包管理，比如前端项目用的 Bower ，还有管理 NodeJS 包的 npm 。</p>
+<p>包管理工具，可以让我们用几个简单的命令去安装，升级，还有删除软件，并且它会自动给我们解决软件之间的依赖的问题。</p>
+<p>Windows 用户可以使用 Chocolatey 这个包管理工具，Mac 用户可以使用 Homebrew 。</p>
+<h2 id="连接不上-8230"><a href="#连接不上-8230" class="headerlink" title="连接不上&#8230;"></a>连接不上&#8230;</h2><p>在下载东西的时候，如果出现网络连接的错误，一般就是 “网络问题”，给宽带服务商打电话没有用，你得自己准备 “梯子”。</p>
+<h2 id="Chocolatey"><a href="#Chocolatey" class="headerlink" title="Chocolatey"></a>Chocolatey</h2><p>Windows 需要安装一下 Chocolatey，然后再用 Chocolatey 去管理需要安装到系统上的软件，这些可以安装的软件叫做包（ Package ）。</p>
+<ul>
+<li>在命令行工具下面安装 Chocolatey，通过命令提示符（cmd），或者 Powershell。</li>
+<li>choco search 去搜索想要的包，用 -all 参数会显示所有可用的版本。</li>
+<li>choco install 安装包，用 -version 参数可以安装指定版本的包。</li>
+<li>choco upgrade 把安装的包升级成最新的版本。</li>
+<li>choco uninstall 从电脑上删除已经安装的包，删除前用 choco version 命令查看指定包的是否有可用的更新。</li>
+</ul>
+<h3 id="安装-Chocolatey"><a href="#安装-Chocolatey" class="headerlink" title="安装 Chocolatey"></a>安装 Chocolatey</h3><p>安装 Chocolatey，只需要在 Windows 系统的命令行工具下面去执行一行命令，这个命令行工具可以是 命令提示符（cmd），也可以是 Powershell ，只需要在其中的一个上面安装 Chocolatey 就可以了。你要用管理员的身份去运行命令行工具，不然会遇到权限问题。</p>
+<h4 id="以管理员身份打开命令行工具"><a href="#以管理员身份打开命令行工具" class="headerlink" title="以管理员身份打开命令行工具"></a><strong>以管理员身份打开命令行工具</strong></h4><p>Windows 7：点击 开始 菜单，在搜索框里输入 cmd 或者 powershell ，找到以后，用鼠标右键点击它们，选择 以管理员身份运行。</p>
+<p>Windows 8 + ：使用快捷键 win + Q ，搜索 cmd 或者 powershell ，然后右键点击它们，在窗口下面，选择 以管理员身份运行。</p>
+<h4 id="在-命令提示符-上安装-Chocolatey"><a href="#在-命令提示符-上安装-Chocolatey" class="headerlink" title="在 命令提示符 上安装 Chocolatey"></a><strong>在 命令提示符 上安装 Chocolatey</strong></h4><pre class="crayon-plain-tag">@powershell -NoProfile -ExecutionPolicy unrestricted -Command &quot;iex ((new-object net.webclient).DownloadString('https://chocolatey.org/install.ps1'))&quot; &amp;amp;&amp;amp; SET PATH=%PATH%;%ALLUSERSPROFILE%\chocolatey\bin</pre>
+
+<h4 id="在-Powershell-上安装-Chocolatey"><a href="#在-Powershell-上安装-Chocolatey" class="headerlink" title="在 Powershell 上安装 Chocolatey"></a><strong>在 Powershell 上安装 Chocolatey</strong></h4><pre class="crayon-plain-tag">iex ((new-object net.webclient).DownloadString('https://chocolatey.org/install.ps1'))</pre>
+
+<p><strong> 提示：</strong>如果是在 Powershell 下面安装 Chocolatey 之前，先修改一下 Powershell 的执行策略，不然会出现 “此系统中禁止执行脚本” 这样的错误，解决的方法是执行下面的命令，意思就是把执行的策略设置成不限制：</p>
+<pre class="crayon-plain-tag">Set-ExecutionPolicy unrestricted</pre>
+
+<h4 id="测试"><a href="#测试" class="headerlink" title="测试 "></a><strong>测试 </strong></h4><p>在命令行工具的下面，输入：</p>
+<pre class="crayon-plain-tag">choco help</pre>
+
+<p>如果出现一些有用的帮助信息，比如 Chocolatey 的版本号，安装到的目录，相关的命令，还有示例等等，这就说明我们已经可以在系统上使用 Chocolatey 了。</p>
+<h3 id="使用-Chocolatey"><a href="#使用-Chocolatey" class="headerlink" title="使用 Chocolatey"></a>使用 Chocolatey</h3><p>用 Chocolatey 做的事都是通过在命令行工具里面输入命令去做的，查看这些命令可以在使用 choco help 这个命令，Chocolatey 的命令都是用 choco 开头，后面接着是更具体的子命令，比如 install 就是去安装点什么，update 是去升级指定的包，uninstall 是把包从电脑上删除掉。</p>
+<h4 id="搜索"><a href="#搜索" class="headerlink" title="搜索"></a>搜索</h4><p>在 Chocolatey 的官方网站上（<a href="https://chocolatey.org/packages" target="_blank" rel="external">https://chocolatey.org/packages</a>），可以查看所有可以使用 Chocolatey 安装的东西，或者也可以在命令行工具的下面去搜索想要安装的东西：</p>
+<pre class="crayon-plain-tag">choco search &amp;lt;keyword&amp;gt;</pre>
+
+<p>跟 search 命令功能类似的还有 list 命令：</p>
+<pre class="crayon-plain-tag">choco list &amp;lt;keyword&amp;gt;</pre>
+
+<p>比如搜索一下 nodeJS 相关的包，可以这样：</p>
+<pre class="crayon-plain-tag">choco search nodeJS</pre>
+
+<p>上面的命令会在返回所以跟 nodeJS 相关的包，想要查看这些包所有的可用的版本，可以在命令的后面加上一个 -all 参数：</p>
+<pre class="crayon-plain-tag">choco search nodeJS &lt;strong&gt;-all&lt;/strong&gt;</pre>
+
+<h4 id="包的类型"><a href="#包的类型" class="headerlink" title="包的类型"></a>包的类型</h4><ul>
+<li><ul>
+<li>（例：nodejs，git）</li>
+</ul>
+</li>
+<li>*.install （例：nodejs.install，git.install）</li>
+<li>*.commandline（例：nodejs.commandline，未来会被抛弃）</li>
+<li>*.portable（例：putty.portable）</li>
+</ul>
+<p>Chocolatey 的包有不同的类型，有些包的名字里面会包含特殊的后缀，比如 .install ，.commandline，.portable ，有些包的名字不带这些后缀。</p>
+<p>安装带 .install 后缀的包，这个包会出现在系统控制面板里的 卸载或更改程序 里面，你可以把 .install 的包想成是通过安装程序（msi）安装的包。</p>
+<p>.commandline（未来会被抛弃） 与 .portable 后缀的包是压缩包（zip），安装这种后缀的包，你不能在 卸载或更改程序 里找到它们。</p>
+<p>你也可以选择不带后缀的包，这样如果系统中已经安装了这个包，就会跳过去，如果没安装，Chocolatey 就会为你安装一个，默认安装的这个包的类型应该就是 .install 后缀的包。</p>
+<h4 id="安装"><a href="#安装" class="headerlink" title="安装"></a>安装</h4><p>安装包，用的是 choco install 命令，把想要安装的包的名字放到 install 的后面，想一次去安装多个包，可以在 install 命令后面添加一个包的名字的列表，不同的包之间用空格分隔开。</p>
+<pre class="crayon-plain-tag">choco install &amp;lt;package1 package2 package3...&amp;gt;</pre>
+
+<p>比如我们想去安装一个 cURL 工具，安装之前可以先用 search 命令搜索一下，搜索的时候加上 -all 参数，会显示出包的所有可用的版本，在安装的时候，你可以在 -version 参数的后面，指定一个具体要安装的版本，不使用 -version 参数，直接安装会安装包的最新发布的版本。</p>
+<pre class="crayon-plain-tag">choco search curl -all</pre>
+
+<p>会返回一个列表：</p>
+<pre class="crayon-plain-tag">...
+ curl 7.21.7
+ curl 7.22.0
+ curl 7.23.1
+ curl 7.25.0
+ curl 7.28.1
+ ...</pre>
+
+<p>下面我们故意去安装一个旧版本的 curl ， 一会儿再去升级一下它。比如我要安装的是 7.22.0 版本的 curl ：</p>
+<pre class="crayon-plain-tag">choco install curl -version 7.22.0</pre>
+
+<p>Chocolatey 不仅可以给我们安装指定版本的包，它还能解决包的依赖问题，也就是，如果你安装的这个包需要其它的包提供的功能，Chocolatey 会自动给你安装这个依赖的包。</p>
+<p>安装以后，可以用 choco list 命令，加上一个 -localonly 或 -lo（简写形式） 参数，查看在本地安装的包的列表。</p>
+<pre class="crayon-plain-tag">choco list -localonly</pre>
+
+<h4 id="升级"><a href="#升级" class="headerlink" title="升级"></a>升级</h4><p>升级安装在本地电脑上的包，用的是 choco upgrade 命令，后面加上要升级的包的名字：</p>
+<pre class="crayon-plain-tag">choco  upgrade &amp;lt;package&amp;gt;</pre>
+
+<p>在升级包之前，可以先先去查看一下有没有可用的升级。如果你想查看 Chocolatey 本身有没有可用的升级，执行命令：</p>
+<pre class="crayon-plain-tag">choco version</pre>
+
+<p>在 choco version 命令的后面，输入具体的包的名字，可以查看指定的这个包有没有可用的新版本。比如查看一下前面我们安装的 cURL 这个小东西的升级：</p>
+<pre class="crayon-plain-tag">choco version curl</pre>
+
+<p>返回的结果看起来是这样的：</p>
+<pre class="crayon-plain-tag">name       : curl
+found      : 7.22.0
+...
+latest     : 7.28.1
+...</pre>
+
+<p>name 对应的是包的名字，found 后面是安装在本地电脑上的版本，latest 后面是最新的可用的版本。这里 cURL 这个包的最新版本是 7.28.1 ，比我们安装的版本要新，所以可以去升级一下它。</p>
+<pre class="crayon-plain-tag">choco  upgrade curl</pre>
+
+<p>cURL 是一个命令行工具，所以在命令行工具的下面，查看这个小工具的版本可以这样：</p>
+<pre class="crayon-plain-tag">curl -version</pre>
+
+<p>上面命令会返回当前安装在电脑上的 cURL 的版本，你会发现，它已经被 Chocolatey  升级成最新的版本了。</p>
+<h4 id="删除"><a href="#删除" class="headerlink" title="删除"></a>删除</h4><p>想要删除掉用 Chocolatey 安装的包，用的是 choco uninstall ，后面加上要卸载或者删除掉的包的名字。</p>
+<pre class="crayon-plain-tag">choco uninstall &amp;lt;package&amp;gt;</pre>
+
+<p>在删除包之前，可以查看一下所有安装在本地的包的列表：</p>
+<pre class="crayon-plain-tag">choco list -localonly</pre>
+
+<p>比如我们要删除掉之前安装的 cURL 这个包：</p>
+<pre class="crayon-plain-tag">choco uninstall curl</pre>
+
+<p>成功以后，再查看一下安装在本地的包的列表，已经看不到 cURL 了。</p>
+<h2 id="Homebrew"><a href="#Homebrew" class="headerlink" title="Homebrew"></a>Homebrew</h2><p>Mac 上面有 App Store，它像是一个图形界面的包管理工具，也可以很方便的管理系统上的软件。不过很多软件你是在 App Store 上面找不到的，所以，可以通过 Homebrew 这个包管理工具，在命令行下面去管理软件。这些能够使用 Homebrew 安装的东西叫做  Package，在 Homebrew 里面，Package 还有个名字叫 Formula 。</p>
+<ul>
+<li>在终端上执行安装 Homebrew 的命令。</li>
+<li>man brew 可以查看 brew 命令的使用手册。</li>
+<li>brew search 去搜索一下想要安装的东西。</li>
+<li>brew install 可以安装指定的包。</li>
+<li>brew upgrade 可以升级包。</li>
+<li>brew remote 删除掉不需要的包。</li>
+</ul>
+<h3 id="安装-Homebrew"><a href="#安装-Homebrew" class="headerlink" title="安装 Homebrew"></a>安装 Homebrew</h3><p>打开 Mac 自带的终端，可以在 Launchpad（F4）里面搜索 Terminal（终端），然后执行下面的命令：</p>
+<pre class="crayon-plain-tag">ruby -e &quot;$(curl -fsSL https://raw.githubusercontent.com/Homebrew/install/master/install)&quot;</pre>
+
+<p>安装完成以后，执行 brew help，如果返回一些有用的帮助信息，说明可以在我们的电脑上使用 Homebrew 去管理软件了。</p>
+<pre class="crayon-plain-tag">brew help</pre>
+
+<h3 id="使用-Homebrew"><a href="#使用-Homebrew" class="headerlink" title="使用 Homebrew"></a>使用 Homebrew</h3><p>Homebrew 的命令都是用 brew 开头，后面接着是具体的命令。比如 brew help 可以查看帮助信息，brew install 可以去安装包，brew upgrade 可以升级已经安装的包。</p>
+<h4 id="查看使用手册"><a href="#查看使用手册" class="headerlink" title="查看使用手册"></a>查看使用手册</h4><p>要查看 Homebrew 所有可用的命令还有帮助的信息，在终端上执行 man brew 这条命令，man 就是 manpage （参考页），在 man 命令后面加上要查看使用手册的命令的名字。</p>
+<pre class="crayon-plain-tag">man brew</pre>
+
+<p>要显示的内容如果很多，就会分页显示，有几个按键可以去浏览这些内容：</p>
+<ul>
+<li>f 向后翻页</li>
+<li>b 向前翻页</li>
+<li>q 退出显示</li>
+</ul>
+<h4 id="搜索-1"><a href="#搜索-1" class="headerlink" title="搜索"></a>搜索</h4><p>搜索可以使用 Homebrew 安装的东西，用的是 brew search，后面加上搜索的关键词。</p>
+<pre class="crayon-plain-tag">brew search &amp;lt;keyword&amp;gt;</pre>
+
+<p>比如搜索一下 tree 这个小工具：</p>
+<pre class="crayon-plain-tag">brew search tree</pre>
+
+<p>上面的命令会列出包含 tree 这个关键词的包，要查看某个包的所有可用的版本，可以使用 brew versions，后面加上包的名字，像这样：</p>
+<pre class="crayon-plain-tag">brew versions tree</pre>
+> brew versions 不在被支持了，可以使用：[https://github.com/Homebrew/homebrew-versions](https://github.com/Homebrew/homebrew-versions)
+
+访问这个包的主页可以使用 brew home 这个命令，再加上包的名字，这样可以在浏览器中打开包的主页：
+<pre class="crayon-plain-tag">brew home tree</pre>
+
+<h4 id="安装-1"><a href="#安装-1" class="headerlink" title="安装"></a>安装</h4><p>安装包用的是 brew install ，一般用 Homebrew 安装的东西都是一些命令行的工具，这些工具大部分都是开发的时候要用的，不过你会看到一些 Cask 开头的包，Cask 扩展了 Homebrew ，它可以让我们用 Homebrew 去安装一些带图形界面的软件，比如 Chrome 浏览器。</p>
+<pre class="crayon-plain-tag">brew install &amp;lt;package&amp;gt;</pre>
+
+<p>下面我们用这个命令去安装一个叫 tree 的小工具：</p>
+<pre class="crayon-plain-tag">brew install tree</pre>
+
+<p>完成以后，在终端上输入：</p>
+<pre class="crayon-plain-tag">tree --help</pre>
+
+<p>如果你能看到一些有用的帮助信息，说明已经可以使用 tree 这个工具了。想查看一下使用 brew 安装的东西，输入：</p>
+<pre class="crayon-plain-tag">brew list</pre>
+
+<p>在返回的安装的包的列表里，你应该可以找到刚才用 brew install 安装的 tree 。</p>
+<h4 id="升级-1"><a href="#升级-1" class="headerlink" title="升级"></a>升级</h4><p>升级 Homebrew 本身，用的是 brew update 命令，如果你要升级的是已经安装的包，可以使用 brew upgrade，后面不加具体的要升级的包，Homebrew 会去升级所有的包，也可以在后面指定某个要升级的包。</p>
+<pre class="crayon-plain-tag">brew upgrade &amp;lt;package&amp;gt;</pre>
+
+<p>比如去升级一下上面安装的 tree，可以先看一下这个包有没有可用的更新。</p>
+<pre class="crayon-plain-tag">brew outdated</pre>
+
+<p>如果有，就可以去升级一下它：</p>
+<pre class="crayon-plain-tag">brew upgrade tree</pre>
+
+<h4 id="删除-1"><a href="#删除-1" class="headerlink" title="删除"></a>删除</h4><p>删除使用 Homebrew 安装的包，用的是 brew remove ，后面加上要删除的包的名字。</p>
+<pre class="crayon-plain-tag">brew remove &amp;lt;package&amp;gt;</pre>
+
+<p><a href="https://ninghao.net/tag/235" target="_blank" rel="external">路径</a> <a href="https://ninghao.net/tag/239" target="_blank" rel="external">Chocolatey</a> <a href="https://ninghao.net/tag/240" target="_blank" rel="external">Homebrew</a></p>
+
+      
+    </div>
+    <footer class="article-footer">
+      <a data-url="http://blog.idingsong.cn/2017/02/26/更好的安装软件的方法（Windows：Chocolatey，Mac：Homebrew）/" data-id="cj4b50iwn000cigpl4wseu7kz" class="article-share-link">Partager</a>
+      
+      
+  <ul class="article-tag-list"><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/choco/">choco</a></li><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/ide/">ide</a></li><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/tools/">tools</a></li></ul>
+
+    </footer>
+  </div>
+  
+</article>
+
+
+  
+    <article id="post-LibGDX教程——重建Flappy-Bird——-6-碰撞检测及细节处理" class="article article-type-post" itemscope itemprop="blogPost">
+  <div class="article-meta">
+    <a href="/2017/02/24/LibGDX教程——重建Flappy-Bird——-6-碰撞检测及细节处理/" class="article-date">
+  <time datetime="2017-02-24T14:23:26.000Z" itemprop="datePublished">2017-02-24</time>
+</a>
+    
+  </div>
+  <div class="article-inner">
+    
+    
+      <header class="article-header">
+        
+  
+    <h1 itemprop="name">
+      <a class="article-title" href="/2017/02/24/LibGDX教程——重建Flappy-Bird——-6-碰撞检测及细节处理/">LibGDX教程——重建Flappy Bird——(6) 碰撞检测及细节处理</a>
+    </h1>
+  
+
+      </header>
+    
+    <div class="article-entry" itemprop="articleBody">
+      
+        <blockquote>
+<p><a href="http://blog.csdn.net/artzok/article/details/50570981" target="_blank" rel="external">http://blog.csdn.net/artzok/article/details/50570981</a></p>
+</blockquote>
+<p><span id="more-46"></span></p>
+<div> 本章源码链接：<a href="http://pan.baidu.com/s/1kUu42jX" target="_blank" rel="external">Libgdx重建FlappyBird</a>密码：twy2<br><br>上一章完整的介绍了BOX2D的物理仿真创建过程，在本章我们将继续完成BOX2D的剩余内容——碰撞检测。因为BOX2D帮我们完成了所有物理模拟过程，包括碰撞检测，这极大的降低我们的项目难度，我们不需要理解碰撞检测如何运行，甚至不需要知道任何碰撞检测算法，就能够完成碰撞检测并通知我们。下面就让我们为FlappyBird添加碰撞检测的回调函数和相应的逻辑代码。</div><br><div><strong>碰撞检测</strong></div><br><div> 打开WorldController类，并为其添加下面代码：</div><br><div><br><div class="dp-highlighter bg_java"><br><div class="bar"><br><div class="tools"><br><pre class="crayon-plain-tag">public class WorldController extends InputAdapter implements Disposable {<br>   …<br>   private void initWorld() {<br>    if(world != null) world.dispose();<br>    world = new World(new Vector2(0, -110.8f), false);<br>    // 为world添加碰撞检测监听器<br>    world.setContactListener(new BirdContactListener());<br>   }<br>   …<br>   private void collisionDetection(AbstractGameObject a, AbstractGameObject b) {<br>   }<br>   // 碰撞检测监听器<br>   private class BirdContactListener implements ContactListener {<br>    @Override public void beginContact(Contact arg0) {<br>        AbstractGameObject a = (AbstractGameObject)arg0.getFixtureA().getBody().getUserData();<br>        AbstractGameObject b = (AbstractGameObject)arg0.getFixtureB().getBody().getUserData();<br>        collisionDetection(a, b);<br>    }<br>    @Override public void endContact(Contact arg0) {}<br>    @Override public void postSolve(Contact arg0, ContactImpulse arg1) {}<br>    @Override public void preSolve(Contact arg0, Manifold arg1) {}<br>   }</pre><br><br>首先定义一个BirdContactListener类，该类实现了ContactListener接口的四个方法，beginContact()和endContact()分别在开始碰撞(重叠)和结束碰撞时调用。preSolve()方法在碰撞检测之后，解决碰撞之前调用，你可以实现该方法替代BOX2D内置的碰撞处理方式；最后一个postSolve()方法在碰撞发生后调用，该方法是获得碰撞冲量的地方。这里只使用了一个方法beginContact()，该方法内首先通过Contact获得两个碰撞对象的Fiture然后再获得Body对象，因为创建Body时调用setUserData()方法将游戏对象本身作为用户数据，所有这里我们便可直接通过getUserData()获得游戏对象。最后调用WorldController()私有方法collisionDetection()处理碰撞事件。<p></p><br></div><br></div><br></div><br></div><br><div>  在初始化函数init()中创建了一个BirdContactListener对象并调用World.setContactListener()为world设置了碰撞监听器。</div><br><div>  根据上述添加的代码可以推断，一旦发生碰撞，collisionDetection()方法就会被调用，现在我们需要考虑在collisionDetection做什么？我们知道，FlappyBird游戏非常简单，一旦发生碰撞，游戏就即将结束，所以这里我们应该通知WorldController和Bird发生了碰撞，游戏需要马上结束。WorldController收到碰撞消息应该立马停止BOX2D模拟，Bird收到消息应该开始完成结束动画。</div><br><div>  接下来，首先修改Bird对象：</div><br><div><br><pre class="crayon-plain-tag">public class Bird extends AbstractGameObject {<br>        …<br>    protected static final float DIED_DROP_DRAG = 0.5f;         // 死亡后下落速度<br>    …<br>    private boolean contacted;<br>    private boolean flashed;<br>    …<br>    // 初始化<br>    public void init(int selected) {<br>        contacted = false;<br>        flashed = false;<br>        …<br>    }<br>        …<br>        // 通知碰撞事件<br>        public void contact() {<br>           contacted = true;<br>        }<br>        public boolean isContact() {<br>           return contacted;<br>        }<br>        …<br>    @Override<br>    public void render(SpriteBatch batch) {<br>        // 如果发生碰撞则不再播放帧动画<br>        if(!contacted) {<br>            animDuration += Gdx.graphics.getDeltaTime();<br>            currentFrame = birdAnimation.getKeyFrame(animDuration);<br>        }<br>        // 发生碰撞但游戏还没有结束时小鸟要进行落地动画<br>        else {<br>            position.y -= DIED_DROP_DRAG;<br>            rotation -= BIRD_FLAP_ANGLE_POWER;<br>            position.y = Math.max(position.y, Land.LAND_HEIGHT - Constants.VIEWPORT_HEIGHT / 2 + dimension.y / 2);<br>            rotation = Math.max(rotation, BIRD_MAX_DROP_ANGLE);<br>        }<br>        batch.draw(currentFrame.getTexture(), position.x - dimension.x / 2, position.y - dimension.y / 2,<br>            dimension.x / 2, dimension.y / 2, dimension.x, dimension.y, scale.x, scale.y, rotation,<br>            currentFrame.getRegionX(), currentFrame.getRegionY(), currentFrame.getRegionWidth(),<br>            currentFrame.getRegionHeight(), false, false);<br>        if (contacted &amp;&amp; !flashed) {<br>            flashed = true;<br>            float w = Gdx.graphics.getWidth();<br>            float h = Gdx.graphics.getHeight();<br>            batch.draw(Assets.instance.decoration.white, -w / 2, -h / 2, w, h);<br>        }<br>    }<br>}</pre><br><br>首先添加了一个DIED_DROP_DRAG表示小鸟发生碰撞之后的下落速度，然后添加了两个boolean类型变量，其中contacted表示小鸟是否发生碰撞，flashed表示是否完成碰撞后的闪烁。后面我们添加了两个方法分别用于设置和获得contacted变量。变化最大的就是render()方法，通过对代码分解便可理解，如果没有发生碰撞，则一切正常执行，如果发生碰撞，则保持最后一次获得的动画帧不在更新，接着根据DIED_DROP_DRAG下降速度更新小鸟的y坐标，并根据BIRD_FLAP_ANGLE_POWER旋转速度更新小鸟的旋转角度，最后限定y坐标和rotation的最小值。render()方法最后还根据contacted和flashed完成闪烁过程，闪烁原理其实很简单，一旦发生碰撞我们就是用白色图片填充场景一帧即可。<p></p><br></div><br><div>  接下来修改WorldController：</div><br><div><br><div class="dp-highlighter bg_java"><br><div class="bar"><br><div class="tools"><br><pre class="crayon-plain-tag">public class WorldController extends InputAdapter implements Disposable {<br>  …<br>  public void update(float deltaTime) {<br>    if(bird.isContact()) return;<br>    …<br>  }<br>  …<br>  private void collisionDetection(AbstractGameObject a, AbstractGameObject b) {<br>    if (a instanceof Bird) {<br>((Bird) a).contact();<br> else if (b instanceof Bird) {<br>((Bird) b).contact();<br>    Gdx.app.debug(TAG, “Player Character Contected!”);<br>  }<br>  …<br>}</pre><br><br>首先在update()方法中测试bird对象是否发生碰撞，如果发生碰撞则不在跟新。接着修改collisionDetection()方法，一旦发生碰撞则通知Bird对象。<p></p><br></div><br></div><br></div><br></div><br><div><strong>游戏结束</strong><br><br>根据前面的分析我们可以确定，当Bird发生碰撞后，游戏并没有立即结束，还要进行结束前的一些动画(如果闪烁、降落)过程。接下来我们将为游戏添加结束过程。<br><br>首先我们要确定游戏结束的条件。根据前面分析，当Bird对象发生碰撞后，需要完成下落动画才能结束游戏，因此游戏结束的标志就是小鸟已经完成下落动画，即小鸟的y轴坐标到达了地面且旋转角度rotation等于了-90度，所以为Bird添加判断是否游戏结束方法isGameOver()：</div><br><div><br><div class="dp-highlighter bg_java"><br><div class="bar"><br><div class="tools"><br><pre class="crayon-plain-tag">public boolean isGameOver() {<br>    return contacted &amp;&amp;<br>          (position.y &lt;= Land.LAND_HEIGHT -<br>          Constants.VIEWPORT_HEIGHT / 2 + dimension.y / 2) &amp;&amp;<br>          (rotation == BIRD_MAX_DROP_ANGLE);<br>}</pre><br><br>接下来为WorldController添加一个boolean类型变量isGameOver，然后在update()中判断游戏是否结束：<p></p><br></div><br></div><br></div><br></div><br><div><br><div class="dp-highlighter bg_java"><br><div class="bar"><br><div class="tools"><br><pre class="crayon-plain-tag">public class WorldController extends InputAdapter implements Disposable {<br>    …<br>    public boolean isGameOver;<br>    public WorldController() {<br>        init();<br>    }<br>    private void init() {<br>        …<br>        isStart = false;<br>        isGameOver = false;<br>        …<br>    }<br>    …<br>    public void update(float deltaTime) {<br>        if(!isGameOver) {<br>            isGameOver = bird.isGameOver();<br>        }<br>        if(bird.isContact()) return;<br>        …<br>    }<br>    …<br>}</pre><br><br>既然游戏结束了那么游戏就可以重新启动。下面修改WorldController.touchDown()方法让游戏可以重新开始：<p></p><br></div><br></div><br></div><br></div><br><div><br><div class="dp-highlighter bg_java"><br><div class="bar"><br><div class="tools"><br><pre class="crayon-plain-tag">@Override<br>  public boolean touchDown(int screenX, int screenY, int pointer, int button) {<br>    if (button == Buttons.LEFT) {<br>    if(!isStart) {<br>        isStart = true;<br>        bird.beginToSimulate(world);<br>        land.beginToSimulate(world);<br>    }<br>    if(isGameOver) {<br>        init();<br>    }<br>    bird.setJumping();<br>}<br>return true;<br>  }</pre><br><br>上述代码判断，当鼠标按下或发生触摸屏幕事件，我们判断游戏是否结束，如果结束则调用init()重新开始。但是要让上面修改可以正常启动，我们还必须作出重大修改：<p></p><br></div><br></div><br></div><br></div><br><div>  首先为AbstractGameObject添加init()方法，并将构造函数的所有内容移入该方法内：</div><br><div><br><div class="dp-highlighter bg_java"><br><div class="bar"><br><div class="tools"><br><pre class="crayon-plain-tag">public AbstractGameObject() {<br>}<br>public void init() {<br>    position = new Vector2();<br>    dimension = new Vector2(1, 1);<br>    origin = new Vector2();<br>    scale = new Vector2(1, 1);<br>    rotation = 0;<br>    body = null;<br>}</pre><br><br>接着修改三个对象的init()方法，分别保证对父类的init()方法调用：<p></p><br></div><br></div><br></div><br></div><br><div><br><div class="dp-highlighter bg_java"><br><div class="bar"><br><div class="tools"><br><pre class="crayon-plain-tag">public Bird() {<br>               init((int) (Math.random() * 3));<br>}<br>// 初始化<br>public void init(int selected) {<br>               super.init();<br>                …<br>      }</pre><br><br><pre class="crayon-plain-tag">public Land() {<br>               …<br>               init();<br>}<br>public void init() {<br>               super.init();<br>               …<br>}</pre><br><br><pre class="crayon-plain-tag">public Pipe() {<br>               …<br>               init();<br>}<br>public void init() {<br>               super.init();<br>               …<br>}</pre><br><br>现在我们就可以测试应用了：<p></p><br></div><br></div><br></div><br></div><br><div><br><div><img src="http://img.blog.csdn.net/20160123211759488?watermark/2/text/aHR0cDovL2Jsb2cuY3Nkbi5uZXQv/font/5a6L5L2T/fontsize/400/fill/I0JBQkFCMA==/dissolve/70/gravity/Center" alt=""></div>
+
+<p>现在我们已经完成了游戏的一个完整过程，并且可以重新启动，但是还缺少许多GUI和开始结束信息。这些内容将在下一章介绍。现在让我们来处理一个细节，因为在运行过程中每经过一定时间就会创建一个Pipe，而Pipe对象包含一个Body对象，所以如果当一个Pipe对象不在需要的时候我们不及时释放对应的Body对象，时间一长将大大降低BOX2D的运行效率，所以我们需要修改Pipes和Pipe类，使得运行更佳流畅。</p>
+<p></p></div><p></p>
+<div><strong>细节处理</strong></div><br><div> 经过上述分析，我们修改Pipes类：</div><br><div><br><div class="dp-highlighter bg_java"><br><div class="bar"><br><div class="tools"><br><pre class="crayon-plain-tag">public class Pipes extends AbstractGameObject {<br>    …<br>        private void testPipeNumberIsTooLarge(int amount) {<br>                if (pipes != null &amp;&amp; pipes.size &gt; amount) {<br>                         pipes.get(0).destroy();<br>                         pipes.removeIndex(0);<br>                }<br>       }<br>    …<br>    public class Pipe extends AbstractGameObject {<br>        …<br>                @Override<br>                public void beginToSimulate(World world) {<br>                   // down<br>                   BodyDef bodyDef = new BodyDef();<br>                   bodyDef.type = BodyType.KinematicBody;<br>                   bodyDef.position.set(position);<br>                   body = world.createBody(bodyDef);<br>                   PolygonShape shape = new PolygonShape();<br>                   shape.setAsBox(dimension.x / 2, dnPipeHeight / 2,<br>                   new Vector2(dimension.x / 2, dnPipeHeight / 2), 0);<br>                   shape.setRadius(-0.1f);<br>                   FixtureDef fixtureDefDown = new FixtureDef();<br>                   fixtureDefDown.shape = shape;<br>                   body.createFixture(fixtureDefDown);<br>                   body.setLinearVelocity(PIPE_VELOCITY, 0);<br>                   // up<br>                   float height = dimension.y - dnPipeHeight - CHANNEL_HEIGHT;<br>                   shape.setAsBox(dimension.x / 2, height / 2,<br>                        new Vector2(dimension.x / 2, dnPipeHeight + CHANNEL_HEIGHT + height / 2), 0);<br>                   shape.setRadius(-0.1f);<br>                   FixtureDef fixtureDefUp = new FixtureDef();<br>                   fixtureDefUp.shape = shape;<br>                   body.createFixture(fixtureDefUp);<br>                }<br>                public void destroy() {<br>                    for(Fixture fixture : body.getFixtureList()) {<br>                        body.destroyFixture(fixture);<br>                    }<br>                    Pipes.this.word.destroyBody(body);<br>                }<br>        …<br>    }<br>}</pre><br><br>首先看一下Pipe内部类，我们修改了beginToSimulate()的实现原理，之前我们是为每个Pipe维护两个Body对象，这样处理其实完全可以，但是BOX2D的Body对象具有支持多Fixtue特性，所以我们完全没有必要创建两个Body，因为我们之后还需要释放Body和Fixtue对象，所以创建一个Body对象更利于管理。接下来我们为Pipe添加了destroy()方法，我们在该方法内销毁了body的所有Fixture对象和Body对象本身。<p></p><br></div><br></div><br></div><br></div><br><div>  接下来看看Pipes对象的testPipeNumberIsTooLarge()，在该方法我们内测试如果Pipe对象的数量过大，则销毁一个Pipe对象相应的Body和Fixture对象。接下来我们测试应用：</div><br><div><br><div><img src="http://img.blog.csdn.net/20160123214328522?watermark/2/text/aHR0cDovL2Jsb2cuY3Nkbi5uZXQv/font/5a6L5L2T/fontsize/400/fill/I0JBQkFCMA==/dissolve/70/gravity/Center" alt=""></div>
+
+<p>现在是不是发现游戏流畅了许多！如果你觉得Bird的下降速度太慢，难度较小可以修改一下WorldController.initWorld()方法，将world对象的重力加速度修改大一些。我这里是world = new World(new Vector2(0, -110.8f), false)这里还可以调节。</p>
+<p>本章我们创建了碰撞检测逻辑以及处理一些细节问题，下一章我们将为游戏添加分数、帧率、各种按钮等等GUI信息。</p>
+<p></p></div><p></p>
+
+      
+    </div>
+    <footer class="article-footer">
+      <a data-url="http://blog.idingsong.cn/2017/02/24/LibGDX教程——重建Flappy-Bird——-6-碰撞检测及细节处理/" data-id="cj4b50ivk0001igpl6yiptbon" class="article-share-link">Partager</a>
+      
+      
+  <ul class="article-tag-list"><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/game/">game</a></li><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/libgdx/">libgdx</a></li></ul>
+
+    </footer>
+  </div>
+  
+</article>
+
+
+  
+
+
+  <nav id="page-nav">
+    <a class="extend prev" rel="prev" href="/">&laquo; __('prev')</a><a class="page-number" href="/">1</a><span class="page-number current">2</span>
+  </nav>
+</section>
+        
+          <aside id="sidebar">
+  
+    
+
+  
+    
+  <div class="widget-wrap">
+    <h3 class="widget-title">Mot-clés</h3>
+    <div class="widget">
+      <ul class="tag-list"><li class="tag-list-item"><a class="tag-list-link" href="/tags/Android/">Android</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/Cocos2d/">Cocos2d</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/JSP/">JSP</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/Java/">Java</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/JavaEE/">JavaEE</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/VS/">VS</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/VisualStudio/">VisualStudio</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/Wordpress/">Wordpress</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/android/">android</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/choco/">choco</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/cocos2d/">cocos2d</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/game/">game</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/ide/">ide</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/libgdx/">libgdx</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/ndk/">ndk</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/tools/">tools</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/visualstudio/">visualstudio</a></li></ul>
+    </div>
+  </div>
+
+
+  
+    
+  <div class="widget-wrap">
+    <h3 class="widget-title">Nuage de mot-clés</h3>
+    <div class="widget tagcloud">
+      <a href="/tags/Android/" style="font-size: 20px;">Android</a> <a href="/tags/Cocos2d/" style="font-size: 15px;">Cocos2d</a> <a href="/tags/JSP/" style="font-size: 10px;">JSP</a> <a href="/tags/Java/" style="font-size: 15px;">Java</a> <a href="/tags/JavaEE/" style="font-size: 10px;">JavaEE</a> <a href="/tags/VS/" style="font-size: 10px;">VS</a> <a href="/tags/VisualStudio/" style="font-size: 10px;">VisualStudio</a> <a href="/tags/Wordpress/" style="font-size: 10px;">Wordpress</a> <a href="/tags/android/" style="font-size: 15px;">android</a> <a href="/tags/choco/" style="font-size: 10px;">choco</a> <a href="/tags/cocos2d/" style="font-size: 15px;">cocos2d</a> <a href="/tags/game/" style="font-size: 15px;">game</a> <a href="/tags/ide/" style="font-size: 10px;">ide</a> <a href="/tags/libgdx/" style="font-size: 10px;">libgdx</a> <a href="/tags/ndk/" style="font-size: 15px;">ndk</a> <a href="/tags/tools/" style="font-size: 10px;">tools</a> <a href="/tags/visualstudio/" style="font-size: 10px;">visualstudio</a>
+    </div>
+  </div>
+
+  
+    
+  <div class="widget-wrap">
+    <h3 class="widget-title">Archives</h3>
+    <div class="widget">
+      <ul class="archive-list"><li class="archive-list-item"><a class="archive-list-link" href="/archives/2017/06/">六月 2017</a></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2017/04/">四月 2017</a></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2017/03/">三月 2017</a></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2017/02/">二月 2017</a></li></ul>
+    </div>
+  </div>
+
+
+  
+    
+  <div class="widget-wrap">
+    <h3 class="widget-title">Articles récents</h3>
+    <div class="widget">
+      <ul>
+        
+          <li>
+            <a href="/2017/06/24/Test/">Test</a>
+          </li>
+        
+          <li>
+            <a href="/2017/06/24/hello-world/">Hello World</a>
+          </li>
+        
+          <li>
+            <a href="/2017/04/08/wordpress中文路径出现404错误的解决办法/">wordpress中文路径出现404错误的解决办法</a>
+          </li>
+        
+          <li>
+            <a href="/2017/04/08/java-IO流文件的读写具体实例/">java IO流文件的读写具体实例</a>
+          </li>
+        
+          <li>
+            <a href="/2017/03/25/IntelliJ-IDEA-2016-1建立Strut2工程并使用Tomcat调试/">IntelliJ IDEA 2016.1建立Strut2工程并使用Tomcat调试</a>
+          </li>
+        
+      </ul>
+    </div>
+  </div>
+
+  
+</aside>
+        
+      </div>
+      <footer id="footer">
+  
+  <div class="outer">
+    <div id="footer-info" class="inner">
+      &copy; 2017 i_D.S.<br>
+      Propulsé by <a href="http://hexo.io/" target="_blank">Hexo</a>
+    </div>
+  </div>
+</footer>
+    </div>
+    <nav id="mobile-nav">
+  
+    <a href="/" class="mobile-nav-link">Home</a>
+  
+    <a href="/archives" class="mobile-nav-link">Archives</a>
+  
+</nav>
+    
+
+<script src="//ajax.googleapis.com/ajax/libs/jquery/2.0.3/jquery.min.js"></script>
+
+
+  <link rel="stylesheet" href="/fancybox/jquery.fancybox.css">
+  <script src="/fancybox/jquery.fancybox.pack.js"></script>
+
+
+<script src="/js/script.js"></script>
+
+  </div>
+</body>
+</html>

@@ -3,17 +3,67 @@
 <head>
   <meta charset="utf-8">
   
-  <title>会思考的生活</title>
+  <title>IntelliJ IDEA 2016.1建立Strut2工程并使用Tomcat调试 | 会思考的生活</title>
   <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
-  <meta name="description" content="不奋斗的人生，和咸鱼有什么分别">
-<meta property="og:type" content="website">
-<meta property="og:title" content="会思考的生活">
-<meta property="og:url" content="http://blog.idingsong.cn/index.html">
+  <meta name="description" content="http://www.mobibrw.com/2016/3494   IntelliJ IDEA 2016.1建立 Strut2工程的步骤如下： 1.从菜单中选择新建工程：  2.在弹出的窗口中，左侧的列表中，选择&amp;#8221; Java&amp;#8220;,在右侧的&amp;#8221; Project SDK&amp;#8220;中指明需要的 Java SDK的版本，目前要求是1.8版本的，在下面的&amp;#8221;">
+<meta name="keywords" content="Java,JavaEE,JSP">
+<meta property="og:type" content="article">
+<meta property="og:title" content="IntelliJ IDEA 2016.1建立Strut2工程并使用Tomcat调试">
+<meta property="og:url" content="http://blog.idingsong.cn/2017/03/25/IntelliJ-IDEA-2016-1建立Strut2工程并使用Tomcat调试/index.html">
 <meta property="og:site_name" content="会思考的生活">
-<meta property="og:description" content="不奋斗的人生，和咸鱼有什么分别">
+<meta property="og:description" content="http://www.mobibrw.com/2016/3494   IntelliJ IDEA 2016.1建立 Strut2工程的步骤如下： 1.从菜单中选择新建工程：  2.在弹出的窗口中，左侧的列表中，选择&amp;#8221; Java&amp;#8220;,在右侧的&amp;#8221; Project SDK&amp;#8220;中指明需要的 Java SDK的版本，目前要求是1.8版本的，在下面的&amp;#8221;">
+<meta property="og:image" content="http://www.mobibrw.com/wp-content/uploads/2016/03/NewProjectMenu.png">
+<meta property="og:image" content="http://www.mobibrw.com/wp-content/uploads/2016/03/NewStucts2Project.jpg">
+<meta property="og:image" content="http://www.mobibrw.com/wp-content/uploads/2016/03/JavaEnterpriseStruct2ProjectName.jpg">
+<meta property="og:image" content="http://www.mobibrw.com/wp-content/uploads/2016/03/JavaEnterpriseStruct2ProjectView.png">
+<meta property="og:image" content="http://www.mobibrw.com/wp-content/uploads/2016/03/ProjectStuctureButton.jpg">
+<meta property="og:image" content="http://www.mobibrw.com/wp-content/uploads/2016/03/ProjectStuctureWindow2.jpg">
+<meta property="og:image" content="http://www.mobibrw.com/wp-content/uploads/2016/03/ProjectStuctureWindowStruts2Lib.jpg">
+<meta property="og:image" content="http://www.mobibrw.com/wp-content/uploads/2016/03/ProjectStuctureWindowStruts2LibMenu.jpg">
+<meta property="og:image" content="http://www.mobibrw.com/wp-content/uploads/2016/03/ProjectStuctureWindowStruts2LibComplete.jpg">
+<meta property="og:image" content="http://www.mobibrw.com/wp-content/uploads/2016/03/EditConfigurations.png">
+<meta property="og:image" content="http://www.mobibrw.com/wp-content/uploads/2016/03/RunDebugConfigurations.jpg">
+<meta property="og:image" content="http://www.mobibrw.com/wp-content/uploads/2016/03/RunDebugConfigurationsAddSettings.jpg">
+<meta property="og:image" content="http://www.mobibrw.com/wp-content/uploads/2016/03/RunDebugConfigurationsAddSettings.jpg">
+<meta property="og:image" content="http://www.mobibrw.com/wp-content/uploads/2016/03/Tomcat9DownloadPage.jpg">
+<meta property="og:image" content="http://www.mobibrw.com/wp-content/uploads/2016/03/RunDebugConfigurationsTomcatServerLocalSettingsFirst.jpg">
+<meta property="og:image" content="http://www.mobibrw.com/wp-content/uploads/2016/03/RunDebugConfigurationsTomcatServerLocalSettingsSecond.jpg">
+<meta property="og:image" content="http://www.mobibrw.com/wp-content/uploads/2016/03/RunDebugConfigurationsTomcatServerLocalSettings.jpg">
+<meta property="og:image" content="http://www.mobibrw.com/wp-content/uploads/2016/03/RunDebugConfigurationsTomcatServerLocalSettingsAfterConfigure.jpg">
+<meta property="og:image" content="http://www.mobibrw.com/wp-content/uploads/2016/03/RunDebugConfigurationsTomcatServerLocalSettingsFixButtonClick.jpg">
+<meta property="og:image" content="http://www.mobibrw.com/wp-content/uploads/2016/03/RunDebugConfigurationsFix2.jpg">
+<meta property="og:image" content="http://www.mobibrw.com/wp-content/uploads/2016/03/RunDebugConfigurationsTomcatServerLocalSettingsDebug.jpg">
+<meta property="og:image" content="http://www.mobibrw.com/wp-content/uploads/2016/03/ideaStucts2Complete.jpg">
+<meta property="og:image" content="http://www.mobibrw.com/wp-content/uploads/2016/03/NewJavaMenu.jpg">
+<meta property="og:image" content="http://www.mobibrw.com/wp-content/uploads/2016/03/NewJavaModel.jpg">
+<meta property="og:image" content="http://www.mobibrw.com/wp-content/uploads/2016/03/NewJSPMenu.jpg">
+<meta property="og:image" content="http://www.mobibrw.com/wp-content/uploads/2016/03/NewJSPWindow.jpg">
+<meta property="og:image" content="http://www.mobibrw.com/wp-content/uploads/2016/03/NewJavaMenu.jpg">
+<meta property="og:image" content="http://www.mobibrw.com/wp-content/uploads/2016/03/NewJSPActionWindow.jpg">
+<meta property="og:image" content="http://www.mobibrw.com/wp-content/uploads/2016/03/TimeConvertIndex.jpg">
+<meta property="og:image" content="http://www.mobibrw.com/wp-content/uploads/2016/03/TimeConvertAction.jpg">
+<meta property="og:image" content="https://www.mobibrw.com/wp-content/uploads/2016/03/struts.custom.i18n.resources.png">
+<meta property="og:image" content="http://www.mobibrw.com/wp-content/uploads/2016/03/Struts2i18n.jpg">
+<meta property="og:image" content="http://www.mobibrw.com/wp-content/uploads/2016/03/AddFrameworkSupport.png">
+<meta property="og:image" content="http://www.mobibrw.com/wp-content/uploads/2016/03/SpringSelectOptions.jpg">
+<meta property="og:image" content="http://www.mobibrw.com/wp-content/uploads/2016/03/SpringFrameworkAddComplete.jpg">
+<meta property="og:image" content="http://www.mobibrw.com/wp-content/uploads/2016/03/SpringFrameworkAddCompleteWebInf.jpg">
+<meta property="og:image" content="http://www.mobibrw.com/wp-content/uploads/2016/03/SpringFrameworkProjectStructure.jpg">
+<meta property="og:image" content="http://www.mobibrw.com/wp-content/uploads/2016/03/SpringFrameworkFix.jpg">
+<meta property="og:image" content="http://www.mobibrw.com/wp-content/uploads/2016/03/SpringFrameworkFixMenu.jpg">
+<meta property="og:image" content="http://www.mobibrw.com/wp-content/uploads/2016/03/SpringFrameworkProjectStructure.jpg">
+<meta property="og:image" content="http://www.mobibrw.com/wp-content/uploads/2016/03/StrutsVersion2-2.3.20.1.jpg">
+<meta property="og:image" content="http://www.mobibrw.com/wp-content/uploads/2016/03/Struts2JSONPlugin.jpg">
+<meta property="og:image" content="http://www.mobibrw.com/wp-content/uploads/2016/03/AddasLibrary.jpg">
+<meta property="og:image" content="http://www.mobibrw.com/wp-content/uploads/2016/03/AddasLibraryWindow.jpg">
+<meta property="og:image" content="http://www.mobibrw.com/wp-content/uploads/2016/03/SpringFrameworkProjectStructure.jpg">
+<meta property="og:image" content="http://www.mobibrw.com/wp-content/uploads/2016/03/AddStruts2-json-plugin-2.3.20.1totheartifact.png">
+<meta property="og:image" content="http://www.mobibrw.com/wp-content/uploads/2016/03/ActionJsonResp.jpg">
+<meta property="og:updated_time" content="2017-06-24T10:21:17.969Z">
 <meta name="twitter:card" content="summary">
-<meta name="twitter:title" content="会思考的生活">
-<meta name="twitter:description" content="不奋斗的人生，和咸鱼有什么分别">
+<meta name="twitter:title" content="IntelliJ IDEA 2016.1建立Strut2工程并使用Tomcat调试">
+<meta name="twitter:description" content="http://www.mobibrw.com/2016/3494   IntelliJ IDEA 2016.1建立 Strut2工程的步骤如下： 1.从菜单中选择新建工程：  2.在弹出的窗口中，左侧的列表中，选择&amp;#8221; Java&amp;#8220;,在右侧的&amp;#8221; Project SDK&amp;#8220;中指明需要的 Java SDK的版本，目前要求是1.8版本的，在下面的&amp;#8221;">
+<meta name="twitter:image" content="http://www.mobibrw.com/wp-content/uploads/2016/03/NewProjectMenu.png">
   
     <link rel="alternate" href="/atom.xml" title="会思考的生活" type="application/atom+xml">
   
@@ -66,252 +116,7 @@
   </div>
 </header>
       <div class="outer">
-        <section id="main">
-  
-    <article id="post-Test" class="article article-type-post" itemscope itemprop="blogPost">
-  <div class="article-meta">
-    <a href="/2017/06/24/Test/" class="article-date">
-  <time datetime="2017-06-24T10:12:30.000Z" itemprop="datePublished">2017-06-24</time>
-</a>
-    
-  </div>
-  <div class="article-inner">
-    
-    
-      <header class="article-header">
-        
-  
-    <h1 itemprop="name">
-      <a class="article-title" href="/2017/06/24/Test/">Test</a>
-    </h1>
-  
-
-      </header>
-    
-    <div class="article-entry" itemprop="articleBody">
-      
-        
-      
-    </div>
-    <footer class="article-footer">
-      <a data-url="http://blog.idingsong.cn/2017/06/24/Test/" data-id="cj4b50ivw0004igplk8w8xxey" class="article-share-link">Partager</a>
-      
-      
-    </footer>
-  </div>
-  
-</article>
-
-
-  
-    <article id="post-hello-world" class="article article-type-post" itemscope itemprop="blogPost">
-  <div class="article-meta">
-    <a href="/2017/06/24/hello-world/" class="article-date">
-  <time datetime="2017-06-24T03:55:11.968Z" itemprop="datePublished">2017-06-24</time>
-</a>
-    
-  </div>
-  <div class="article-inner">
-    
-    
-      <header class="article-header">
-        
-  
-    <h1 itemprop="name">
-      <a class="article-title" href="/2017/06/24/hello-world/">Hello World</a>
-    </h1>
-  
-
-      </header>
-    
-    <div class="article-entry" itemprop="articleBody">
-      
-        <p>Welcome to <a href="https://hexo.io/" target="_blank" rel="external">Hexo</a>! This is your very first post. Check <a href="https://hexo.io/docs/" target="_blank" rel="external">documentation</a> for more info. If you get any problems when using Hexo, you can find the answer in <a href="https://hexo.io/docs/troubleshooting.html" target="_blank" rel="external">troubleshooting</a> or you can ask me on <a href="https://github.com/hexojs/hexo/issues" target="_blank" rel="external">GitHub</a>.</p>
-<h2 id="Quick-Start"><a href="#Quick-Start" class="headerlink" title="Quick Start"></a>Quick Start</h2><h3 id="Create-a-new-post"><a href="#Create-a-new-post" class="headerlink" title="Create a new post"></a>Create a new post</h3><figure class="highlight bash"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line">$ hexo new <span class="string">"My New Post"</span></div></pre></td></tr></table></figure>
-<p>More info: <a href="https://hexo.io/docs/writing.html" target="_blank" rel="external">Writing</a></p>
-<h3 id="Run-server"><a href="#Run-server" class="headerlink" title="Run server"></a>Run server</h3><figure class="highlight bash"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line">$ hexo server</div></pre></td></tr></table></figure>
-<p>More info: <a href="https://hexo.io/docs/server.html" target="_blank" rel="external">Server</a></p>
-<h3 id="Generate-static-files"><a href="#Generate-static-files" class="headerlink" title="Generate static files"></a>Generate static files</h3><figure class="highlight bash"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line">$ hexo generate</div></pre></td></tr></table></figure>
-<p>More info: <a href="https://hexo.io/docs/generating.html" target="_blank" rel="external">Generating</a></p>
-<h3 id="Deploy-to-remote-sites"><a href="#Deploy-to-remote-sites" class="headerlink" title="Deploy to remote sites"></a>Deploy to remote sites</h3><figure class="highlight bash"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line">$ hexo deploy</div></pre></td></tr></table></figure>
-<p>More info: <a href="https://hexo.io/docs/deployment.html" target="_blank" rel="external">Deployment</a></p>
-
-      
-    </div>
-    <footer class="article-footer">
-      <a data-url="http://blog.idingsong.cn/2017/06/24/hello-world/" data-id="cj4b50iw30005igpl08ukicne" class="article-share-link">Partager</a>
-      
-      
-    </footer>
-  </div>
-  
-</article>
-
-
-  
-    <article id="post-wordpress中文路径出现404错误的解决办法" class="article article-type-post" itemscope itemprop="blogPost">
-  <div class="article-meta">
-    <a href="/2017/04/08/wordpress中文路径出现404错误的解决办法/" class="article-date">
-  <time datetime="2017-04-08T11:40:08.000Z" itemprop="datePublished">2017-04-08</time>
-</a>
-    
-  </div>
-  <div class="article-inner">
-    
-    
-      <header class="article-header">
-        
-  
-    <h1 itemprop="name">
-      <a class="article-title" href="/2017/04/08/wordpress中文路径出现404错误的解决办法/">wordpress中文路径出现404错误的解决办法</a>
-    </h1>
-  
-
-      </header>
-    
-    <div class="article-entry" itemprop="articleBody">
-      
-        <blockquote>
-<p><a href="http://blog.csdn.net/liu_yanzhao/article/details/54933669" target="_blank" rel="external">http://blog.csdn.net/liu_yanzhao/article/details/54933669</a></p>
-</blockquote>
-<p><span id="more-87"></span></p>
-<p>方法一：修改字符编码</p>
-<p>第一步：wp-includes/class-wp.php153 行</p>
-<pre class="crayon-plain-tag">&lt;span class=&quot;hljs-variable&quot;&gt;$pathinfo&lt;/span&gt; = &lt;span class=&quot;hljs-keyword&quot;&gt;isset&lt;/span&gt;( &lt;span class=&quot;hljs-variable&quot;&gt;$_SERVER&lt;/span&gt;[&lt;span class=&quot;hljs-string&quot;&gt;'PATH_INFO'&lt;/span&gt;] ) ? &lt;span class=&quot;hljs-variable&quot;&gt;$_SERVER&lt;/span&gt;[&lt;span class=&quot;hljs-string&quot;&gt;'PATH_INFO'&lt;/span&gt;] : &lt;span class=&quot;hljs-string&quot;&gt;''&lt;/span&gt;;</pre>
-
-<ul>
-<li><p>1</p>
-</li>
-<li><p>1</p>
-</li>
-</ul>
-<p>改为</p>
-<pre class="crayon-plain-tag">&lt;span class=&quot;hljs-variable&quot;&gt;$pathinfo&lt;/span&gt; = &lt;span class=&quot;hljs-keyword&quot;&gt;isset&lt;/span&gt;( &lt;span class=&quot;hljs-variable&quot;&gt;$_SERVER&lt;/span&gt;[&lt;span class=&quot;hljs-string&quot;&gt;'PATH_INFO'&lt;/span&gt;] ) ? mb_convert_encoding(&lt;span class=&quot;hljs-variable&quot;&gt;$_SERVER&lt;/span&gt;[&lt;span class=&quot;hljs-string&quot;&gt;'PATH_INFO'&lt;/span&gt;],&lt;span class=&quot;hljs-string&quot;&gt;'utf-8'&lt;/span&gt;, &lt;span class=&quot;hljs-string&quot;&gt;'GBK'&lt;/span&gt;) : &lt;span class=&quot;hljs-string&quot;&gt;''&lt;/span&gt;;</pre>
-
-<ul>
-<li><p>1</p>
-</li>
-<li><p>1</p>
-</li>
-</ul>
-<p>第二步：wp-includes/class-wp.php 157 行：</p>
-<pre class="crayon-plain-tag">&lt;span class=&quot;hljs-keyword&quot;&gt;list&lt;/span&gt;( &lt;span class=&quot;hljs-variable&quot;&gt;$req_uri&lt;/span&gt; ) = explode( &lt;span class=&quot;hljs-string&quot;&gt;'?'&lt;/span&gt;, &lt;span class=&quot;hljs-variable&quot;&gt;$_SERVER&lt;/span&gt;[&lt;span class=&quot;hljs-string&quot;&gt;'REQUEST_URI'&lt;/span&gt;] );</pre>
-
-<ul>
-<li><p>1</p>
-</li>
-<li><p>1</p>
-</li>
-</ul>
-<p>改为</p>
-<pre class="crayon-plain-tag">&lt;span class=&quot;hljs-keyword&quot;&gt;list&lt;/span&gt;( &lt;span class=&quot;hljs-variable&quot;&gt;$req_uri&lt;/span&gt; ) = explode( &lt;span class=&quot;hljs-string&quot;&gt;'?'&lt;/span&gt;, mb_convert_encoding(&lt;span class=&quot;hljs-variable&quot;&gt;$_SERVER&lt;/span&gt;[&lt;span class=&quot;hljs-string&quot;&gt;'REQUEST_URI'&lt;/span&gt;], &lt;span class=&quot;hljs-string&quot;&gt;'utf-8'&lt;/span&gt;,&lt;span class=&quot;hljs-string&quot;&gt;'GBK'&lt;/span&gt;) );</pre>
-
-<ul>
-<li><p>1</p>
-</li>
-<li><p>1</p>
-</li>
-</ul>
-<p>方法二：不用中文路径，在设置–&gt;固定链接里，使用其他url方法,如图</p>
-<p><img src="http://img.blog.csdn.net/20170208215440458?watermark/2/text/aHR0cDovL2Jsb2cuY3Nkbi5uZXQvTElVX1lBTlpIQU8=/font/5a6L5L2T/fontsize/400/fill/I0JBQkFCMA==/dissolve/70/gravity/SouthEast" alt="这里写图片描述"></p>
-<p>原文地址：</p>
-<p><a href="http://liuyanzhao.com/584.html" target="_blank" rel="external">http://liuyanzhao.com/584.html</a></p>
-
-      
-    </div>
-    <footer class="article-footer">
-      <a data-url="http://blog.idingsong.cn/2017/04/08/wordpress中文路径出现404错误的解决办法/" data-id="cj4b50iwt000figplpfow5kq5" class="article-share-link">Partager</a>
-      
-      
-  <ul class="article-tag-list"><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/Wordpress/">Wordpress</a></li></ul>
-
-    </footer>
-  </div>
-  
-</article>
-
-
-  
-    <article id="post-java-IO流文件的读写具体实例" class="article article-type-post" itemscope itemprop="blogPost">
-  <div class="article-meta">
-    <a href="/2017/04/08/java-IO流文件的读写具体实例/" class="article-date">
-  <time datetime="2017-04-08T10:52:37.000Z" itemprop="datePublished">2017-04-08</time>
-</a>
-    
-  </div>
-  <div class="article-inner">
-    
-    
-      <header class="article-header">
-        
-  
-    <h1 itemprop="name">
-      <a class="article-title" href="/2017/04/08/java-IO流文件的读写具体实例/">java IO流文件的读写具体实例</a>
-    </h1>
-  
-
-      </header>
-    
-    <div class="article-entry" itemprop="articleBody">
-      
-        <blockquote>
-<p><a href="http://www.cnblogs.com/chen-lhx/p/4992401.html" target="_blank" rel="external">http://www.cnblogs.com/chen-lhx/p/4992401.html</a></p>
-</blockquote>
-<p><span id="more-80"></span></p>
-<p><strong>IO流的分类</strong>：</p>
-<p>1、根据流的数据对象来分：</p>
-<p>高端流：所有的内存中的流都是高端流，比如：InputStreamReader</p>
-<p>低端流：所有的外界设备中的流都是低端流，比如InputStream，OutputStream</p>
-<p>如何区分：所有的流对象的后缀中包含Reader或者Writer的都是高端流，反之，则基本上为低端流，不过也有例外，比如PrintStream就是高端流</p>
-<p>2、根据数据的流向来分：</p>
-<p>输出流：是用来写数据的，是由程序（内存）&#8212;&gt;外界设备</p>
-<p>输入流：是用来读数据的，是由外界设备&#8212;&gt;程序（内存）</p>
-<p>如何区分：一般来说输入流带有Input，输出流带有Output</p>
-<p>3、根据流数据的格式来分：</p>
-<p>字节流：处理声音或者图片等二进制的数据的流，比如InputStream</p>
-<p>字符流：处理文本数据（如txt文件）的流，比如InputStreamReader</p>
-<p>如何区分：可用高低端流来区分，所有的低端流都是字节流，所有的高端流都是字符流</p>
-<p>4、根据流数据的包装过程来分：</p>
-<p>原始流：在实例化流的对象的过程中，不需要传入另外一个流作为自己构造方法的参数的流，称之为原始流。</p>
-<p>包装流：在实例化流的对象的过程中，需要传入另外一个流作为自己构造方法发参数的流，称之为包装流。</p>
-<p>如何区分：所以的低端流都是原始流，所以的高端流都是包装流</p>
-<p>IO流对象的继承关系(如下图)：</p>
-<iframe width="300" height="150" id="iframe_0.8983534938164099" frameborder="0" scrolling="no" data-mce-fragment="1"></iframe>
-
-<p>下面来看一些具体的代码例子：</p>
-<p>按字节来读取文件</p>
-<div class="cnblogs_code"><br><div class="cnblogs_code_toolbar"><span class="cnblogs_code_copy"><a title="复制代码"><img src="http://common.cnblogs.com/images/copycode.gif" alt="复制代码"></a></span></div><br><pre class="crayon-plain-tag">public class ReadFromFile {<br>    /<em>*
-     </em> 以字节为单位读取文件，常用于读二进制文件，如图片、声音、影像等文件。<br>     */<br>    public static void readFileByBytes(String fileName) {<br>        File file = new File(fileName);<br>        InputStream in = null;<br>        try {<br>            System.out.println(&quot;以字节为单位读取文件内容，一次读一个字节：&quot;);<br>            // 一次读一个字节<br>            in = new FileInputStream(file);<br>            int tempbyte;<br>            while ((tempbyte = in.read()) != -1) {<br>                System.out.print(tempbyte);<br>            }<br>            in.close();<br>        } catch (IOException e) {<br>            e.printStackTrace();<br>            return;<br>        }<br>        try {<br>            System.out.println(&quot;以字节为单位读取文件内容，一次读多个字节：&quot;);<br>            // 一次读多个字节<br>            byte[] tempbytes = new byte[100];<br>            int byteread = 0;<br>            in = new FileInputStream(fileName);<br>            ReadFromFile.showAvailableBytes(in);<br>            // 读入多个字节到字节数组中，byteread为一次读入的字节数<br>            while ((byteread = in.read(tempbytes)) != -1) {<br>                System.out.print(tempbytes, 0, byteread);<br>            }<br>        } catch (Exception e1) {<br>            e1.printStackTrace();<br>        } finally {<br>            if (in != null) {<br>                try {<br>                    in.close();<br>                } catch (IOException e1) {<br>                }<br>            }<br>        }<br>    }</pre><br><div class="cnblogs_code_toolbar"><span class="cnblogs_code_copy"><a title="复制代码"><img src="http://common.cnblogs.com/images/copycode.gif" alt="复制代码"></a></span></div><br></div>
-
-<p>按字符来读取文件</p>
-<div class="cnblogs_code"><br><div class="cnblogs_code_toolbar"><span class="cnblogs_code_copy"><a title="复制代码"><img src="http://common.cnblogs.com/images/copycode.gif" alt="复制代码"></a></span></div><br><pre class="crayon-plain-tag">/<em>*
-     </em> 以字符为单位读取文件，常用于读文本，数字等类型的文件<br>     */<br>    public static void readFileByChars(String fileName) {<br>        File file = new File(fileName);<br>        Reader reader = null;<br>        try {<br>            System.out.println(&quot;以字符为单位读取文件内容，一次读一个字符：&quot;);<br>            // 一次读一个字符<br>            reader = new InputStreamReader(new FileInputStream(file));<br>            int tempchar;<br>            while ((tempchar = reader.read()) != -1) {<br>                // 对于windows下，\r\n这两个字符在一起时，表示一个换行。<br>                // 但如果这两个字符分开显示时，会换两次行。<br>                // 因此，屏蔽掉\r，或者屏蔽\n。否则，将会多出很多空行。<br>                if (((char) tempchar) != ‘\r’) {<br>                    System.out.print((char) tempchar);<br>                }<br>            }<br>            reader.close();<br>        } catch (Exception e) {<br>            e.printStackTrace();<br>        }<br>        try {<br>            System.out.println(&quot;以字符为单位读取文件内容，一次读多个字符：&quot;);<br>            // 一次读多个字符<br>            char[] tempchars = new char[30];<br>            int charread = 0;<br>            //由于要以字符来读取，所以需要套上字符流<br>            reader = new InputStreamReader(new FileInputStream(fileName));<br>            // 读入多个字符到字符数组中，charread为一次读取字符数<br>            while ((charread = reader.read(tempchars)) != -1) {<br>                // 同样屏蔽掉\r不显示<br>                if ((charread == tempchars.length)<br>                        &amp;amp;&amp;amp; (tempchars[tempchars.length - 1] != ‘\r’)) {<br>                    System.out.print(tempchars);<br>                } else {<br>                    for (int i = 0; i &amp;lt; charread; i++) {<br>                        if (tempchars[i] == ‘\r’) {<br>                            continue;<br>                        } else {<br>                            System.out.print(tempchars[i]);<br>                        }<br>                    }<br>                }<br>            }<br><br>        } catch (Exception e1) {<br>            e1.printStackTrace();<br>        } finally {<br>            if (reader != null) {<br>                try {<br>                    reader.close();<br>                } catch (IOException e1) {<br>                }<br>            }<br>        }<br>    }</pre><br><div class="cnblogs_code_toolbar"><span class="cnblogs_code_copy"><a title="复制代码"><img src="http://common.cnblogs.com/images/copycode.gif" alt="复制代码"></a></span></div><br></div>
-
-<p>按行来读取文件</p>
-<div class="cnblogs_code"><br><div class="cnblogs_code_toolbar"><span class="cnblogs_code_copy"><a title="复制代码"><img src="http://common.cnblogs.com/images/copycode.gif" alt="复制代码"></a></span></div><br><pre class="crayon-plain-tag">/<em>*
-     </em> 以行为单位读取文件，常用于读面向行的格式化文件<br>     */<br>    public static void readFileByLines(String fileName) {<br>        File file = new File(fileName);<br>        BufferedReader reader = null;<br>        try {<br>            System.out.println(&quot;以行为单位读取文件内容，一次读一整行：&quot;);<br>            reader = new BufferedReader(new FileReader(file));<br>            String tempString = null;<br>            int line = 1;<br>            // 一次读入一行，直到读入null为文件结束<br>            while ((tempString = reader.readLine()) != null) {<br>                // 显示行号<br>                System.out.println(&quot;line &quot; + line + &quot;: &quot; + tempString);<br>                line++;<br>            }<br>            reader.close();<br>        } catch (IOException e) {<br>            e.printStackTrace();<br>        } finally {<br>            if (reader != null) {<br>                try {<br>                    reader.close();<br>                } catch (IOException e1) {<br>                }<br>            }<br>        }<br>    }</pre><br><div class="cnblogs_code_toolbar"><span class="cnblogs_code_copy"><a title="复制代码"><img src="http://common.cnblogs.com/images/copycode.gif" alt="复制代码"></a></span></div><br></div>
-
-<p>将一个文件的内容写入另一个文件(按行来写)</p>
-<div class="cnblogs_code"><br><div class="cnblogs_code_toolbar"><span class="cnblogs_code_copy"><a title="复制代码"><img src="http://common.cnblogs.com/images/copycode.gif" alt="复制代码"></a></span></div><br><pre class="crayon-plain-tag">public class FileTest {<br>public static void main(String[] args)   {<br> File  file=new File(&quot;c:\test.txt&quot;);<br> BufferedReader read=null;<br> BufferedWriter writer=null;<br> try {<br>   writer=new BufferedWriter(new  FileWriter(&quot;c:\zwm.txt&quot;));<br> } catch (IOException e1) {<br>  e1.printStackTrace();<br> }<br> try {<br>   read=new BufferedReader(new  FileReader(file));<br>   String tempString = null;<br>   while((tempString=read.readLine())!=null){<br>    writer.append(tempString);<br>    writer.newLine();//换行<br>    writer.flush();//需要及时清掉流的缓冲区，万一文件过大就有可能无法写入了<br>   }<br>   read.close();<br>   writer.close();<br>   System.out.println(&quot;文件写入完成…&quot;);<br> } catch (IOException e) {<br>  e.printStackTrace();<br> }<br><br>}<br>}</pre><br><div class="cnblogs_code_toolbar"><span class="cnblogs_code_copy"><a title="复制代码"><img src="http://common.cnblogs.com/images/copycode.gif" alt="复制代码"></a></span></div><br></div>
-
-<p>&nbsp;</p>
-
-      
-    </div>
-    <footer class="article-footer">
-      <a data-url="http://blog.idingsong.cn/2017/04/08/java-IO流文件的读写具体实例/" data-id="cj4b50iw90007igplaffo865v" class="article-share-link">Partager</a>
-      
-      
-  <ul class="article-tag-list"><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/Java/">Java</a></li></ul>
-
-    </footer>
-  </div>
-  
-</article>
-
-
-  
-    <article id="post-IntelliJ-IDEA-2016-1建立Strut2工程并使用Tomcat调试" class="article article-type-post" itemscope itemprop="blogPost">
+        <section id="main"><article id="post-IntelliJ-IDEA-2016-1建立Strut2工程并使用Tomcat调试" class="article article-type-post" itemscope itemprop="blogPost">
   <div class="article-meta">
     <a href="/2017/03/25/IntelliJ-IDEA-2016-1建立Strut2工程并使用Tomcat调试/" class="article-date">
   <time datetime="2017-03-25T04:37:12.000Z" itemprop="datePublished">2017-03-25</time>
@@ -324,8 +129,8 @@
       <header class="article-header">
         
   
-    <h1 itemprop="name">
-      <a class="article-title" href="/2017/03/25/IntelliJ-IDEA-2016-1建立Strut2工程并使用Tomcat调试/">IntelliJ IDEA 2016.1建立Strut2工程并使用Tomcat调试</a>
+    <h1 class="article-title" itemprop="name">
+      IntelliJ IDEA 2016.1建立Strut2工程并使用Tomcat调试
     </h1>
   
 
@@ -501,557 +306,29 @@
     </footer>
   </div>
   
-</article>
-
-
+    
+<nav id="article-nav">
   
-    <article id="post-Visual-Studio-2017-各版本安装包离线下载、安装全解析" class="article article-type-post" itemscope itemprop="blogPost">
-  <div class="article-meta">
-    <a href="/2017/03/10/Visual-Studio-2017-各版本安装包离线下载、安装全解析/" class="article-date">
-  <time datetime="2017-03-10T10:45:33.000Z" itemprop="datePublished">2017-03-10</time>
-</a>
-    
-  </div>
-  <div class="article-inner">
-    
-    
-      <header class="article-header">
+    <a href="/2017/04/08/java-IO流文件的读写具体实例/" id="article-nav-newer" class="article-nav-link-wrap">
+      <strong class="article-nav-caption">Récent</strong>
+      <div class="article-nav-title">
         
-  
-    <h1 itemprop="name">
-      <a class="article-title" href="/2017/03/10/Visual-Studio-2017-各版本安装包离线下载、安装全解析/">Visual Studio 2017 各版本安装包离线下载、安装全解析</a>
-    </h1>
-  
-
-      </header>
-    
-    <div class="article-entry" itemprop="articleBody">
-      
-        <blockquote>
-<p><a href="http://www.oschina.net/news/82731/vs-2017-all-version-offline-download-and-install" target="_blank" rel="external">http://www.oschina.net/news/82731/vs-2017-all-version-offline-download-and-install</a></p>
-</blockquote>
-<p><span id="more-72"></span></p>
-<p>关于 Visual Studio 2017 各版本安装包离线下载、更新和安装的方法以及通过已下载版本减少下载量的办法。</p>
-<p>微软最近发布了正式版 Visual Studio 2017 并公开了其下载方式，不过由于 VS2017 采用了新的模块化安装方案，所以微软官方并未提供 ISO 镜像，但是官方提供了如何进行离线下载的方案给需要进行离线安装的用户，只不过都是英文。本文将对官方指南中的一部分进行翻译（这里说一句：翻译的部分就是最基础的离线下载和安装方案，另外，即使如以前微软提供了安装镜像，也仅会包含 Visual Studio 的基本核心组件和部分官方扩展，而微软、安卓和苹果等平台的 SDK、模拟器和第三方扩展功能等会在用户选择后联网下载。而 VS2017 的离线包是包含所有可选项的）。好了，接下来将会分为四部分来叙述，分别是离线下载安装文件、离线安装 VS2017、更新离线文件包以及如何通过已下载版本来减少下载其它版本下载量的方法。</p>
-<h3 id="第一部分：离线下载安装文件"><a href="#第一部分：离线下载安装文件" class="headerlink" title="第一部分：离线下载安装文件"></a><strong>第一部分：离线下载安装文件</strong></h3><p>这里描述是包括所有版本，截图以下载 VS2017 社区版为例：</p>
-<p>①登入 VS 官网下载页面，选择需要的版本点击下载，下载页<a href="https://www.visualstudio.com/zh-hans/downloads/" target="_blank" rel="external">点此进入</a>。</p>
-<p>②下载完成后，打开下载文件所在文件夹，Windows 8.1 及以上版本用户点击资源管理器上的文件-打开命令提示符-以管理员身份打开命令提示符；Windows7 用户可在该文件夹空白处按住 Shift 键的情况下点击鼠标右键选择“在此处打开命令窗口”。</p>
-<p><img src="https://static.oschina.net/uploads/space/2017/0310/114310_LEN3_2720166.jpg" alt=""></p>
-<p>③根据自己下载的 VS2017 版本，在打开的命令提示符窗口输入下面对应的命令并点击回车，等待程序启动即会开始下载（以下命令用于下载完整版离线包，包含全功能以及全语言包，其中红色部分为下载文件存放路径，根据自身情况用户可自行更改）</p>
-<p><strong>企业版</strong>：</p>
-<p>vs_enterprise.exe &#8211;layout c:\vs2017offline</p>
-<p><strong>专业版</strong>：</p>
-<p>vs_professional.exe &#8211;layout c:\vs2017offline</p>
-<p><strong>社区版</strong>：</p>
-<p>vs_community.exe &#8211;layout c:\vs2017offline</p>
-<p><img src="https://static.oschina.net/uploads/space/2017/0310/114403_RKMW_2720166.jpg" alt=""></p>
-<p>如果需要下载单一语言的或其中某几种语言的离线文件，可采用以下命令：</p>
-<p>企业版：vs_enterprise.exe &#8211;layout c:\vs2017offline &#8211;lang zh-CN</p>
-<p>专业版：vs_professional.exe &#8211;layout c:\vs2017offline &#8211;lang zh-CN</p>
-<p>社区版：vs_community.exe &#8211;layout c:\vs2017offline &#8211;lang zh-CN</p>
-<p>红色代码为语言参数，这里提供三种语言的参数供大家选择</p>
-<ul>
-<li>英语（美国）：en-US</li>
-<li>中文：zh-CN（简体），zh-TW（繁体）</li>
-<li>日语：ja-JP</li>
-</ul>
-<p>如果需要同时下载多种语言，可以在 &#8211;lang 后面连续加上多个语言代码参数，用空格间隔开就行，比如 — lang en-US zh-CN ja-JP，那么就会同时下载英文、中文和日文语言包。</p>
-<p>④如需更多语言包或者更多安装指令，请参考官方离线安装命令指南：<a href="https://docs.microsoft.com/en-us/visualstudio/install/use-command-line-parameters-to-install-visual-studio" target="_blank" rel="external">点此进入</a>。</p>
-<p>⑤等待文件下载，不要关闭文件下载窗口，等所有文件下载完成后该窗口会自动关闭，下载过程中不要断电断网，也不要关闭窗口，当然，<strong>如果断电断网或者关闭了下载窗口，没关系，输入命令重头来过，还是会继续下载的</strong>。</p>
-<p><img src="https://static.oschina.net/uploads/space/2017/0310/115425_BelW_2720166.jpg" alt=""></p>
-<h3 id="第二部分：离线安装"><a href="#第二部分：离线安装" class="headerlink" title="第二部分：离线安装"></a><strong>第二部分：离线安装</strong></h3><p>本部分以安装社区版为例，其他版本安装过程一样，只是<strong>专业版和企业版需要激活授权</strong>。</p>
-<p>①打开刚刚存放离线文件的路径，比如 E:\vs2017offline，然后找到 certificates 文件夹并打开，依次安装该文件夹下的软件证书。双击证书并根据提示往下走就行了，实在懒得弄就一直下一步直到提示导入成功。</p>
-<p><img src="https://static.oschina.net/uploads/space/2017/0310/114558_UvqA_2720166.jpg" alt=""></p>
-<p><img src="https://static.oschina.net/uploads/space/2017/0310/114616_oRrI_2720166.jpg" alt=""></p>
-<p>②运行离线根目录下的安装程序，各版本位置如下：</p>
-<p>企业版：离线文件存储文件夹\vs_Enterprise.exe</p>
-<p>专业版：离线文件存储文件夹\vs_Professional.exe</p>
-<p>社区版：离线文件存储文件夹\vs_Community.exe</p>
-<p>③安装程序运行后，选择自己需要的模块和功能，确认所需后点击安装即可。顺便吐槽一下，<strong>社区版全工作负荷、全组件以及全语言包选择后需要空间 93.85GB</strong>，所以大家还是选择自己需要的安装就行了……另外，需要 Python 扩展支持的朋友，可以自己下载 Python 安装，或者安装完成后自行到扩展添加，官方安装文件对 Python 扩展的包含据说要等下次更新……</p>
-<p><img src="https://static.oschina.net/uploads/space/2017/0310/114705_YFDh_2720166.jpg" alt=""></p>
-<p><img src="https://static.oschina.net/uploads/space/2017/0310/114716_E0LX_2720166.jpg" alt=""></p>
-<p>④等待安装完成即可使用了。</p>
-<h3 id="第三部分：更新离线文件包"><a href="#第三部分：更新离线文件包" class="headerlink" title="第三部分：更新离线文件包"></a><strong>第三部分：更新离线文件包</strong></h3><p>这部分比较简单，步骤如下：</p>
-<p>①当微软提示有版本更新后，到官网下载最新的在线安装执行文件，下载地址：<a href="https://www.visualstudio.com/zh-hans/downloads/" target="_blank" rel="external">点此进入</a>。</p>
-<p>②按步骤执行本文第一部分下载离线安装文件的步骤，但是必须注意，<strong>&#8211;layout 后的下载文件夹路径必须是旧版本离线文件存储的位置</strong>（如果你之前下载好没移动过那就是之前的下载路径），执行命令后安装程序会扫描已有文件并下载更新文件和新增文件。</p>
-<p>③更新完成后可再次执行离线文件夹根目录下的安装程序进行软件更新，或者 VS 中直接检查更新，更新新版本理论上无需重新导入证书除非有新证书被下载。</p>
-<h3 id="第四部分：通过已下载版本减少其他版本离线下载量"><a href="#第四部分：通过已下载版本减少其他版本离线下载量" class="headerlink" title="第四部分：通过已下载版本减少其他版本离线下载量"></a><strong>第四部分：通过已下载版本减少其他版本离线下载量</strong></h3><p>这部分也很简单，原理就是社区版、专业版和企业版有大多数组件其实是相同，如果用户想离线下载所有版本，那么没有那个必要，企业版包含了其它所有版本的组件，所以理论上用户只用下载企业版即可，安装时是可选择安装社区版、专业版或者企业版的。当然目前前面所述只是理论，毕竟我没试验，当然以下方法可以百分百保证需要的用户用最少的下载量完成下载所有版本的 VS2017。</p>
-<p>如果你已经下载好了其中一版，均可进行如下操作：</p>
-<p>①创建两个新文件夹，根据你自己的爱好重命名，<strong>最好是英文名。</strong></p>
-<p>②将已经下好的版本的所有文件都分别复制到这两个新文件夹中，并删除由之前下载程序下载在根目录下的六个文件。</p>
-<p><img src="https://static.oschina.net/uploads/space/2017/0310/114800_IvOy_2720166.jpg" alt=""></p>
-<p>③下载另外两个版本的安装程序，接下来就是重复第一部分的步骤，但是<strong>命令行命令—layout后的路径参数根据版本分别设置为你刚刚新建的那两个文件夹。</strong></p>
-<p>④回车执行命令，程序会扫描和检查已经下载的组件，并现在自己版本对应的缺少的以及匹配的组件，不过<strong>这部分大小不会超过 1GB，准确来说可能只有几十兆左右……</strong></p>
-<p>⑤等待完成，反正不一会儿就好了，然后就可以收藏三个版本的离线包了。</p>
-<p>⑥至于更新嘛，参见第三部分。</p>
-<h3 id="第五部分：附加"><a href="#第五部分：附加" class="headerlink" title="第五部分：附加"></a><strong>第五部分：附加</strong></h3><p>这部分呢是附加的一部分，信息是完全下载（包含全功能全语言包）的社区版和企业版的详细文件信息，以及他们的差集文件夹信息；最大的是企业版，最小的是企业版和社区版文件夹差集的信息。最后就是，各版本离线包里面至少含以下关键字的文件夹中的内容是完全一模一样的，就是：SDK、.NET、Xamarin、Unity、Cocos、Unreal、Linux、Mac、iOS、Android、emulator……包含这些关键词的文件夹，大小合计应该超过 16GB 了……</p>
-<p><img src="https://static.oschina.net/uploads/space/2017/0310/114851_17CU_2720166.jpg" alt=""></p>
-<p><img src="https://static.oschina.net/uploads/space/2017/0310/114851_dlJ3_2720166.jpg" alt=""></p>
-<p><img src="https://static.oschina.net/uploads/space/2017/0310/114851_vPTE_2720166.jpg" alt=""></p>
-<p>最后嘛就是，学习编程是条非常非常痛苦和漫长的路哪，它没我们想象的那么简单，因为实际上你要学的东西并不仅仅只是编写代码……当然学习也是快乐的，每当攻破一个难题带来的成就感总会驱使你继续向更高的成就努力~~哈哈，其实我就是想说，有没有想一起自学 C# 和 .NET 的童鞋哪？</p>
-
-      
-    </div>
-    <footer class="article-footer">
-      <a data-url="http://blog.idingsong.cn/2017/03/10/Visual-Studio-2017-各版本安装包离线下载、安装全解析/" data-id="cj4b50ivt0003igpldx61hddy" class="article-share-link">Partager</a>
-      
-      
-  <ul class="article-tag-list"><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/VS/">VS</a></li><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/VisualStudio/">VisualStudio</a></li><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/visualstudio/">visualstudio</a></li></ul>
-
-    </footer>
-  </div>
-  
-</article>
-
-
-  
-    <article id="post-Android-NDK编译选项设置" class="article article-type-post" itemscope itemprop="blogPost">
-  <div class="article-meta">
-    <a href="/2017/03/04/Android-NDK编译选项设置/" class="article-date">
-  <time datetime="2017-03-04T11:02:38.000Z" itemprop="datePublished">2017-03-04</time>
-</a>
-    
-  </div>
-  <div class="article-inner">
-    
-    
-      <header class="article-header">
+          java IO流文件的读写具体实例
         
+      </div>
+    </a>
   
-    <h1 itemprop="name">
-      <a class="article-title" href="/2017/03/04/Android-NDK编译选项设置/">Android NDK编译选项设置</a>
-    </h1>
   
+    <a href="/2017/03/10/Visual-Studio-2017-各版本安装包离线下载、安装全解析/" id="article-nav-older" class="article-nav-link-wrap">
+      <strong class="article-nav-caption">Ancien</strong>
+      <div class="article-nav-title">Visual Studio 2017 各版本安装包离线下载、安装全解析</div>
+    </a>
+  
+</nav>
 
-      </header>
-    
-    <div class="article-entry" itemprop="articleBody">
-      
-        <blockquote>
-<p><a href="http://crash.163.com/#news/!newsId=24" target="_blank" rel="external">http://crash.163.com/#news/!newsId=24</a></p>
-</blockquote>
-<p><span id="more-69"></span></p>
-<p>在Android NDK开发中，有两个重要的文件：Android.mk和Application.mk，各尽其责，指导编译器如何编译程序，并决定编译结果是什么。本文将详细说明几个常见的NDK选项的配置，帮助大家理解相应的配置选项。</p>
-<p><img src="http://apk-pack-public-test.nos.netease.com/8bcbb39fda254522863d6137205c8b2c.jpg?imageView" alt=""></p>
-<p>####<br><strong>     一、Application.mk</strong></p>
-<p>Application.mk实际上是轻量级Makefile，通常在$PROJECT/jni目录下，用于配置所有modules的编译变量，例子如下：</p>
-<blockquote>
-<p>APP_ABI := armeabi arm64-v8a x86_64 x86 armeabi-v7a</p>
-<p>NDK_TOOLCHAIN_VERSION := clang3.5</p>
-<p>APP_STL := stlport_static</p>
-<p>APP_OPTIM：= debuge</p>
-</blockquote>
-<p><strong>      1**</strong>、APP_ABI（目标平台ABI类型）**</p>
-<p>NDK编译中，APP_ABI默认选择armeabi ABI，可通过设置APP_ABI设置一个或者多个ABI，表一为不同的APP_ABI所对应的指令集。</p>
-<table border="1" cellspacing="0" cellpadding="0"><br><tbody><br><tr><br><td><strong>Instrunction set</strong></td><br><td><strong>Value</strong></td><br></tr><br><tr><br><td><strong>ARMv5TE based CPU</strong></td><br><td>APP_ABI := armeabi</td><br></tr><br><tr><br><td><strong>ARMv7 based CPU</strong></td><br><td>APP_ABI := armeabi-v7a</td><br></tr><br><tr><br><td><strong>ARMv8 AArch64</strong></td><br><td>APP_ABI := arm64-v8a</td><br></tr><br><tr><br><td><strong>IA-32</strong></td><br><td>APP_ABI := x86</td><br></tr><br><tr><br><td><strong>Intel64</strong></td><br><td>APP_ABI := x86_64</td><br></tr><br><tr><br><td><strong>MIPS32</strong></td><br><td>APP_ABI := mips</td><br></tr><br><tr><br><td><strong>MIPS64(r6)</strong></td><br><td>APP_ABI := mips64</td><br></tr><br><tr><br><td><strong>All supported instruction sets</strong></td><br><td>APP_ABI := all</td><br></tr><br></tbody><br></table>
-
-<p>表一：ABI类型</p>
-<p>在开发时可根据需求选择APP_ABI，对于ABI的选择需要考虑到效率和APK大小。由于armeabi-v7a指令集兼容armeabi；市面上的x86手机为了兼容性，基本都使用libhoudini模块，兼容arm指令集；64位机型默认支持32位abi的so，因此在对大小要求比较高的情况下，可以只选择市面上设备基本兼容的armeabi ABI，如果对性能有些许要求，可以再添加x86 ABI。</p>
-<p><strong>      2**</strong>、 NDK_TOOLCHAIN_VERSION（编译器类型、版本）**</p>
-<p>默认采用的是GCC编译器，对于GCC版本的选择与NDK版本有关系，本人使用的是NDK R12，在64位ABI默认是GCC 4.9，32位ABI默认是GCC 4.8，当然也可以像上面例子中给出的设置一样，设置clang编译器。</p>
-<p><strong>      3**</strong>、 APP_STL（运行库类型）**</p>
-<p>Android NDK 默认使用的是最小支持的C++运行库，如果你需要你的NDK程序中使用STL，则可以设置APP_STL := stlport_static，APP_STL有表二中的几种取值。</p>
-<table border="1" cellspacing="0" cellpadding="0"><br><tbody><br><tr><br><td><strong>Name</strong></td><br><td><strong>Explanation</strong></td><br></tr><br><tr><br><td><strong>system(default)</strong></td><br><td>系统默认的C++运行库</td><br></tr><br><tr><br><td><strong>stlport_static</strong></td><br><td>以静态链接方式使用的sttport版本的STL</td><br></tr><br><tr><br><td><strong>stlport_shared</strong></td><br><td>以动态链接方式使用的sttport版本的STL</td><br></tr><br><tr><br><td><strong>gnustl_static</strong></td><br><td>以静态链接方式使用的gnustl版本的STL</td><br></tr><br><tr><br><td><strong>gnustl_shared</strong></td><br><td>以动态链接方式使用的gnustl版本的STL</td><br></tr><br><tr><br><td><strong>gabi++_static</strong></td><br><td>以静态链接方式使用的gabi++</td><br></tr><br><tr><br><td><strong>gabi++_shared</strong></td><br><td>以动态链接方式使用的gabi++</td><br></tr><br><tr><br><td><strong>c++_static</strong></td><br><td>以静态链接方式使用的LLVM libc++</td><br></tr><br><tr><br><td><strong>c++_shared</strong></td><br><td>以动态链接方式使用的LLVM libc++</td><br></tr><br></tbody><br></table>
-
-<p>表二：NDK运行库</p>
-<p>若APK中有多个SO文件用到STL，建议都使用动态方式链接STL，这样可以减小整个APK文件大小。</p>
-<p>另外需要注意的是官方提供的NDK运行库除了默认的以外都支持RTTI和异常，然而默认是禁用的，将在下面的Android.mk中说明如何开启。</p>
-<p><strong>      4**</strong>、APP_OPTIM（编译模式）**</p>
-<p>“release”模式为默认的，生成的是优化后的二进制；也可以设置为“debug”模式，“debug”模式生成的是未优化二进制，提供很多BUG信息，便于调试和分析。</p>
-<p>还有其他配置选项，有兴趣可以查看<a href="https://developer.android.com/ndk/guides/application_mk.html" target="_blank" rel="external">Application.mk官方文档</a>。</p>
-<h4 id="二、Android-mk"><a href="#二、Android-mk" class="headerlink" title="     二、Android.mk"></a><strong>     二、Android.mk</strong></h4><p>Android.mk也是一个轻量级的Makefile，其将C/C++源码组织到一个个module中，module可以是静态库、共享库或者独立的可执行文件， 一个Android.mk文件可以有一个，也可以是多个module，modules之间也可以有依赖关系。</p>
-<p><strong>      1、基本概念</strong></p>
-<p>Android.mk中包括NDK提供的宏、变量以及模块描述变量，这些宏、变量以及变量的赋值共同组成了Android.mk文件，其在NDK编译中各尽其责，指导着NDK的编译。</p>
-<p>宏：包括my-dir、all-subdir-makefiles等，通过‘$(call &lt;function&gt;)’来调用，返回文本信息。</p>
-<p>变量：包括CLEAR_VARS、BUILD_SHARED_LIBRARY、TARGET_ARCH等，由NDK编译系统提供，并且在Android.mk文件被解析前就已经存在。Android.mk文件有可能被多次解析，因此每次解析时这些变量的值都有可能不同。</p>
-<p>模块描述变量：Module-description，包括LOCAL_PATH、LOCAL_MODULE、LOCAL_SRC<em>FILES等LOCAL</em>前缀变量，这些变量除LOCAL_PATH外，均填写在语句include $(CLEAR_VARS)和include $(BUILD_XXX)之间。</p>
-<p>其他Android.mk配置可以查看<a href="https://developer.android.com/ndk/guides/android_mk.html" target="_blank" rel="external">Android.mk官方文档</a>。</p>
-<p><strong>      2、基础</strong></p>
-<p>在Android.mk中包括一些很基础的变量，下面的栗子包括了基础的变量，本人将详细说明。</p>
-<blockquote>
-<p>LOCAL_PATH := $(call my-dir)</p>
-<p>include $(CLEAR_VARS)</p>
-<p>LOCAL_MODULE := hello-jni</p>
-<p>LOCAL_SRC_FILES := hello-jni.c</p>
-<p>include $(BUILD_SHARED_LIBRARY)</p>
-</blockquote>
-<p><strong>       LOCAL_PATH**</strong>（当前目录） **</p>
-<p>LOCAL_PATH为模块描述变量，一个Android.mk必须定义LOCAL_PATH，用于定位源文件，在本例中，使用的是编译系统提供的宏“my-dir”（“my-dir”返回最近一次包括Makefile文件路径，通常为当前Android.mk所在目录），用于返回当前目录。</p>
-<p>此变量不会被CLEAR_VARS清除，所以每个Android.mk文件只需要定义一次就可以了。</p>
-<p><strong>       CLEAR_VARS**</strong>（变量清除）**</p>
-<p>CLEAR_VARS变量由编译系统提供，顾名思义，作用是清除模块变量（在include $(CLEAR_VARS)和include $(BUILD_XXX)之间的LOCAL_XXX模块变量），当然LOCAL_PATH除外。由于所有的编译控制文件都是单一的GNU Make可执行上下文环境中解析，而这个上下文环境中所有的变量都是全局的，所以编译module前需要清理相应变量。</p>
-<p><strong>       LOCAL_MODULE**</strong>（module名称）**</p>
-<p>LOCAL_MODULE是Android.mk文件中module的唯一标识，这个名字必须是唯一的，且中间不能有空格。在默认情况下，它决定了生成的文件名，如“hello-jni”对应的动态库名称为libhello-jni.so，然而要索引它时，需要“hello-jni”即可，也可以通过变量LOCAL_MODULE_FILENAME来覆盖这个默认名称。</p>
-<p><strong>       LOCAL_SRC_FILES **</strong>（源码文件）**</p>
-<p>LOCAL_SRC_FILES 变量包括C/C++源文件列表，这些源文件会被编译到一个module中，不过也不必列出头文件和包括文件，编译系统会自动为你找打所有需要的依赖关系。值得注意的是linux下路径使用顺斜杠（/）。</p>
-<p><strong>       BUILD_SHARED_LIBRARY**</strong>（动态库编译）**</p>
-<p>BUILD_SHARED_LIBRARY是编译器提供的变量，表示编译成动态库，它指向一个GNU Makefile脚本，这个脚本收集从include $(CLEAR_VARS)后所有的LOCAL_XXX变量中定义的所有信息，决定编译什么以及怎么编译。</p>
-<p>还有BUILD_STATIC_LIBRARY，和BUILD_SHARED_LIBRARY类似，表示编译成静态库，静态库不会被拷贝到APK中。</p>
-<p><strong>       PREBUILT_SHARED_LIBRARY**</strong>（预编译）**</p>
-<p>指向一个编译脚本，用来指定一个预编译动态库.使用此变量时，不像BUILD_SHARED_LIBRARY和BUILD_STATIC_LIBRARY那样，LOCAL_SRC_FILES的值必须是只能有一个指向预编译动态库的路径，如foo/libfoo.so，而不是源文件。如下栗子。</p>
-<blockquote>
-<p>include $(CLEAR_VARS)</p>
-<p>LOCAL_MODULE := test</p>
-<p>LOCAL_SRC_FILES := lib/$(TARGET_ARCH_ABI)/libtest.so</p>
-<p>include $(PREBUILT_SHARED_LIBRARY)</p>
-</blockquote>
-<p>PREBUILD_STATIC_LIBRARY和PREBUILD_SHARED_LIBRARY一样，只不过是用于引用静态库。</p>
-<p><strong>      TARGET_ARCH_ABI**</strong>（目标ABI名称）**</p>
-<p>如表一所示，目标ABI名称。若定义了多个ABI，则每次解析Android.mk时,值都不一样，主要使用场景为根本不同的ABI定义不同的文件等。</p>
-<p><strong>      3、其他模块变量LOCAL_LDLIBS（链接库）</strong></p>
-<p>用于额外链接选项，所有的库都有“-l”前缀。可同时列出多个库，用空格隔开，例如：</p>
-<blockquote>
-<p>LOCAL_LDLIBS := -llog -ldl</p>
-</blockquote>
-<p>Android NDK默认链接了多个库，不需要显示的添加到LOCAL_LDLIBS中，包括 the standard C libraries，the standard C++ libraries，real-time extensions和 pthread库。同时也提供了一些需要显示添加的库，这些库版本有关系，如表三所示。</p>
-<table border="1" cellspacing="0" cellpadding="0"><br><tbody><br><tr><br><td><strong>Android level</strong></td><br><td><strong>Lib</strong></td><br><td><strong>Explanation</strong></td><br></tr><br><tr><br><td rowspan="3"><br><strong>Android-3</strong></td><br><td>-llog</td><br><td>Android Log</td><br></tr><br><tr><br><td>-lz</td><br><td>Zlib Compression Library</td><br></tr><br><tr><br><td>-ldl</td><br><td>Dynamic Linker Library</td><br></tr><br><tr><br><td><strong>Android-4</strong></td><br><td>-lGLESv1_CM</td><br><td>OpenGL ES 1.x Library</td><br></tr><br><tr><br><td><strong>Android-5</strong></td><br><td>-lGLESv2</td><br><td>OpenGL ES 2.0 Library</td><br></tr><br><tr><br><td><strong>Android-8</strong></td><br><td>-ljnigraphics</td><br><td>The jnigraphics Library</td><br></tr><br><tr><br><td rowspan="3"><br><strong>Android-9</strong></td><br><td>-lEGL</td><br><td>The EGL graphics library</td><br></tr><br><tr><br><td>-lOpenSLES</td><br><td>Open ES native audio Library</td><br></tr><br><tr><br><td>-landroid</td><br><td>Natice Android API</td><br></tr><br><tr><br><td><strong>Android-14</strong></td><br><td>-lOpenMAXAL</td><br><td>OpenMAX AL natice multimedia Library</td><br></tr><br><tr><br><td><strong>Android-18</strong></td><br><td>-lGLESv3</td><br><td>OpenGL ES 3.0 Library</td><br></tr><br><tr><br><td><strong>Android-21</strong></td><br><td>-lGLESv3</td><br><td>OpenGL ES 3.1 Library</td><br></tr><br></tbody><br></table>
-
-<p>表三：链接库</p>
-<p><strong>        LOCAL_CFLAGS**</strong>、LOCAL_CPPFLAGS和LOCAL_LDFLAGS（编译、链接标志）**</p>
-<p>LOCAL_CFLAGS定义的是在编译C/C++时，传递给编译器的标志集合，LOCAL_CPPFLAGS只支持C++，作用也是传递给编译器一些信息，LOCAL_LDFLAGS是指传递给连接器一些额外的参数。</p>
-<p>在NDK开发中难免会用到这些标志位，特别是在优化编译时，下面的是本人在开发中遇到的编译选项。</p>
-<p>① LOCAL_CPPFLAGS += -fexceptions</p>
-<p>由于NDK编译从R5开始才支持C++异常控制，为了通用性，异常处理默认是禁用的（-fno-exceptions），因此需要在指定module中添加LOCAL_CPPFLAGS += -fexceptions编译选项方可编译带异常处理的C++代码。也可以直接在Application.mk中配置APP_CPPFLAGS += -fexceptions。</p>
-<p>② LOCAL_CPPFLAGS += -frtti</p>
-<p>从NDK R5开始，NDK也开始支持C++ RTTI了，但为了通用性，所有的C++源文件被构建的时候默认是不支持RTTI的（-fno-rtti），可以通过在Android.mk中添加：LOCAL_CPPFLAGS += -frtti或者在Application.mk添加APP_CPPFLAGS += -frtti来开启RTTI。</p>
-<p>③ LOCAL_CFLAGS += -fvisibility=hidden</p>
-<p>在NDK开发中，源文件的函数都有一个默认的visibility属性为public，编译生成的so文件中几乎所有的函数名、全局变量名均被导出，其实只需要导出java_com开头的jni函数即可，其他函数不需要暴露出来，在Android.mk中设置LOCAL_CFLAGS += -fvisibility=hidden，就可以隐藏不需要导出的函数，若某个函数需要导出，则添加JNIEXPORT或者<strong>attribute</strong> ((visibility (&#8220;default&#8221;)))即可。</p>
-<p>除了安全，不导出不必要的函数外，还能减小so体积。</p>
-<p>④ LOCAL_CFLAGS += -ffunction-sections</p>
-<p>不添加此参数时，编译文件.o中代码部分只有.text段，使用此参数，会使每个函数单独有一个段，举个栗子，函数func1()会编译成.text.func1段，虽然段多了，但对链接后代码大小并没有影响。</p>
-<p>⑤ LOCAL_CFLAGS += -fdata-sections</p>
-<p>同上，每个data都有一个单独的段。</p>
-<p>⑥ LOCAL_LDFLAGS += -Wl &#8211;gc-sections</p>
-<p>-Wl,&lt;option&gt;选项是告诉编译器，将后面选项&lt;option&gt;传递给连接器，-Wl,&#8211;gc-sections的意思是使用连接器ld链接时删除不用的段。若使用LOCAL_CFLAGS += -ffunction-sections -fdata-sections，则代码和数据均被分割成不同的段，若某个函数或数据未被任何函数调用，则ld不会链接未被调用的函数，从而减小so文件体积，达到优化so的目的。</p>
-<p>⑦ LOCAL_LDFLAGS += -fPIC</p>
-<p>PIC(position independent code)用于编译位置无关代码，生成可用于共享库的位置独立代码。若不添加-fPIC，则加载.so文件的代码段时，代码段引用的数据对象需要重定位，重定位会修改代码段内容，这样就导致没使用这个.so，代码段的进程在内核中就会生成这个文件的拷贝。</p>
-<p>⑧ LOCAL_LDFLAGS += -Wall</p>
-<p>这个的意思是wring all 意思在编译和链接过程中显示所有警告信息。</p>
-<p>⑨其他</p>
-<p>若需要了解其他编译标志，可以查看<a href="https://gcc.gnu.org/onlinedocs/gcc-4.8.4/gcc/Invoking-GCC.html#Invoking-GCC" target="_blank" rel="external">GCC Command Options 文档</a>。</p>
-
-      
-    </div>
-    <footer class="article-footer">
-      <a data-url="http://blog.idingsong.cn/2017/03/04/Android-NDK编译选项设置/" data-id="cj4b50ivb0000igplin77k17b" class="article-share-link">Partager</a>
-      
-      
-  <ul class="article-tag-list"><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/Android/">Android</a></li><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/ndk/">ndk</a></li></ul>
-
-    </footer>
-  </div>
   
 </article>
 
-
-  
-    <article id="post-将Cocos2d-x的libcurl单独打包到Android" class="article article-type-post" itemscope itemprop="blogPost">
-  <div class="article-meta">
-    <a href="/2017/03/04/将Cocos2d-x的libcurl单独打包到Android/" class="article-date">
-  <time datetime="2017-03-04T07:22:46.000Z" itemprop="datePublished">2017-03-04</time>
-</a>
-    
-  </div>
-  <div class="article-inner">
-    
-    
-      <header class="article-header">
-        
-  
-    <h1 itemprop="name">
-      <a class="article-title" href="/2017/03/04/将Cocos2d-x的libcurl单独打包到Android/">将Cocos2d-x的libcurl单独打包到Android</a>
-    </h1>
-  
-
-      </header>
-    
-    <div class="article-entry" itemprop="articleBody">
-      
-        <blockquote>
-<p><a href="http://blog.csdn.net/yuxikuo_1/article/details/41746869" target="_blank" rel="external">http://blog.csdn.net/yuxikuo_1/article/details/41746869</a></p>
-</blockquote>
-<p><span id="more-64"></span></p>
-<p>研究了N久+N次，终于在这一周解决了，感谢度娘。感觉第一次快要跑通时，心里真是万分紧张，感觉什么都不会再爱了。点下按钮，返回预期的值，OK。搞定，为此，放松了一个上午，现在来写写一些我是怎么搞通的吧。不敢保证，每个库都能这么搞，但是对一些刚入门者，应该有帮助。好的，开讲！</p>
-<h2 id="1、研究背景与意义"><a href="#1、研究背景与意义" class="headerlink" title="1、研究背景与意义"></a><a name="t0"></a>1、研究背景与意义</h2><div>公司要单独封装网络库，所以，首先想到的libcurl，因为搞过半年Cocos2d-x，所以，直接找到了Cocos2d-x引擎源码的预编译第三方库里的libcurl。什么是预编译库？下面来解释解释。</div>
-
-<h3 id="1-1预编译库"><a href="#1-1预编译库" class="headerlink" title="1.1预编译库"></a><a name="t1"></a>1.1预编译库</h3><div>所谓预编译库其实就是静态库，是一种可执行代码的二进制形式，可以被操作系统载入内存执行。在Linux或Unix下是以.a结尾的库文件。库文件首先会进行编译，当我们把库文件导入自己的动态或静态文件或工程中时，会提高代码的编译速度。静态库在代码编译的时候是已经被载入可执行程序的，体积较大，动态库是在执行程序时才载入内存，在编译的过程中简单的引用，因此代码体积较小。</div><br><div>这篇文章详细讲解了Linux下静态和动态库的基础知识。<a href="http://blog.csdn.net/abc19842008/article/details/1923159" target="_blank" rel="external">Linux库详解</a></div>
-
-<h3 id="1-2libcurl"><a href="#1-2libcurl" class="headerlink" title="1.2libcurl"></a><a name="t2"></a>1.2libcurl</h3><div>Libcurl是一个开源免费的库文件，客户端传输库，支持FTP、FTPS、TFTP、HTTP、HTTPS、GOPHER、TELENT、DICT、FILE、LDAP等，C语言编写，跨平台，支持Windows、Unix、Linux等，线程安全，支持Ipv6，易于使用。</div><br><div>官网下载地址：<a href="http://curl.haxx.se/download.html" target="_blank" rel="external">http://curl.haxx.se/download.html</a></div><br><div>官网API详解：<a href="http://curl.haxx.se/libcurl/c/" target="_blank" rel="external">http://curl.haxx.se/libcurl/c/</a></div><br><div>其实主要是4个函数：1）curl_easy_init()初始化;2）curl_easy_setopt()设置属性;3）curl_easy_perform，连接。4）curl_easy_getinfo</div><br><div>这篇文章详细介绍了如何使用libcurl将下载内容写入内存：<a href="http://blog.163.com/xu_chao2000/blog/static/27770610200801303252802/" target="_blank" rel="external">http://blog.163.com/xu_chao2000/blog/static/27770610200801303252802/</a></div>
-
-<h2 id="2、打包Android版libcurl包"><a href="#2、打包Android版libcurl包" class="headerlink" title="2、打包Android版libcurl包"></a><a name="t3"></a>2、打包Android版libcurl包</h2><div>关于打包libcurl包，网上有非常多的教程，由于Cocos2d-x已经为我们提供了几乎大部分平台的预编译库，即.a文件。所以，这一步我就在这省略了，虽然可能网上的教程有的比较坑爹，不过，多花些时间，综合起来，就会凑成一个完美的解决方案。</div>
-
-<h2 id="3、开始打包"><a href="#3、开始打包" class="headerlink" title="3、开始打包"></a><a name="t4"></a>3、开始打包</h2><div>在打包之前，我们可能需要学一下JNI和NDK编程的知识，不过，这些知识，也不是一篇两篇文章能解释清楚的，所以，这里也不打算讲解，有兴趣的可以翻看本人之前的博客，或者网上百度会有大篇大篇的文章。</div>
-
-<h3 id="3-1新建Android空工程"><a href="#3-1新建Android空工程" class="headerlink" title="3.1新建Android空工程"></a><a name="t5"></a>3.1新建Android空工程</h3><div>使用Eclipse新建Android工程。</div><br><div>1）由于Android本身新建工程并不包含jni目录，所以，我们需要自己添加该目录，并在该目录下添加两个文件。Android.mk和Application.mk这两个文件是ndk-build使用的文件。</div><br><div>2）拷贝Cocos2d-x的预编译库。我们需要的libcurl预编译库在Cocos2d-x引擎cocos2d-x-3.3rc0/external/curl目录下，将该目录下的两个文件include和prebuilt拷贝到我们上一步新建的android工程中。</div><br><div>3）删除include和prebuilt两个目录中android目录之外的的平台目录。因为我们用不到那些</div><br><div>4）更新Eclipse，可以看到，我们刚才的操作过后的目录如下：重点是jni目录下的改变（网络限制，暂时传不上来照片）</div>
-
-<h3 id=""><a href="#" class="headerlink" title=""></a><a name="t6"></a></h3><h3 id="3-2先来一个简单例子，抛砖引玉"><a href="#3-2先来一个简单例子，抛砖引玉" class="headerlink" title="3.2先来一个简单例子，抛砖引玉"></a><a name="t7"></a>3.2先来一个简单例子，抛砖引玉</h3><p><a href="http://lib.csdn.net/base/15" title="undefined" target="_blank" rel="external">Android</a>.mk文件可以说是本文最终要的一部分。我们先一步一步去讲一讲它。</p>
-<p>首先阅读下这篇文章，预热一下，了解了解打包静态库和动态库的方法。</p>
-<p>其次我们从NDK的samples的two-libs例子入手，分析mk的写法。（即搭建Android环境时，解压的NDK目录下的samples/two-libs）</p>
-<p>先上代码</p>
-<p>1）first文件：定义了一个加法的方法</p>
-<div class="dp-highlighter bg_cpp"><br><div class="bar"><br><div class="tools"><br><pre class="crayon-plain-tag">//first.h<br>#ifndef FIRST_H<br>#define FIRST_H<br><br>extern int first(int  x, int  y);<br><br>#endif /<em> FIRST_H </em>/<br><br>//first.c<br>#include “first.h”<br>int  first(int  x, int  y)<br>{<br>    return x + y;<br>}</pre><br><br>2）second.c：这个文件是Jni的相关的文件。<p></p><br></div><br></div><br></div><br><div class="dp-highlighter bg_cpp"><br><div class="bar"><br><div class="tools"><br><pre class="crayon-plain-tag">//second.c<br>#include “first.h”<br>#include &lt;jni.h&gt; //添加jni头文件<br>//下面这个函数的意思就是com.example.twolibs包com.example.androidlibcurldemo下MainActivity.java中的add方法。<br>jint<br>Java_com_example_androidlibcurldemo_MainActivity_add( JNIEnv*  env,<br>                                      jobject  this,<br>                                      jint     x,<br>                                      jint     y )<br>{<br>    return first(x, y);<br>}</pre><br><br>这个add方法，是在我们上一步创建工程的src目录下的MainActivity.java中声明的两个native方法，说白了，second.c的作用就是，定义java中的native方法，并在实现中调用C的代码，如first.c中的first函数。相当于一个中介的样子。<p></p><br></div><br></div><br></div>
-
-<p>3）Android.mk：例子中的Android.mk文件</p>
-<div class="dp-highlighter bg_cpp"><br><div class="bar"><br><div class="tools"><br><pre class="crayon-plain-tag">#定义变量LOCAL_PATH指向mk所在的路径，如Android.mk文件在/usr/lib/curl/Android.mk<br>#那么LOCAL_PATH代表的值就是：/usr/lib/curl<br>#注意，这个变量没有清理，如果在后面引入其他mk文件，这个变量是可以传递到引入的mk文件中的<br><br>LOCAL_PATH:= $(call my-dir)<br><br># first lib, which will be built statically<br>#CLEAR_VARS清理变量，因为这些变量都是静态全局的，如果不清了，下次编译时用到这些变量就会造成错误的<br>include $(CLEAR_VARS)<br>#本地静态库模块名字，如果在别处导入库文件时，会用到这个名字<br>#此处名字的使用是libXXX.so或libXXX.a中的XXX的名字，也可以libXXX，不过，这两种在使用上还是有点区别的，<br>#使用XXX或libXXX最后打包库后都是libXXX.a/so,在导入库模块时要使用LOCAL_LDLIBS := -lz来指明导入的是本地库<br>#否则会报找不到库的错误<br>LOCAL_MODULE    := libtwolib-first<br>LOCAL_SRC_FILES := first.c<br>#创建静态库，注意，这个库是我们第一次创建，所以使用BUILD_STATIC_LIBRARY<br>#如果LOCAL_SRC_FILES（即源码文件）使用的是.a则使用include $(PREBUILT_STATIC_LIBRARY)，见下面代码<br>#如果使用的是.so文件，则使用include $(PREBUILT_SHARED_LIBRARY)，PREBUILT表示使用的是预编译库里的源文件<br>include $(BUILD_STATIC_LIBRARY)<br><br># second lib, which will depend on and include the first one<br>#清理变量<br>include $(CLEAR_VARS)<br>#模块名称<br>LOCAL_MODULE    := libtwolib-second<br>#源码文件<br>LOCAL_SRC_FILES := second.c<br>#导入关联的静态库，如果还有其它静态库，直接在后面添加即可，注意空格隔开<br>LOCAL_STATIC_LIBRARIES := libtwolib-first<br>#最终创建动态库文件，libtwolib-second.so<br>#如果最终创建静态库文件，是需要把SHARED改为STATIC即可，如libtwolib-first<br>include $(BUILD_SHARED_LIBRARY)</pre><br><br>4）Application.mk<p></p><br></div><br></div><br></div>
-
-<p>我们在这个mk文件中只添加APP_ABI := all NDK就会为我们自动打包对应不同平台ABI的库文件，不同平台的库文件还是有区别的。</p>
-<p>不过现在的Android手机大部分都是armeabi的，所以，如果不添加这句话，NDK默认的就会生成armeabi目录，并编译这个平台下使用的库文件。</p>
-<p>5）编译库文件</p>
-<p>我们进入到创建的Android工程，根目录即可，打开终端，如我使用的mac，打开终端后输入：</p>
-<p>$ cd /Users/yuxikuo/Android_WorkPlace/AndroidLibcurlDemo</p>
-<p>$  ndk-build</p>
-<div class="dp-highlighter bg_cpp"><br><div class="bar"><br><div class="tools"><br><pre class="crayon-plain-tag">Android NDK: WARNING: APP_PLATFORM android-19 is larger than android:minSdkVersion 8 in ./AndroidManifest.xml<br>[armeabi] Compile thumb  : twolib-second &lt;= second.c<br>[armeabi] Compile thumb  : twolib-first &lt;= first.c<br>[armeabi] StaticLibrary  : libtwolib-first.a<br>[armeabi] SharedLibrary  : libtwolib-second.so<br>[armeabi] Install        : libtwolib-second.so =&gt; libs/armeabi/libtwolib-second.so</pre><br><br>打包后的结果如上：Android中NDK将打包后的包文件拷贝到1）工程目录下的libs/下对应ABI目录下面，ABI表示当前机器的操作系统，一共有4类，不同的目标系统ABI有不同的打包方式和兼容性。2）同时还会在工程目录新建obj/local目录，该目录下同样根据不同的ABI拷贝对应的库文件。不过，不同的ABI目录是需要自己新建的，默认下是armeabi，因为大部分Android使用的是这个，并且它可以运行在所有ARM CPU上。<p></p><br></div><br></div><br></div>
-
-<p>armeabi   =&gt;    ARMv5TE以上</p>
-<p>armeabi-v7a  =&gt;  ARMv7以上</p>
-<p>x86   =&gt;   x86平台</p>
-<p>mips =&gt; mips</p>
-<p>由于根据不同的ABI进行打包，那么我们每次都会生成4个包，打包过程见下面代码。</p>
-<p>而且现在其他的平台并不常见，而且armeabi对其他平台也有兼容，所以，我们这里暂时只考虑armeabi平台下库文件的打包。</p>
-<div class="dp-highlighter bg_cpp"><br><div class="bar"><br><div class="tools"><br><pre class="crayon-plain-tag">Android NDK: WARNING: APP_PLATFORM android-19 is larger than android:minSdkVersion 8 in ./AndroidManifest.xml<br>[armeabi-v7a] Compile thumb  : twolib-second &lt;= second.c<br>[armeabi-v7a] Compile thumb  : twolib-first &lt;= first.c<br>[armeabi-v7a] StaticLibrary  : libtwolib-first.a<br>[armeabi-v7a] SharedLibrary  : libtwolib-second.so<br>[armeabi-v7a] Install        : libtwolib-second.so =&gt; libs/armeabi-v7a/libtwolib-second.so //armeabi-v7a<br>[armeabi] Compile thumb  : twolib-second &lt;= second.c<br>[armeabi] Compile thumb  : twolib-first &lt;= first.c<br>[armeabi] StaticLibrary  : libtwolib-first.a<br>[armeabi] SharedLibrary  : libtwolib-second.so<br>[armeabi] Install        : libtwolib-second.so =&gt; libs/armeabi/libtwolib-second.so  //armeabi<br>[x86] Compile        : twolib-second &lt;= second.c<br>[x86] Compile        : twolib-first &lt;= first.c<br>[x86] StaticLibrary  : libtwolib-first.a<br>[x86] SharedLibrary  : libtwolib-second.so<br>[x86] Install        : libtwolib-second.so =&gt; libs/x86/libtwolib-second.so  //x86<br>[mips] Compile        : twolib-second &lt;= second.c<br>[mips] Compile        : twolib-first &lt;= first.c<br>[mips] StaticLibrary  : libtwolib-first.a<br>[mips] SharedLibrary  : libtwolib-second.so<br>[mips] Install        : libtwolib-second.so =&gt; libs/mips/libtwolib-second.so   //mips</pre><br><br>6）在Java代码中调用。<p></p><br></div><br></div><br></div>
-
-<p>在MainActivity.java中添加如下代码</p>
-<div class="dp-highlighter bg_java"><br><div class="bar"><br><div class="tools"><br><pre class="crayon-plain-tag">@Override<br>   protected void onCreate(Bundle savedInstanceState) {<br>       super.onCreate(savedInstanceState);<br><br>       //super.onCreate(savedInstanceState);<br><br>       TextView  tv = new TextView(this);<br>       int       x  = 1000;<br>       int       y  = 42;<br><br>       // here, we dynamically load the library at runtime<br>       // before calling the native method.<br>       //把生成的库load进来，注意去掉libXXX.so中的lib和so。只保留XXX<br>       System.loadLibrary(“twolib-second”);<br><br>       int  z = add(x, y);<br><br>       tv.setText( “The sum of “ + x + “ and “ + y + “ is “ + z );<br>       setContentView(tv);<br>   }<br><br>   public native int add(int  x, int  y);//native函数声明，在我们的second.c文件中定义，并使用了first.c中的first函数，实现加法</pre><br><br>注意，如果出现错误或崩溃，看看second.c的函数包名是不是错误，然后看看有没有在java中声明native的add方法<p></p><br></div><br></div><br></div>
-
-<p>截图稍后上传。</p>
-<h3 id="3-3重头戏-使用libcurl-a打包的so库到Android"><a href="#3-3重头戏-使用libcurl-a打包的so库到Android" class="headerlink" title="3.3重头戏:使用libcurl.a打包的so库到Android"></a><a name="t8"></a>3.3重头戏:使用libcurl.a打包的so库到Android</h3><p>1）首先，看看我们之前拷贝到jni目录下的两个文件夹include和prebuilt。对了，这两个目录是我阉割的，把其它无关平台的目录删除了。</p>
-<p>2）include目录下是libcurl.a库中源文件的头文件。我们也需要将它打包进包里面，才能在涉及到包时，自动引入头文件。</p>
-<p>3）prebuilt目录是存放libcurl.a的目录，我们暂时保存Cocos2d-x的目录结构，这样，我们就免得修改下面的Android.mk文件了</p>
-<p>4）/prebuilt/android目录下的Android.mk分析：</p>
-<p>注意为了减少路径上的问题，我将include文件夹拷贝到了和该Android.mk文件相同的路径下了</p>
-<div class="dp-highlighter bg_java"><br><div class="bar"><br><div class="tools"><br><pre class="crayon-plain-tag">LOCAL_PATHA:=$(call my-dir)//当前路径变量，注意，我在该处设置的变量名是LOCAL_PATHA，因为后面需要导入这个mk文件，防止变量冲突<br>include $(CLEAR_VARS)//清理变量<br>LOCAL_MODULE := cocos_curl_static //模块名称<br>LOCAL_MODULE_FILENAME := curl  //生成的包名<br>LOCAL_SRC_FILES := prebuilt/android/$(TARGET_ARCH_ABI)/libcurl.a  //依赖的源文件，注意：路径一定要为相对路径，这一块比较容易出错<br>LOCAL_EXPORT_C_INCLUDES := $(LOCAL_PATHA)/include/android  //为了能在库外面使用库的方法，需要引入头文件<br>include $(PREBUILT_STATIC_LIBRARY)//预编译成静态库</pre><br><br>4）目录下的Android.mk分析：<p></p><br></div><br></div><br></div><br><div class="dp-highlighter bg_java"><br><div class="bar"><br><div class="tools"><br><pre class="crayon-plain-tag">LOCAL_PATH:=$(call my-dir)<br>#修改1<br>include $(LOCAL_PATH)/prebuilt/android/Android.mk<br># first lib, which will be built statically<br>#<br>include $(CLEAR_VARS)<br><br>LOCAL_MODULE    := libtwolib-first<br>LOCAL_SRC_FILES := first.c<br><br>include $(BUILD_STATIC_LIBRARY)<br><br># second lib, which will depend on and include the first one<br>#<br>include $(CLEAR_VARS)<br><br>LOCAL_MODULE    := libtwolib-second<br>LOCAL_SRC_FILES := second.c<br>#修改2，尤其是-lz的作用，非常大<br>LOCAL_C_INCLUDES := $(LOCAL_PATH)<br>LOCAL_LDLIBS := -llog \<br>        -lz<br>#修改3，增加cocos_curl_static库的导入，这就是我们在上面mk定义的<br>LOCAL_STATIC_LIBRARIES := libtwolib-first cocos_curl_static<br><br>include $(BUILD_SHARED_LIBRARY)</pre><br><br>5）重写second.c，调用libcurl中的方法，进行网络请求<p></p><br></div><br></div><br></div><br><div class="dp-highlighter bg_java"><br><div class="bar"><br><div class="tools"><br><pre class="crayon-plain-tag">#include “first.h”<br>#include &lt;jni.h&gt;<br>#include &lt;curl/curl.h&gt;<br><br>jint<br>Java_com_example_androidlibcurldemo_MainActivity_add( JNIEnv<em>  env,<br>                                      jobject  this,<br>                                      jint     x,<br>                                      jint     y )<br>{<br>    CURL</em> curl;<br>    CURLcode res;<br>    curl = curl_easy_init();<br>    if(NULL == curl)//如果初始化失败，返回1000<br>    {<br>        return first(1,999);<br>    }<br>    curl_easy_setopt(curl, CURLOPT_URL,”<a href="http://www.baidu.com&quot;);//以get请求www.baidu.com" target="_blank" rel="external">http://www.baidu.com&quot;);//以get请求www.baidu.com</a><br>    curl_easy_setopt(curl, CURLOPT_READFUNCTION,NULL);<br>    curl_easy_setopt(curl, CURLOPT_NOSIGNAL,1);<br>    curl_easy_setopt(curl, CURLOPT_CONNECTTIMEOUT,20);//连接时间，由于网络不好，为了达到测试效果，我设置的时间较长<br>    curl_easy_setopt(curl, CURLOPT_TIMEOUT,20);<br>    res = curl_easy_perform(curl);//执行<br>    curl_easy_cleanup(curl);//清除<br>&lt;span style=”white-space:pre”&gt;    &lt;/span&gt;<br>    return first(res,res);//根据res值返回到Android中的TextView中，如果res是0，表示请求成功，如果是6表示无法解析主机，即没联网<br>}</pre><br><br>6）编译库文件<p></p><br></div><br></div><br></div>
-
-<p>同样还是在终端中，先进入到Android工程目录，然后执行ndk-build。最终在obj和libs目录下生成了我们的libtwolib-second库</p>
-<h3 id="3-4如何使用库"><a href="#3-4如何使用库" class="headerlink" title="3.4如何使用库"></a><a name="t9"></a>3.4如何使用库</h3><div>1）首先，还是要修改我们的MainActivity.java类，修改如下：</div><br><div><br><div class="dp-highlighter bg_java"><br><div class="bar"><br><div class="tools"><br><pre class="crayon-plain-tag">private Button button;<br>    private TextView tv;<br>    private int x  = 123;<br>    private int y  = 456;<br>    @Override<br>    protected void onCreate(Bundle savedInstanceState) {<br>        super.onCreate(savedInstanceState);<br>        setContentView(R.layout.activity_main);<br>        // here, we dynamically load the library at runtime<br>        // before calling the native method.<br>        //<br>        System.loadLibrary(“twolib-second”);<br><br>        tv = (TextView)findViewById(R.id.textView2);<br>        button = (Button) this.findViewById(R.id.button1);<br>        this.button.setOnClickListener(new OnClickListener() {<br><br>            @Override<br>            public void onClick(View arg0) {<br>                 int  z = add(x, y);<br>                 tv.setText( “网络请求结果” + z );<br>            }<br>        });<br>    }<br><br>    public native int add(int  x, int  y);</pre><br><br>我们要在activity_main布局中，添加一个按钮和一个TextView，按钮用于出发网络请求，TextView用于显示请求结果。<p></p><br></div><br></div><br></div><br></div><br><div>显示0表示请求成功。显示12表示无法解析主机，没联网。</div><br><div>2）在AndroidManifest.xml中添加网络权限。否则会在TextView显示12</div><br><div><br><br><u>&lt;</u><u>uses-permission</u><u> </u><u>android:name</u><u>=</u>&#8220;android.permission.INTERNET&#8221;<u>/&gt;</u><br><br>至此，我们就完成了库的编译和使用。<br><br></div><br><div>Ctrl+R 打包APK到手机，点击button测试吧。不过这是同步请求，异步暂时还未研究。</div><br><div></div><br><div>以上步骤是经过真机测试，截图如下：网络限制，稍后上传。</div><br><div></div><br><div>疑惑：打包时，如果我没有在second.c中引用&lt;curl/curl.h&gt;进行打包，包只有几十kb，引用后就1.2MB了，但是，我看了下libcurl.a的库本身就4点几MB，不知道什么原因，如有知道，烦请告知。</div>
-
-<p>参考资料：</p>
-<p>1）<a href="http://blog.csdn.net/sozell/article/details/10551309" target="_blank" rel="external">http://blog.csdn.net/sozell/article/details/10551309</a></p>
-<p>2）<a href="http://www.2cto.com/kf/201204/125939.html" target="_blank" rel="external">http://www.2cto.com/kf/201204/125939.html</a></p>
-<p>3）<a href="http://jingyan.baidu.com/article/c910274bffa502cd361d2da0.html" target="_blank" rel="external">http://jingyan.baidu.com/article/c910274bffa502cd361d2da0.html</a></p>
-<p>4）<a href="http://blog.csdn.net/smfwuxiao/article/details/6591927" target="_blank" rel="external">http://blog.csdn.net/smfwuxiao/article/details/6591927</a></p>
-<p>5）<a href="http://www.cnblogs.com/lyout/archive/2013/06/03/3115799.html" target="_blank" rel="external">http://www.cnblogs.com/lyout/archive/2013/06/03/3115799.html</a></p>
-<p>6）<a href="http://www.linuxidc.com/Linux/2012-07/66105.htm" target="_blank" rel="external">http://www.linuxidc.com/Linux/2012-07/66105.htm</a></p>
-<p>7）<a href="http://blog.csdn.net/smfwuxiao/article/details/8523479" target="_blank" rel="external">http://blog.csdn.net/smfwuxiao/article/details/8523479</a></p>
-<p>8）<a href="http://blog.csdn.net/yuxikuo_1/article/details/39577257" target="_blank" rel="external">http://blog.csdn.net/yuxikuo_1/article/details/39577257</a></p>
-<p>9）<a href="http://bbs.csdn.net/topics/370006153" target="_blank" rel="external">http://bbs.csdn.net/topics/370006153</a></p>
-<p>10）<a href="http://blog.csdn.net/huyiyang2010/article/details/7664201" target="_blank" rel="external">http://blog.csdn.net/huyiyang2010/article/details/7664201</a></p>
-<p>11）<a href="http://blog.csdn.net/cjj198561/article/details/33417965" target="_blank" rel="external">http://blog.csdn.net/cjj198561/article/details/33417965</a></p>
-<p>12）<a href="http://bbs.chinaunix.net/thread-4096875-1-1.html" target="_blank" rel="external">http://bbs.chinaunix.net/thread-4096875-1-1.html</a></p>
-
-      
-    </div>
-    <footer class="article-footer">
-      <a data-url="http://blog.idingsong.cn/2017/03/04/将Cocos2d-x的libcurl单独打包到Android/" data-id="cj4b50iwj000aigplbxyud8mx" class="article-share-link">Partager</a>
-      
-      
-  <ul class="article-tag-list"><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/Android/">Android</a></li><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/Cocos2d/">Cocos2d</a></li><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/android/">android</a></li><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/cocos2d/">cocos2d</a></li></ul>
-
-    </footer>
-  </div>
-  
-</article>
-
-
-  
-    <article id="post-使用NDK自带的iconv进行编码转换" class="article article-type-post" itemscope itemprop="blogPost">
-  <div class="article-meta">
-    <a href="/2017/03/03/使用NDK自带的iconv进行编码转换/" class="article-date">
-  <time datetime="2017-03-03T11:04:41.000Z" itemprop="datePublished">2017-03-03</time>
-</a>
-    
-  </div>
-  <div class="article-inner">
-    
-    
-      <header class="article-header">
-        
-  
-    <h1 itemprop="name">
-      <a class="article-title" href="/2017/03/03/使用NDK自带的iconv进行编码转换/">使用NDK自带的iconv进行编码转换</a>
-    </h1>
-  
-
-      </header>
-    
-    <div class="article-entry" itemprop="articleBody">
-      
-        <blockquote>
-<p><a href="http://wty530.blog.51cto.com/3238860/1852579" target="_blank" rel="external">http://wty530.blog.51cto.com/3238860/1852579</a></p>
-</blockquote>
-<p><span id="more-60"></span></p>
-<p>cocos2d-x显示中文乱码最常用的解决方式主要有xml文件读取、使用iconv库。由于在使用iconv库出现了比较多的问题，这里作个总结，给后来人少走一些弯路。</p>
-<p>我用的是cocos2d-x 3.4的版本，我也是参照网上的教程，但可能一些细节教程里面没有提到，这里就详细列出来。</p>
-<p>1、在cocos2d-x端新建一个ChineseString.h文件</p>
-<p>代码如下：</p>
-<div><br><div id="highlighter_99951" class="syntaxhighlighter  cpp"><br><pre class="crayon-plain-tag">#ifndef <strong>ChineseString_H</strong><br>#define <strong>ChineseString_H</strong><br>#if (CC_TARGET_PLATFORM == CC_PLATFORM_ANDROID)<br>#include “../../../software/android-ndk-r10e/sources/android/support/include/iconv.h”<br>#endif<br>#if (CC_TARGET_PLATFORM == CC_PLATFORM_WIN32)<br>#include “external/win32-specific/icon/include/iconv.h”<br>#endif<br>#include &lt;string&gt;<br>#pragma comment(lib, “libiconv.lib”)<br>static char g_GBKConvUTF8Buf[5000] = {0};<br>class ChineseString<br>{<br>public:<br>static const char<em> GBKToUTF8(char </em>strChar)<br>{<br>iconv_t  iconvH;<br>iconvH = iconv_open(“utf-8”, “gb2312”);<br>if(iconvH == 0)<br>{<br>return NULL;<br>}<br>size_t strLength = strlen(strChar);<br>size_t outLength = strLength <em> 4;<br>size_t copyLength = outLength;<br>memset(g_GBKConvUTF8Buf, 0, 5000);<br>char</em> outbuf = (char<em>)malloc(outLength);<br>char</em> pBuff = outbuf;<br>memset(outbuf, 0, outLength);<br>if (-1 == iconv(iconvH, &amp;strChar, &amp;strLength, &amp;outbuf, &amp;outLength))<br>{<br>iconv_close(iconvH);<br>return NULL;<br>}<br>memcpy(g_GBKConvUTF8Buf,pBuff,copyLength);<br>free(pBuff);<br>iconv_close(iconvH);<br>return g_GBKConvUTF8Buf;<br>}<br>};<br>#endif</pre><br><br>2、Android端<p></p><br></div><br></div>
-
-<p>网上有一种方法要自己下载iconv库，我觉得那种方法挺麻烦的，而且我自己跟着步骤试了下，没有成功，后面放弃了，最后又找了一种方法，也就是下面要介绍的用NDK自带的iconv库。</p>
-<p>我用的是android-ndk-r10e，可以发现有个iconv.h文件，也就是上面cocos2d-x端代码里引用的路径</p>
-<div><br><div id="highlighter_795478" class="syntaxhighlighter  cpp"><br><pre class="crayon-plain-tag">#if (CC_TARGET_PLATFORM == CC_PLATFORM_ANDROID)<br>#include “../../../software/android-ndk-r10e/sources/android/support/include/iconv.h”<br>#endif</pre><br><br>这个根据自己ndk存放的路径做调整。<p></p><br></div><br></div>
-
-<p>然后修改proj.android/jni目录下的Android.mk文件</p>
-<p>主要加了</p>
-<div><br><div class="syntaxhighlighter  cpp"><br><pre class="crayon-plain-tag">LOCAL_STATIC_LIBRARIES += android_support<br>$(call import-module, android/support)</pre><br><br>在相应的地方加入这两段代码<p></p><br></div><br></div>
-
-<p><a href="http://s1.51cto.com/wyfs02/M01/87/3B/wKioL1fYqWqR0SYJAABY88e_luE261.png-wh_500x0-wm_3-wmp_4-s_2332078002.png" target="_blank" rel="external"><img src="http://s1.51cto.com/wyfs02/M01/87/3B/wKioL1fYqWqR0SYJAABY88e_luE261.png-wh_500x0-wm_3-wmp_4-s_2332078002.png" alt="wKioL1fYqWqR0SYJAABY88e_luE261.png-wh_50" title="QQ截图20160914093522.png"></a></p>
-<p>做了以上这些步骤，正常情况下是可以通过了。</p>
-<p>注意以下几点：</p>
-<p>1、android编译碰到如下错误</p>
-<p>invalid conversion from &#8216;const char<strong>&#8217; to &#8216;char</strong>&#8217;</p>
-<p>这是由于我们定义GBKToUTF8这个函数时，参数使用const char<em> strChar,然后传入iconv函数时ndk的iconv.h定义的是size_t  iconv(iconv_t, char**, size_t</em>, char<em>*, size_t</em>); 所以只需要把const去掉就ok了。</p>
-<p>2、网上有介绍说ndk r9的iconv.h代码有问题，需要修改如下，大家注意一下就行，r10是没有这个问题</p>
-<div><br><div id="highlighter_639488" class="syntaxhighlighter  cpp"><br><pre class="crayon-plain-tag">//将#ifdef <strong>cplus_plus<br>//改为<br>#ifdef </strong>cplusplus<br>}  // extern “C”<br>#endif</pre><br><br>&nbsp;<p></p><br></div><br></div>
-      
-    </div>
-    <footer class="article-footer">
-      <a data-url="http://blog.idingsong.cn/2017/03/03/使用NDK自带的iconv进行编码转换/" data-id="cj4b50iwc0008igpl1rnin33m" class="article-share-link">Partager</a>
-      
-      
-  <ul class="article-tag-list"><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/Cocos2d/">Cocos2d</a></li><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/cocos2d/">cocos2d</a></li><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/game/">game</a></li></ul>
-
-    </footer>
-  </div>
-  
-</article>
-
-
-  
-    <article id="post-Android-NDK环境搭建" class="article article-type-post" itemscope itemprop="blogPost">
-  <div class="article-meta">
-    <a href="/2017/02/27/Android-NDK环境搭建/" class="article-date">
-  <time datetime="2017-02-27T13:02:36.000Z" itemprop="datePublished">2017-02-27</time>
-</a>
-    
-  </div>
-  <div class="article-inner">
-    
-    
-      <header class="article-header">
-        
-  
-    <h1 itemprop="name">
-      <a class="article-title" href="/2017/02/27/Android-NDK环境搭建/">Android NDK环境搭建</a>
-    </h1>
-  
-
-      </header>
-    
-    <div class="article-entry" itemprop="articleBody">
-      
-        <blockquote>
-<p><a href="http://jingyan.baidu.com/article/5d6edee22d908799eadeec9f.html" target="_blank" rel="external">http://jingyan.baidu.com/article/5d6edee22d908799eadeec9f.html</a></p>
-</blockquote>
-<p><span id="more-56"></span></p>
-<div class="exp-content-block"><br><div class="exp-content-body exp-brief-step"><br><div class="exp-content-listblock"><br><div class="content-listblock-text"><br><br>使用最新ndk，直接抛弃cygwin，以前做Android的项目要用到NDK就必须要下载NDK，下载安装Cygwin(模拟Linux环境用的)，下载CDT（Eclipse C/C++开发插件），还要配置编译器，环境变量，特别麻烦，新版就不需要了<br><br></div><br></div><br></div><br></div><br><div class="exp-content-block"><br><br>## <a name="section-2"></a>工具/原料<br><br><div class="audio-wp audio-wp-2" data-text="" data-for="" data-index="1"></div><br><div class="exp-content-body"><br><br>*   <div class="content-list-text"><br><br>ADT<br><br>    </div>
-
-<ul>
-<li><div class="content-list-text">
-
-</div></li>
-</ul>
-<p>NDK</p>
-<pre><code>&lt;/div&gt;
-</code></pre><p></p></div><br></div><p></p>
-<div class="exp-content-block"><br><br>## <a name="section-3"></a>方法/步骤<br><br><div class="audio-wp audio-wp-2" data-text="" data-for="" data-index="2"></div><br><div class="exp-content-body"><br><br>1.  <div class="list-icon">1</div><br><div class="content-list-text"><br><br>Android官网下载Android的开发工具ADT(Android Development Tool的缩写)，该工具集成了最新的ADT和NDK插件以及Eclipse，还有一个最新版本SDK。解压之后就可以用了<br><br>    </div>
-
-<ol>
-<li><div class="list-icon">2</div><div class="content-list-text">
-
-</div></li>
-</ol>
-<p>ADT插件：管理Android SDK和相关的开发工具的</p>
-<pre><code>NDK插件：用于开发Android NDK的插件，ADT版本在20以上，就能安装NDK插件，另外NDK集成了CDT插件
-
-下载链接见：http://developer.android.com/sdk/index.html
-
-&lt;/div&gt;
-</code></pre><ol>
-<li><div class="list-icon">3</div><div class="content-list-text">
-
-</div></li>
-</ol>
-<p>Android官网下载最新的NDK，注：NDK版本在r7以上之后就集成了Cygwin，而且还是十分精简版。</p>
-<pre><code>下载链接见：http://developer.android.com/tools/sdk/ndk/index.html
-
-&lt;/div&gt;
-</code></pre><div class="last-item"><span class="last-item-end">END</span></div><br></div><br></div><br><div class="exp-content-block"><br><br>## <a name="section-4"></a>eclipse配置<br><br><div class="audio-wp audio-wp-2" data-text="" data-for="" data-index="3"></div><br><div class="exp-content-body"><br><br>1.  <div class="list-icon"></div><br><div class="content-list-text"><br><br>打开Eclipse，点Window-&gt;Preferences-&gt;Android-&gt;NDK,设置NDK路径，例如Shamoo的是E:\android-ndk-r9c<br><br>    </div><br><div class="content-list-media"><br><div class="content-list-image clearfix"><a href="http://jingyan.baidu.com/album/5d6edee22d908799eadeec9f.html?picindex=1" target="_blank" rel="external"><img src="http://e.hiphotos.baidu.com/exp/w=500/sign=039b836f7b310a55c424def487444387/6f061d950a7b02088f59267d60d9f2d3562cc89e.jpg" alt="Android NDK环境搭建"></a></div><br></div>
-
-<ol>
-<li><div class="list-icon"></div><div class="content-list-text">
-
-</div></li>
-</ol>
-<p>新建一个Android工程，在工程上右键点击Android Tools-&gt;Add Native Support&#8230;,然后给我们的.so文件取个名字，例如:my-ndk</p>
-<pre><code>&lt;/div&gt;
-</code></pre><div class="content-list-media"><br><div class="content-list-image clearfix"><a href="http://jingyan.baidu.com/album/5d6edee22d908799eadeec9f.html?picindex=2" target="_blank" rel="external"><img src="http://b.hiphotos.baidu.com/exp/w=500/sign=4b3edaaf718da9774e2f862b8050f872/63d0f703918fa0ec09547d91249759ee3c6ddb9e.jpg" alt="Android NDK环境搭建"></a></div><br></div>
-
-<ol>
-<li><div class="list-icon"></div><div class="content-list-text">
-
-</div></li>
-</ol>
-<p>这时候工程就会多一个jni的文件夹，jni下有Android.mk和my-ndk.cpp文件。Android.mk是NDK工程的Makefile，my-ndk.cpp就是NDK的源文件。</p>
-<pre><code>&lt;/div&gt;
-</code></pre><ol>
-<li><div class="list-icon"></div><div class="content-list-text">
-
-</div></li>
-</ol>
-<p>接下来仿着NDK的demo,Hello-JNI工程写一下。使用Alt + &#8216;/&#8217;可以代码提示！很爽！有木有？之前用CDT时候死活都按不出代码提示，郁闷&#8230;</p>
-<pre><code>&lt;/div&gt;
-</code></pre><ol>
-<li><div class="list-icon"></div><div class="content-list-text">
-
-</div></li>
-</ol>
-<p>JNI接口的命名规范是：Java<em> + 调用该方法的包名(包名的点用</em>代替) + <em> + 调用该接口的类名 + </em> + 方法名，对于实例方法，有两个参数是必要的，一个JNI的环境指针JNIEnv *</p>
-<pre><code>&lt;/div&gt;
-</code></pre><div class="content-list-media"><br><div class="content-list-image clearfix"><a href="http://jingyan.baidu.com/album/5d6edee22d908799eadeec9f.html?picindex=3" target="_blank" rel="external"><img src="http://e.hiphotos.baidu.com/exp/w=500/sign=8ae12ba42a381f309e198da999004c67/730e0cf3d7ca7bcb1e88deb3bc096b63f724a8be.jpg" alt="Android NDK环境搭建"></a></div><br></div>
-
-<ol>
-<li><div class="list-icon"></div><div class="content-list-text">
-
-</div></li>
-</ol>
-<p>完成了，然后运行。运行之前先编译NDK，然后在编译JAVA代码。编译也许会遇到Unable to launch cygpath. Is Cygwin on the path?如何解决？如下</p>
-<pre><code>&lt;/div&gt;
-</code></pre><ol>
-<li><div class="list-icon"></div><div class="content-list-text">
-
-</div></li>
-</ol>
-<p>工程右键，点Properties-&gt;C/C++ Build的Building Settings中去掉Use default build command，然后输入${NDKROOT}/ndk-build.cmd</p>
-<pre><code>&lt;/div&gt;
-</code></pre><div class="content-list-media"><br><div class="content-list-image clearfix"><a href="http://jingyan.baidu.com/album/5d6edee22d908799eadeec9f.html?picindex=4" target="_blank" rel="external"><img src="http://d.hiphotos.baidu.com/exp/w=500/sign=8b58db9aadc379317d688629dbc5b784/4d086e061d950a7bf1a0575808d162d9f3d3c991.jpg" alt="Android NDK环境搭建"></a></div><br></div>
-
-<ol>
-<li><div class="list-icon"></div><div class="content-list-text">
-
-</div></li>
-</ol>
-<p>在C/C++ Build中点击Environment，点Add&#8230;添加环境变量NDKROOT，值为NDK的根目录</p>
-<pre><code>&lt;/div&gt;
-</code></pre><div class="content-list-media"><br><div class="content-list-image clearfix"><a href="http://jingyan.baidu.com/album/5d6edee22d908799eadeec9f.html?picindex=5" target="_blank" rel="external"><img src="http://a.hiphotos.baidu.com/exp/w=500/sign=4d716d98950a304e5222a0fae1c9a7c3/b7fd5266d01609241b76bb87d60735fae7cd34de.jpg" alt="Android NDK环境搭建"></a></div><br></div><br><div class="last-item"><span class="last-item-end">END</span></div><br></div><br></div><br><div class="prompt">经验内容仅供参考，如果您需解决具体问题(尤其法律、医学等领域)，建议您详细咨询相关领域专业人士。</div><br><div class="f12 origin-notice" data-test="1"><a id="report-t-exp" class="jubao" target="_blank" rel="nofollow"></a>举报<em>作者声明：</em>本篇经验系本人依照真实经历原创，未经许可，谢绝转载。</div>
-      
-    </div>
-    <footer class="article-footer">
-      <a data-url="http://blog.idingsong.cn/2017/02/27/Android-NDK环境搭建/" data-id="cj4b50iyh001bigplkt6gu7hn" class="article-share-link">Partager</a>
-      
-      
-  <ul class="article-tag-list"><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/Android/">Android</a></li><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/android/">android</a></li><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/ndk/">ndk</a></li></ul>
-
-    </footer>
-  </div>
-  
-</article>
-
-
-  
-
-
-  <nav id="page-nav">
-    <span class="page-number current">1</span><a class="page-number" href="/page/2/">2</a><a class="extend next" rel="next" href="/page/2/">__('next') &raquo;</a>
-  </nav>
 </section>
         
           <aside id="sidebar">

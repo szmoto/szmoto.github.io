@@ -1,0 +1,239 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <meta charset="utf-8">
+  
+  <title>LibGDX教程——重建Flappy Bird——(6) 碰撞检测及细节处理 | 会思考的生活</title>
+  <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
+  <meta name="description" content="http://blog.csdn.net/artzok/article/details/50570981    本章源码链接：Libgdx重建FlappyBird密码：twy2上一章完整的介绍了BOX2D的物理仿真创建过程，在本章我们将继续完成BOX2D的剩余内容——碰撞检测。因为BOX2D帮我们完成了所有物理模拟过程，包括碰撞检测，这极大的降低我们的项目难度，我们不需要理解碰撞检测如何运行，甚">
+<meta name="keywords" content="libgdx,game">
+<meta property="og:type" content="article">
+<meta property="og:title" content="LibGDX教程——重建Flappy Bird——(6) 碰撞检测及细节处理">
+<meta property="og:url" content="http://blog.idingsong.cn/2017/02/24/LibGDX教程——重建Flappy-Bird——-6-碰撞检测及细节处理/index.html">
+<meta property="og:site_name" content="会思考的生活">
+<meta property="og:description" content="http://blog.csdn.net/artzok/article/details/50570981    本章源码链接：Libgdx重建FlappyBird密码：twy2上一章完整的介绍了BOX2D的物理仿真创建过程，在本章我们将继续完成BOX2D的剩余内容——碰撞检测。因为BOX2D帮我们完成了所有物理模拟过程，包括碰撞检测，这极大的降低我们的项目难度，我们不需要理解碰撞检测如何运行，甚">
+<meta property="og:image" content="http://img.blog.csdn.net/20160123211759488?watermark/2/text/aHR0cDovL2Jsb2cuY3Nkbi5uZXQv/font/5a6L5L2T/fontsize/400/fill/I0JBQkFCMA==/dissolve/70/gravity/Center">
+<meta property="og:image" content="http://img.blog.csdn.net/20160123214328522?watermark/2/text/aHR0cDovL2Jsb2cuY3Nkbi5uZXQv/font/5a6L5L2T/fontsize/400/fill/I0JBQkFCMA==/dissolve/70/gravity/Center">
+<meta property="og:updated_time" content="2017-06-24T10:21:17.969Z">
+<meta name="twitter:card" content="summary">
+<meta name="twitter:title" content="LibGDX教程——重建Flappy Bird——(6) 碰撞检测及细节处理">
+<meta name="twitter:description" content="http://blog.csdn.net/artzok/article/details/50570981    本章源码链接：Libgdx重建FlappyBird密码：twy2上一章完整的介绍了BOX2D的物理仿真创建过程，在本章我们将继续完成BOX2D的剩余内容——碰撞检测。因为BOX2D帮我们完成了所有物理模拟过程，包括碰撞检测，这极大的降低我们的项目难度，我们不需要理解碰撞检测如何运行，甚">
+<meta name="twitter:image" content="http://img.blog.csdn.net/20160123211759488?watermark/2/text/aHR0cDovL2Jsb2cuY3Nkbi5uZXQv/font/5a6L5L2T/fontsize/400/fill/I0JBQkFCMA==/dissolve/70/gravity/Center">
+  
+    <link rel="alternate" href="/atom.xml" title="会思考的生活" type="application/atom+xml">
+  
+  
+    <link rel="icon" href="/favicon.png">
+  
+  
+    <link href="//fonts.googleapis.com/css?family=Source+Code+Pro" rel="stylesheet" type="text/css">
+  
+  <link rel="stylesheet" href="/css/style.css">
+  
+
+</head>
+
+<body>
+  <div id="container">
+    <div id="wrap">
+      <header id="header">
+  <div id="banner"></div>
+  <div id="header-outer" class="outer">
+    <div id="header-title" class="inner">
+      <h1 id="logo-wrap">
+        <a href="/" id="logo">会思考的生活</a>
+      </h1>
+      
+        <h2 id="subtitle-wrap">
+          <a href="/" id="subtitle">Thinking about Me.</a>
+        </h2>
+      
+    </div>
+    <div id="header-inner" class="inner">
+      <nav id="main-nav">
+        <a id="main-nav-toggle" class="nav-icon"></a>
+        
+          <a class="main-nav-link" href="/">Home</a>
+        
+          <a class="main-nav-link" href="/archives">Archives</a>
+        
+      </nav>
+      <nav id="sub-nav">
+        
+          <a id="nav-rss-link" class="nav-icon" href="/atom.xml" title="Flux RSS"></a>
+        
+        <a id="nav-search-btn" class="nav-icon" title="Rechercher"></a>
+      </nav>
+      <div id="search-form-wrap">
+        <form action="//google.com/search" method="get" accept-charset="UTF-8" class="search-form"><input type="search" name="q" class="search-form-input" placeholder="Search"><button type="submit" class="search-form-submit">&#xF002;</button><input type="hidden" name="sitesearch" value="http://blog.idingsong.cn"></form>
+      </div>
+    </div>
+  </div>
+</header>
+      <div class="outer">
+        <section id="main"><article id="post-LibGDX教程——重建Flappy-Bird——-6-碰撞检测及细节处理" class="article article-type-post" itemscope itemprop="blogPost">
+  <div class="article-meta">
+    <a href="/2017/02/24/LibGDX教程——重建Flappy-Bird——-6-碰撞检测及细节处理/" class="article-date">
+  <time datetime="2017-02-24T14:23:26.000Z" itemprop="datePublished">2017-02-24</time>
+</a>
+    
+  </div>
+  <div class="article-inner">
+    
+    
+      <header class="article-header">
+        
+  
+    <h1 class="article-title" itemprop="name">
+      LibGDX教程——重建Flappy Bird——(6) 碰撞检测及细节处理
+    </h1>
+  
+
+      </header>
+    
+    <div class="article-entry" itemprop="articleBody">
+      
+        <blockquote>
+<p><a href="http://blog.csdn.net/artzok/article/details/50570981" target="_blank" rel="external">http://blog.csdn.net/artzok/article/details/50570981</a></p>
+</blockquote>
+<p><span id="more-46"></span></p>
+<div> 本章源码链接：<a href="http://pan.baidu.com/s/1kUu42jX" target="_blank" rel="external">Libgdx重建FlappyBird</a>密码：twy2<br><br>上一章完整的介绍了BOX2D的物理仿真创建过程，在本章我们将继续完成BOX2D的剩余内容——碰撞检测。因为BOX2D帮我们完成了所有物理模拟过程，包括碰撞检测，这极大的降低我们的项目难度，我们不需要理解碰撞检测如何运行，甚至不需要知道任何碰撞检测算法，就能够完成碰撞检测并通知我们。下面就让我们为FlappyBird添加碰撞检测的回调函数和相应的逻辑代码。</div><br><div><strong>碰撞检测</strong></div><br><div> 打开WorldController类，并为其添加下面代码：</div><br><div><br><div class="dp-highlighter bg_java"><br><div class="bar"><br><div class="tools"><br><pre class="crayon-plain-tag">public class WorldController extends InputAdapter implements Disposable {<br>   …<br>   private void initWorld() {<br>    if(world != null) world.dispose();<br>    world = new World(new Vector2(0, -110.8f), false);<br>    // 为world添加碰撞检测监听器<br>    world.setContactListener(new BirdContactListener());<br>   }<br>   …<br>   private void collisionDetection(AbstractGameObject a, AbstractGameObject b) {<br>   }<br>   // 碰撞检测监听器<br>   private class BirdContactListener implements ContactListener {<br>    @Override public void beginContact(Contact arg0) {<br>        AbstractGameObject a = (AbstractGameObject)arg0.getFixtureA().getBody().getUserData();<br>        AbstractGameObject b = (AbstractGameObject)arg0.getFixtureB().getBody().getUserData();<br>        collisionDetection(a, b);<br>    }<br>    @Override public void endContact(Contact arg0) {}<br>    @Override public void postSolve(Contact arg0, ContactImpulse arg1) {}<br>    @Override public void preSolve(Contact arg0, Manifold arg1) {}<br>   }</pre><br><br>首先定义一个BirdContactListener类，该类实现了ContactListener接口的四个方法，beginContact()和endContact()分别在开始碰撞(重叠)和结束碰撞时调用。preSolve()方法在碰撞检测之后，解决碰撞之前调用，你可以实现该方法替代BOX2D内置的碰撞处理方式；最后一个postSolve()方法在碰撞发生后调用，该方法是获得碰撞冲量的地方。这里只使用了一个方法beginContact()，该方法内首先通过Contact获得两个碰撞对象的Fiture然后再获得Body对象，因为创建Body时调用setUserData()方法将游戏对象本身作为用户数据，所有这里我们便可直接通过getUserData()获得游戏对象。最后调用WorldController()私有方法collisionDetection()处理碰撞事件。<p></p><br></div><br></div><br></div><br></div><br><div>  在初始化函数init()中创建了一个BirdContactListener对象并调用World.setContactListener()为world设置了碰撞监听器。</div><br><div>  根据上述添加的代码可以推断，一旦发生碰撞，collisionDetection()方法就会被调用，现在我们需要考虑在collisionDetection做什么？我们知道，FlappyBird游戏非常简单，一旦发生碰撞，游戏就即将结束，所以这里我们应该通知WorldController和Bird发生了碰撞，游戏需要马上结束。WorldController收到碰撞消息应该立马停止BOX2D模拟，Bird收到消息应该开始完成结束动画。</div><br><div>  接下来，首先修改Bird对象：</div><br><div><br><pre class="crayon-plain-tag">public class Bird extends AbstractGameObject {<br>        …<br>    protected static final float DIED_DROP_DRAG = 0.5f;         // 死亡后下落速度<br>    …<br>    private boolean contacted;<br>    private boolean flashed;<br>    …<br>    // 初始化<br>    public void init(int selected) {<br>        contacted = false;<br>        flashed = false;<br>        …<br>    }<br>        …<br>        // 通知碰撞事件<br>        public void contact() {<br>           contacted = true;<br>        }<br>        public boolean isContact() {<br>           return contacted;<br>        }<br>        …<br>    @Override<br>    public void render(SpriteBatch batch) {<br>        // 如果发生碰撞则不再播放帧动画<br>        if(!contacted) {<br>            animDuration += Gdx.graphics.getDeltaTime();<br>            currentFrame = birdAnimation.getKeyFrame(animDuration);<br>        }<br>        // 发生碰撞但游戏还没有结束时小鸟要进行落地动画<br>        else {<br>            position.y -= DIED_DROP_DRAG;<br>            rotation -= BIRD_FLAP_ANGLE_POWER;<br>            position.y = Math.max(position.y, Land.LAND_HEIGHT - Constants.VIEWPORT_HEIGHT / 2 + dimension.y / 2);<br>            rotation = Math.max(rotation, BIRD_MAX_DROP_ANGLE);<br>        }<br>        batch.draw(currentFrame.getTexture(), position.x - dimension.x / 2, position.y - dimension.y / 2,<br>            dimension.x / 2, dimension.y / 2, dimension.x, dimension.y, scale.x, scale.y, rotation,<br>            currentFrame.getRegionX(), currentFrame.getRegionY(), currentFrame.getRegionWidth(),<br>            currentFrame.getRegionHeight(), false, false);<br>        if (contacted &amp;&amp; !flashed) {<br>            flashed = true;<br>            float w = Gdx.graphics.getWidth();<br>            float h = Gdx.graphics.getHeight();<br>            batch.draw(Assets.instance.decoration.white, -w / 2, -h / 2, w, h);<br>        }<br>    }<br>}</pre><br><br>首先添加了一个DIED_DROP_DRAG表示小鸟发生碰撞之后的下落速度，然后添加了两个boolean类型变量，其中contacted表示小鸟是否发生碰撞，flashed表示是否完成碰撞后的闪烁。后面我们添加了两个方法分别用于设置和获得contacted变量。变化最大的就是render()方法，通过对代码分解便可理解，如果没有发生碰撞，则一切正常执行，如果发生碰撞，则保持最后一次获得的动画帧不在更新，接着根据DIED_DROP_DRAG下降速度更新小鸟的y坐标，并根据BIRD_FLAP_ANGLE_POWER旋转速度更新小鸟的旋转角度，最后限定y坐标和rotation的最小值。render()方法最后还根据contacted和flashed完成闪烁过程，闪烁原理其实很简单，一旦发生碰撞我们就是用白色图片填充场景一帧即可。<p></p><br></div><br><div>  接下来修改WorldController：</div><br><div><br><div class="dp-highlighter bg_java"><br><div class="bar"><br><div class="tools"><br><pre class="crayon-plain-tag">public class WorldController extends InputAdapter implements Disposable {<br>  …<br>  public void update(float deltaTime) {<br>    if(bird.isContact()) return;<br>    …<br>  }<br>  …<br>  private void collisionDetection(AbstractGameObject a, AbstractGameObject b) {<br>    if (a instanceof Bird) {<br>((Bird) a).contact();<br> else if (b instanceof Bird) {<br>((Bird) b).contact();<br>    Gdx.app.debug(TAG, “Player Character Contected!”);<br>  }<br>  …<br>}</pre><br><br>首先在update()方法中测试bird对象是否发生碰撞，如果发生碰撞则不在跟新。接着修改collisionDetection()方法，一旦发生碰撞则通知Bird对象。<p></p><br></div><br></div><br></div><br></div><br><div><strong>游戏结束</strong><br><br>根据前面的分析我们可以确定，当Bird发生碰撞后，游戏并没有立即结束，还要进行结束前的一些动画(如果闪烁、降落)过程。接下来我们将为游戏添加结束过程。<br><br>首先我们要确定游戏结束的条件。根据前面分析，当Bird对象发生碰撞后，需要完成下落动画才能结束游戏，因此游戏结束的标志就是小鸟已经完成下落动画，即小鸟的y轴坐标到达了地面且旋转角度rotation等于了-90度，所以为Bird添加判断是否游戏结束方法isGameOver()：</div><br><div><br><div class="dp-highlighter bg_java"><br><div class="bar"><br><div class="tools"><br><pre class="crayon-plain-tag">public boolean isGameOver() {<br>    return contacted &amp;&amp;<br>          (position.y &lt;= Land.LAND_HEIGHT -<br>          Constants.VIEWPORT_HEIGHT / 2 + dimension.y / 2) &amp;&amp;<br>          (rotation == BIRD_MAX_DROP_ANGLE);<br>}</pre><br><br>接下来为WorldController添加一个boolean类型变量isGameOver，然后在update()中判断游戏是否结束：<p></p><br></div><br></div><br></div><br></div><br><div><br><div class="dp-highlighter bg_java"><br><div class="bar"><br><div class="tools"><br><pre class="crayon-plain-tag">public class WorldController extends InputAdapter implements Disposable {<br>    …<br>    public boolean isGameOver;<br>    public WorldController() {<br>        init();<br>    }<br>    private void init() {<br>        …<br>        isStart = false;<br>        isGameOver = false;<br>        …<br>    }<br>    …<br>    public void update(float deltaTime) {<br>        if(!isGameOver) {<br>            isGameOver = bird.isGameOver();<br>        }<br>        if(bird.isContact()) return;<br>        …<br>    }<br>    …<br>}</pre><br><br>既然游戏结束了那么游戏就可以重新启动。下面修改WorldController.touchDown()方法让游戏可以重新开始：<p></p><br></div><br></div><br></div><br></div><br><div><br><div class="dp-highlighter bg_java"><br><div class="bar"><br><div class="tools"><br><pre class="crayon-plain-tag">@Override<br>  public boolean touchDown(int screenX, int screenY, int pointer, int button) {<br>    if (button == Buttons.LEFT) {<br>    if(!isStart) {<br>        isStart = true;<br>        bird.beginToSimulate(world);<br>        land.beginToSimulate(world);<br>    }<br>    if(isGameOver) {<br>        init();<br>    }<br>    bird.setJumping();<br>}<br>return true;<br>  }</pre><br><br>上述代码判断，当鼠标按下或发生触摸屏幕事件，我们判断游戏是否结束，如果结束则调用init()重新开始。但是要让上面修改可以正常启动，我们还必须作出重大修改：<p></p><br></div><br></div><br></div><br></div><br><div>  首先为AbstractGameObject添加init()方法，并将构造函数的所有内容移入该方法内：</div><br><div><br><div class="dp-highlighter bg_java"><br><div class="bar"><br><div class="tools"><br><pre class="crayon-plain-tag">public AbstractGameObject() {<br>}<br>public void init() {<br>    position = new Vector2();<br>    dimension = new Vector2(1, 1);<br>    origin = new Vector2();<br>    scale = new Vector2(1, 1);<br>    rotation = 0;<br>    body = null;<br>}</pre><br><br>接着修改三个对象的init()方法，分别保证对父类的init()方法调用：<p></p><br></div><br></div><br></div><br></div><br><div><br><div class="dp-highlighter bg_java"><br><div class="bar"><br><div class="tools"><br><pre class="crayon-plain-tag">public Bird() {<br>               init((int) (Math.random() * 3));<br>}<br>// 初始化<br>public void init(int selected) {<br>               super.init();<br>                …<br>      }</pre><br><br><pre class="crayon-plain-tag">public Land() {<br>               …<br>               init();<br>}<br>public void init() {<br>               super.init();<br>               …<br>}</pre><br><br><pre class="crayon-plain-tag">public Pipe() {<br>               …<br>               init();<br>}<br>public void init() {<br>               super.init();<br>               …<br>}</pre><br><br>现在我们就可以测试应用了：<p></p><br></div><br></div><br></div><br></div><br><div><br><div><img src="http://img.blog.csdn.net/20160123211759488?watermark/2/text/aHR0cDovL2Jsb2cuY3Nkbi5uZXQv/font/5a6L5L2T/fontsize/400/fill/I0JBQkFCMA==/dissolve/70/gravity/Center" alt=""></div>
+
+<p>现在我们已经完成了游戏的一个完整过程，并且可以重新启动，但是还缺少许多GUI和开始结束信息。这些内容将在下一章介绍。现在让我们来处理一个细节，因为在运行过程中每经过一定时间就会创建一个Pipe，而Pipe对象包含一个Body对象，所以如果当一个Pipe对象不在需要的时候我们不及时释放对应的Body对象，时间一长将大大降低BOX2D的运行效率，所以我们需要修改Pipes和Pipe类，使得运行更佳流畅。</p>
+<p></p></div><p></p>
+<div><strong>细节处理</strong></div><br><div> 经过上述分析，我们修改Pipes类：</div><br><div><br><div class="dp-highlighter bg_java"><br><div class="bar"><br><div class="tools"><br><pre class="crayon-plain-tag">public class Pipes extends AbstractGameObject {<br>    …<br>        private void testPipeNumberIsTooLarge(int amount) {<br>                if (pipes != null &amp;&amp; pipes.size &gt; amount) {<br>                         pipes.get(0).destroy();<br>                         pipes.removeIndex(0);<br>                }<br>       }<br>    …<br>    public class Pipe extends AbstractGameObject {<br>        …<br>                @Override<br>                public void beginToSimulate(World world) {<br>                   // down<br>                   BodyDef bodyDef = new BodyDef();<br>                   bodyDef.type = BodyType.KinematicBody;<br>                   bodyDef.position.set(position);<br>                   body = world.createBody(bodyDef);<br>                   PolygonShape shape = new PolygonShape();<br>                   shape.setAsBox(dimension.x / 2, dnPipeHeight / 2,<br>                   new Vector2(dimension.x / 2, dnPipeHeight / 2), 0);<br>                   shape.setRadius(-0.1f);<br>                   FixtureDef fixtureDefDown = new FixtureDef();<br>                   fixtureDefDown.shape = shape;<br>                   body.createFixture(fixtureDefDown);<br>                   body.setLinearVelocity(PIPE_VELOCITY, 0);<br>                   // up<br>                   float height = dimension.y - dnPipeHeight - CHANNEL_HEIGHT;<br>                   shape.setAsBox(dimension.x / 2, height / 2,<br>                        new Vector2(dimension.x / 2, dnPipeHeight + CHANNEL_HEIGHT + height / 2), 0);<br>                   shape.setRadius(-0.1f);<br>                   FixtureDef fixtureDefUp = new FixtureDef();<br>                   fixtureDefUp.shape = shape;<br>                   body.createFixture(fixtureDefUp);<br>                }<br>                public void destroy() {<br>                    for(Fixture fixture : body.getFixtureList()) {<br>                        body.destroyFixture(fixture);<br>                    }<br>                    Pipes.this.word.destroyBody(body);<br>                }<br>        …<br>    }<br>}</pre><br><br>首先看一下Pipe内部类，我们修改了beginToSimulate()的实现原理，之前我们是为每个Pipe维护两个Body对象，这样处理其实完全可以，但是BOX2D的Body对象具有支持多Fixtue特性，所以我们完全没有必要创建两个Body，因为我们之后还需要释放Body和Fixtue对象，所以创建一个Body对象更利于管理。接下来我们为Pipe添加了destroy()方法，我们在该方法内销毁了body的所有Fixture对象和Body对象本身。<p></p><br></div><br></div><br></div><br></div><br><div>  接下来看看Pipes对象的testPipeNumberIsTooLarge()，在该方法我们内测试如果Pipe对象的数量过大，则销毁一个Pipe对象相应的Body和Fixture对象。接下来我们测试应用：</div><br><div><br><div><img src="http://img.blog.csdn.net/20160123214328522?watermark/2/text/aHR0cDovL2Jsb2cuY3Nkbi5uZXQv/font/5a6L5L2T/fontsize/400/fill/I0JBQkFCMA==/dissolve/70/gravity/Center" alt=""></div>
+
+<p>现在是不是发现游戏流畅了许多！如果你觉得Bird的下降速度太慢，难度较小可以修改一下WorldController.initWorld()方法，将world对象的重力加速度修改大一些。我这里是world = new World(new Vector2(0, -110.8f), false)这里还可以调节。</p>
+<p>本章我们创建了碰撞检测逻辑以及处理一些细节问题，下一章我们将为游戏添加分数、帧率、各种按钮等等GUI信息。</p>
+<p></p></div><p></p>
+
+      
+    </div>
+    <footer class="article-footer">
+      <a data-url="http://blog.idingsong.cn/2017/02/24/LibGDX教程——重建Flappy-Bird——-6-碰撞检测及细节处理/" data-id="cj4b50ivk0001igpl6yiptbon" class="article-share-link">Partager</a>
+      
+      
+  <ul class="article-tag-list"><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/game/">game</a></li><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/libgdx/">libgdx</a></li></ul>
+
+    </footer>
+  </div>
+  
+    
+<nav id="article-nav">
+  
+    <a href="/2017/02/26/更好的安装软件的方法（Windows：Chocolatey，Mac：Homebrew）/" id="article-nav-newer" class="article-nav-link-wrap">
+      <strong class="article-nav-caption">Récent</strong>
+      <div class="article-nav-title">
+        
+          更好的安装软件的方法（Windows：Chocolatey，Mac：Homebrew）
+        
+      </div>
+    </a>
+  
+  
+</nav>
+
+  
+</article>
+
+</section>
+        
+          <aside id="sidebar">
+  
+    
+
+  
+    
+  <div class="widget-wrap">
+    <h3 class="widget-title">Mot-clés</h3>
+    <div class="widget">
+      <ul class="tag-list"><li class="tag-list-item"><a class="tag-list-link" href="/tags/Android/">Android</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/Cocos2d/">Cocos2d</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/JSP/">JSP</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/Java/">Java</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/JavaEE/">JavaEE</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/VS/">VS</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/VisualStudio/">VisualStudio</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/Wordpress/">Wordpress</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/android/">android</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/choco/">choco</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/cocos2d/">cocos2d</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/game/">game</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/ide/">ide</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/libgdx/">libgdx</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/ndk/">ndk</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/tools/">tools</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/visualstudio/">visualstudio</a></li></ul>
+    </div>
+  </div>
+
+
+  
+    
+  <div class="widget-wrap">
+    <h3 class="widget-title">Nuage de mot-clés</h3>
+    <div class="widget tagcloud">
+      <a href="/tags/Android/" style="font-size: 20px;">Android</a> <a href="/tags/Cocos2d/" style="font-size: 15px;">Cocos2d</a> <a href="/tags/JSP/" style="font-size: 10px;">JSP</a> <a href="/tags/Java/" style="font-size: 15px;">Java</a> <a href="/tags/JavaEE/" style="font-size: 10px;">JavaEE</a> <a href="/tags/VS/" style="font-size: 10px;">VS</a> <a href="/tags/VisualStudio/" style="font-size: 10px;">VisualStudio</a> <a href="/tags/Wordpress/" style="font-size: 10px;">Wordpress</a> <a href="/tags/android/" style="font-size: 15px;">android</a> <a href="/tags/choco/" style="font-size: 10px;">choco</a> <a href="/tags/cocos2d/" style="font-size: 15px;">cocos2d</a> <a href="/tags/game/" style="font-size: 15px;">game</a> <a href="/tags/ide/" style="font-size: 10px;">ide</a> <a href="/tags/libgdx/" style="font-size: 10px;">libgdx</a> <a href="/tags/ndk/" style="font-size: 15px;">ndk</a> <a href="/tags/tools/" style="font-size: 10px;">tools</a> <a href="/tags/visualstudio/" style="font-size: 10px;">visualstudio</a>
+    </div>
+  </div>
+
+  
+    
+  <div class="widget-wrap">
+    <h3 class="widget-title">Archives</h3>
+    <div class="widget">
+      <ul class="archive-list"><li class="archive-list-item"><a class="archive-list-link" href="/archives/2017/06/">六月 2017</a></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2017/04/">四月 2017</a></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2017/03/">三月 2017</a></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2017/02/">二月 2017</a></li></ul>
+    </div>
+  </div>
+
+
+  
+    
+  <div class="widget-wrap">
+    <h3 class="widget-title">Articles récents</h3>
+    <div class="widget">
+      <ul>
+        
+          <li>
+            <a href="/2017/06/24/Test/">Test</a>
+          </li>
+        
+          <li>
+            <a href="/2017/06/24/hello-world/">Hello World</a>
+          </li>
+        
+          <li>
+            <a href="/2017/04/08/wordpress中文路径出现404错误的解决办法/">wordpress中文路径出现404错误的解决办法</a>
+          </li>
+        
+          <li>
+            <a href="/2017/04/08/java-IO流文件的读写具体实例/">java IO流文件的读写具体实例</a>
+          </li>
+        
+          <li>
+            <a href="/2017/03/25/IntelliJ-IDEA-2016-1建立Strut2工程并使用Tomcat调试/">IntelliJ IDEA 2016.1建立Strut2工程并使用Tomcat调试</a>
+          </li>
+        
+      </ul>
+    </div>
+  </div>
+
+  
+</aside>
+        
+      </div>
+      <footer id="footer">
+  
+  <div class="outer">
+    <div id="footer-info" class="inner">
+      &copy; 2017 i_D.S.<br>
+      Propulsé by <a href="http://hexo.io/" target="_blank">Hexo</a>
+    </div>
+  </div>
+</footer>
+    </div>
+    <nav id="mobile-nav">
+  
+    <a href="/" class="mobile-nav-link">Home</a>
+  
+    <a href="/archives" class="mobile-nav-link">Archives</a>
+  
+</nav>
+    
+
+<script src="//ajax.googleapis.com/ajax/libs/jquery/2.0.3/jquery.min.js"></script>
+
+
+  <link rel="stylesheet" href="/fancybox/jquery.fancybox.css">
+  <script src="/fancybox/jquery.fancybox.pack.js"></script>
+
+
+<script src="/js/script.js"></script>
+
+  </div>
+</body>
+</html>

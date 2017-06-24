@@ -1,0 +1,278 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <meta charset="utf-8">
+  
+  <title>java IO流文件的读写具体实例 | 会思考的生活</title>
+  <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
+  <meta name="description" content="http://www.cnblogs.com/chen-lhx/p/4992401.html   IO流的分类： 1、根据流的数据对象来分： 高端流：所有的内存中的流都是高端流，比如：InputStreamReader 低端流：所有的外界设备中的流都是低端流，比如InputStream，OutputStream 如何区分：所有的流对象的后缀中包含Reader或者Writer的都是高端流，反之，则">
+<meta name="keywords" content="Java">
+<meta property="og:type" content="article">
+<meta property="og:title" content="java IO流文件的读写具体实例">
+<meta property="og:url" content="http://blog.idingsong.cn/2017/04/08/java-IO流文件的读写具体实例/index.html">
+<meta property="og:site_name" content="会思考的生活">
+<meta property="og:description" content="http://www.cnblogs.com/chen-lhx/p/4992401.html   IO流的分类： 1、根据流的数据对象来分： 高端流：所有的内存中的流都是高端流，比如：InputStreamReader 低端流：所有的外界设备中的流都是低端流，比如InputStream，OutputStream 如何区分：所有的流对象的后缀中包含Reader或者Writer的都是高端流，反之，则">
+<meta property="og:image" content="http://common.cnblogs.com/images/copycode.gif">
+<meta property="og:image" content="http://common.cnblogs.com/images/copycode.gif">
+<meta property="og:image" content="http://common.cnblogs.com/images/copycode.gif">
+<meta property="og:image" content="http://common.cnblogs.com/images/copycode.gif">
+<meta property="og:image" content="http://common.cnblogs.com/images/copycode.gif">
+<meta property="og:image" content="http://common.cnblogs.com/images/copycode.gif">
+<meta property="og:image" content="http://common.cnblogs.com/images/copycode.gif">
+<meta property="og:image" content="http://common.cnblogs.com/images/copycode.gif">
+<meta property="og:updated_time" content="2017-06-24T10:21:17.969Z">
+<meta name="twitter:card" content="summary">
+<meta name="twitter:title" content="java IO流文件的读写具体实例">
+<meta name="twitter:description" content="http://www.cnblogs.com/chen-lhx/p/4992401.html   IO流的分类： 1、根据流的数据对象来分： 高端流：所有的内存中的流都是高端流，比如：InputStreamReader 低端流：所有的外界设备中的流都是低端流，比如InputStream，OutputStream 如何区分：所有的流对象的后缀中包含Reader或者Writer的都是高端流，反之，则">
+<meta name="twitter:image" content="http://common.cnblogs.com/images/copycode.gif">
+  
+    <link rel="alternate" href="/atom.xml" title="会思考的生活" type="application/atom+xml">
+  
+  
+    <link rel="icon" href="/favicon.png">
+  
+  
+    <link href="//fonts.googleapis.com/css?family=Source+Code+Pro" rel="stylesheet" type="text/css">
+  
+  <link rel="stylesheet" href="/css/style.css">
+  
+
+</head>
+
+<body>
+  <div id="container">
+    <div id="wrap">
+      <header id="header">
+  <div id="banner"></div>
+  <div id="header-outer" class="outer">
+    <div id="header-title" class="inner">
+      <h1 id="logo-wrap">
+        <a href="/" id="logo">会思考的生活</a>
+      </h1>
+      
+        <h2 id="subtitle-wrap">
+          <a href="/" id="subtitle">Thinking about Me.</a>
+        </h2>
+      
+    </div>
+    <div id="header-inner" class="inner">
+      <nav id="main-nav">
+        <a id="main-nav-toggle" class="nav-icon"></a>
+        
+          <a class="main-nav-link" href="/">Home</a>
+        
+          <a class="main-nav-link" href="/archives">Archives</a>
+        
+      </nav>
+      <nav id="sub-nav">
+        
+          <a id="nav-rss-link" class="nav-icon" href="/atom.xml" title="Flux RSS"></a>
+        
+        <a id="nav-search-btn" class="nav-icon" title="Rechercher"></a>
+      </nav>
+      <div id="search-form-wrap">
+        <form action="//google.com/search" method="get" accept-charset="UTF-8" class="search-form"><input type="search" name="q" class="search-form-input" placeholder="Search"><button type="submit" class="search-form-submit">&#xF002;</button><input type="hidden" name="sitesearch" value="http://blog.idingsong.cn"></form>
+      </div>
+    </div>
+  </div>
+</header>
+      <div class="outer">
+        <section id="main"><article id="post-java-IO流文件的读写具体实例" class="article article-type-post" itemscope itemprop="blogPost">
+  <div class="article-meta">
+    <a href="/2017/04/08/java-IO流文件的读写具体实例/" class="article-date">
+  <time datetime="2017-04-08T10:52:37.000Z" itemprop="datePublished">2017-04-08</time>
+</a>
+    
+  </div>
+  <div class="article-inner">
+    
+    
+      <header class="article-header">
+        
+  
+    <h1 class="article-title" itemprop="name">
+      java IO流文件的读写具体实例
+    </h1>
+  
+
+      </header>
+    
+    <div class="article-entry" itemprop="articleBody">
+      
+        <blockquote>
+<p><a href="http://www.cnblogs.com/chen-lhx/p/4992401.html" target="_blank" rel="external">http://www.cnblogs.com/chen-lhx/p/4992401.html</a></p>
+</blockquote>
+<p><span id="more-80"></span></p>
+<p><strong>IO流的分类</strong>：</p>
+<p>1、根据流的数据对象来分：</p>
+<p>高端流：所有的内存中的流都是高端流，比如：InputStreamReader</p>
+<p>低端流：所有的外界设备中的流都是低端流，比如InputStream，OutputStream</p>
+<p>如何区分：所有的流对象的后缀中包含Reader或者Writer的都是高端流，反之，则基本上为低端流，不过也有例外，比如PrintStream就是高端流</p>
+<p>2、根据数据的流向来分：</p>
+<p>输出流：是用来写数据的，是由程序（内存）&#8212;&gt;外界设备</p>
+<p>输入流：是用来读数据的，是由外界设备&#8212;&gt;程序（内存）</p>
+<p>如何区分：一般来说输入流带有Input，输出流带有Output</p>
+<p>3、根据流数据的格式来分：</p>
+<p>字节流：处理声音或者图片等二进制的数据的流，比如InputStream</p>
+<p>字符流：处理文本数据（如txt文件）的流，比如InputStreamReader</p>
+<p>如何区分：可用高低端流来区分，所有的低端流都是字节流，所有的高端流都是字符流</p>
+<p>4、根据流数据的包装过程来分：</p>
+<p>原始流：在实例化流的对象的过程中，不需要传入另外一个流作为自己构造方法的参数的流，称之为原始流。</p>
+<p>包装流：在实例化流的对象的过程中，需要传入另外一个流作为自己构造方法发参数的流，称之为包装流。</p>
+<p>如何区分：所以的低端流都是原始流，所以的高端流都是包装流</p>
+<p>IO流对象的继承关系(如下图)：</p>
+<iframe width="300" height="150" id="iframe_0.8983534938164099" frameborder="0" scrolling="no" data-mce-fragment="1"></iframe>
+
+<p>下面来看一些具体的代码例子：</p>
+<p>按字节来读取文件</p>
+<div class="cnblogs_code"><br><div class="cnblogs_code_toolbar"><span class="cnblogs_code_copy"><a title="复制代码"><img src="http://common.cnblogs.com/images/copycode.gif" alt="复制代码"></a></span></div><br><pre class="crayon-plain-tag">public class ReadFromFile {<br>    /<em>*
+     </em> 以字节为单位读取文件，常用于读二进制文件，如图片、声音、影像等文件。<br>     */<br>    public static void readFileByBytes(String fileName) {<br>        File file = new File(fileName);<br>        InputStream in = null;<br>        try {<br>            System.out.println(&quot;以字节为单位读取文件内容，一次读一个字节：&quot;);<br>            // 一次读一个字节<br>            in = new FileInputStream(file);<br>            int tempbyte;<br>            while ((tempbyte = in.read()) != -1) {<br>                System.out.print(tempbyte);<br>            }<br>            in.close();<br>        } catch (IOException e) {<br>            e.printStackTrace();<br>            return;<br>        }<br>        try {<br>            System.out.println(&quot;以字节为单位读取文件内容，一次读多个字节：&quot;);<br>            // 一次读多个字节<br>            byte[] tempbytes = new byte[100];<br>            int byteread = 0;<br>            in = new FileInputStream(fileName);<br>            ReadFromFile.showAvailableBytes(in);<br>            // 读入多个字节到字节数组中，byteread为一次读入的字节数<br>            while ((byteread = in.read(tempbytes)) != -1) {<br>                System.out.print(tempbytes, 0, byteread);<br>            }<br>        } catch (Exception e1) {<br>            e1.printStackTrace();<br>        } finally {<br>            if (in != null) {<br>                try {<br>                    in.close();<br>                } catch (IOException e1) {<br>                }<br>            }<br>        }<br>    }</pre><br><div class="cnblogs_code_toolbar"><span class="cnblogs_code_copy"><a title="复制代码"><img src="http://common.cnblogs.com/images/copycode.gif" alt="复制代码"></a></span></div><br></div>
+
+<p>按字符来读取文件</p>
+<div class="cnblogs_code"><br><div class="cnblogs_code_toolbar"><span class="cnblogs_code_copy"><a title="复制代码"><img src="http://common.cnblogs.com/images/copycode.gif" alt="复制代码"></a></span></div><br><pre class="crayon-plain-tag">/<em>*
+     </em> 以字符为单位读取文件，常用于读文本，数字等类型的文件<br>     */<br>    public static void readFileByChars(String fileName) {<br>        File file = new File(fileName);<br>        Reader reader = null;<br>        try {<br>            System.out.println(&quot;以字符为单位读取文件内容，一次读一个字符：&quot;);<br>            // 一次读一个字符<br>            reader = new InputStreamReader(new FileInputStream(file));<br>            int tempchar;<br>            while ((tempchar = reader.read()) != -1) {<br>                // 对于windows下，\r\n这两个字符在一起时，表示一个换行。<br>                // 但如果这两个字符分开显示时，会换两次行。<br>                // 因此，屏蔽掉\r，或者屏蔽\n。否则，将会多出很多空行。<br>                if (((char) tempchar) != ‘\r’) {<br>                    System.out.print((char) tempchar);<br>                }<br>            }<br>            reader.close();<br>        } catch (Exception e) {<br>            e.printStackTrace();<br>        }<br>        try {<br>            System.out.println(&quot;以字符为单位读取文件内容，一次读多个字符：&quot;);<br>            // 一次读多个字符<br>            char[] tempchars = new char[30];<br>            int charread = 0;<br>            //由于要以字符来读取，所以需要套上字符流<br>            reader = new InputStreamReader(new FileInputStream(fileName));<br>            // 读入多个字符到字符数组中，charread为一次读取字符数<br>            while ((charread = reader.read(tempchars)) != -1) {<br>                // 同样屏蔽掉\r不显示<br>                if ((charread == tempchars.length)<br>                        &amp;amp;&amp;amp; (tempchars[tempchars.length - 1] != ‘\r’)) {<br>                    System.out.print(tempchars);<br>                } else {<br>                    for (int i = 0; i &amp;lt; charread; i++) {<br>                        if (tempchars[i] == ‘\r’) {<br>                            continue;<br>                        } else {<br>                            System.out.print(tempchars[i]);<br>                        }<br>                    }<br>                }<br>            }<br><br>        } catch (Exception e1) {<br>            e1.printStackTrace();<br>        } finally {<br>            if (reader != null) {<br>                try {<br>                    reader.close();<br>                } catch (IOException e1) {<br>                }<br>            }<br>        }<br>    }</pre><br><div class="cnblogs_code_toolbar"><span class="cnblogs_code_copy"><a title="复制代码"><img src="http://common.cnblogs.com/images/copycode.gif" alt="复制代码"></a></span></div><br></div>
+
+<p>按行来读取文件</p>
+<div class="cnblogs_code"><br><div class="cnblogs_code_toolbar"><span class="cnblogs_code_copy"><a title="复制代码"><img src="http://common.cnblogs.com/images/copycode.gif" alt="复制代码"></a></span></div><br><pre class="crayon-plain-tag">/<em>*
+     </em> 以行为单位读取文件，常用于读面向行的格式化文件<br>     */<br>    public static void readFileByLines(String fileName) {<br>        File file = new File(fileName);<br>        BufferedReader reader = null;<br>        try {<br>            System.out.println(&quot;以行为单位读取文件内容，一次读一整行：&quot;);<br>            reader = new BufferedReader(new FileReader(file));<br>            String tempString = null;<br>            int line = 1;<br>            // 一次读入一行，直到读入null为文件结束<br>            while ((tempString = reader.readLine()) != null) {<br>                // 显示行号<br>                System.out.println(&quot;line &quot; + line + &quot;: &quot; + tempString);<br>                line++;<br>            }<br>            reader.close();<br>        } catch (IOException e) {<br>            e.printStackTrace();<br>        } finally {<br>            if (reader != null) {<br>                try {<br>                    reader.close();<br>                } catch (IOException e1) {<br>                }<br>            }<br>        }<br>    }</pre><br><div class="cnblogs_code_toolbar"><span class="cnblogs_code_copy"><a title="复制代码"><img src="http://common.cnblogs.com/images/copycode.gif" alt="复制代码"></a></span></div><br></div>
+
+<p>将一个文件的内容写入另一个文件(按行来写)</p>
+<div class="cnblogs_code"><br><div class="cnblogs_code_toolbar"><span class="cnblogs_code_copy"><a title="复制代码"><img src="http://common.cnblogs.com/images/copycode.gif" alt="复制代码"></a></span></div><br><pre class="crayon-plain-tag">public class FileTest {<br>public static void main(String[] args)   {<br> File  file=new File(&quot;c:\test.txt&quot;);<br> BufferedReader read=null;<br> BufferedWriter writer=null;<br> try {<br>   writer=new BufferedWriter(new  FileWriter(&quot;c:\zwm.txt&quot;));<br> } catch (IOException e1) {<br>  e1.printStackTrace();<br> }<br> try {<br>   read=new BufferedReader(new  FileReader(file));<br>   String tempString = null;<br>   while((tempString=read.readLine())!=null){<br>    writer.append(tempString);<br>    writer.newLine();//换行<br>    writer.flush();//需要及时清掉流的缓冲区，万一文件过大就有可能无法写入了<br>   }<br>   read.close();<br>   writer.close();<br>   System.out.println(&quot;文件写入完成…&quot;);<br> } catch (IOException e) {<br>  e.printStackTrace();<br> }<br><br>}<br>}</pre><br><div class="cnblogs_code_toolbar"><span class="cnblogs_code_copy"><a title="复制代码"><img src="http://common.cnblogs.com/images/copycode.gif" alt="复制代码"></a></span></div><br></div>
+
+<p>&nbsp;</p>
+
+      
+    </div>
+    <footer class="article-footer">
+      <a data-url="http://blog.idingsong.cn/2017/04/08/java-IO流文件的读写具体实例/" data-id="cj4b50iw90007igplaffo865v" class="article-share-link">Partager</a>
+      
+      
+  <ul class="article-tag-list"><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/Java/">Java</a></li></ul>
+
+    </footer>
+  </div>
+  
+    
+<nav id="article-nav">
+  
+    <a href="/2017/04/08/wordpress中文路径出现404错误的解决办法/" id="article-nav-newer" class="article-nav-link-wrap">
+      <strong class="article-nav-caption">Récent</strong>
+      <div class="article-nav-title">
+        
+          wordpress中文路径出现404错误的解决办法
+        
+      </div>
+    </a>
+  
+  
+    <a href="/2017/03/25/IntelliJ-IDEA-2016-1建立Strut2工程并使用Tomcat调试/" id="article-nav-older" class="article-nav-link-wrap">
+      <strong class="article-nav-caption">Ancien</strong>
+      <div class="article-nav-title">IntelliJ IDEA 2016.1建立Strut2工程并使用Tomcat调试</div>
+    </a>
+  
+</nav>
+
+  
+</article>
+
+</section>
+        
+          <aside id="sidebar">
+  
+    
+
+  
+    
+  <div class="widget-wrap">
+    <h3 class="widget-title">Mot-clés</h3>
+    <div class="widget">
+      <ul class="tag-list"><li class="tag-list-item"><a class="tag-list-link" href="/tags/Android/">Android</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/Cocos2d/">Cocos2d</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/JSP/">JSP</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/Java/">Java</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/JavaEE/">JavaEE</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/VS/">VS</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/VisualStudio/">VisualStudio</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/Wordpress/">Wordpress</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/android/">android</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/choco/">choco</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/cocos2d/">cocos2d</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/game/">game</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/ide/">ide</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/libgdx/">libgdx</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/ndk/">ndk</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/tools/">tools</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/visualstudio/">visualstudio</a></li></ul>
+    </div>
+  </div>
+
+
+  
+    
+  <div class="widget-wrap">
+    <h3 class="widget-title">Nuage de mot-clés</h3>
+    <div class="widget tagcloud">
+      <a href="/tags/Android/" style="font-size: 20px;">Android</a> <a href="/tags/Cocos2d/" style="font-size: 15px;">Cocos2d</a> <a href="/tags/JSP/" style="font-size: 10px;">JSP</a> <a href="/tags/Java/" style="font-size: 15px;">Java</a> <a href="/tags/JavaEE/" style="font-size: 10px;">JavaEE</a> <a href="/tags/VS/" style="font-size: 10px;">VS</a> <a href="/tags/VisualStudio/" style="font-size: 10px;">VisualStudio</a> <a href="/tags/Wordpress/" style="font-size: 10px;">Wordpress</a> <a href="/tags/android/" style="font-size: 15px;">android</a> <a href="/tags/choco/" style="font-size: 10px;">choco</a> <a href="/tags/cocos2d/" style="font-size: 15px;">cocos2d</a> <a href="/tags/game/" style="font-size: 15px;">game</a> <a href="/tags/ide/" style="font-size: 10px;">ide</a> <a href="/tags/libgdx/" style="font-size: 10px;">libgdx</a> <a href="/tags/ndk/" style="font-size: 15px;">ndk</a> <a href="/tags/tools/" style="font-size: 10px;">tools</a> <a href="/tags/visualstudio/" style="font-size: 10px;">visualstudio</a>
+    </div>
+  </div>
+
+  
+    
+  <div class="widget-wrap">
+    <h3 class="widget-title">Archives</h3>
+    <div class="widget">
+      <ul class="archive-list"><li class="archive-list-item"><a class="archive-list-link" href="/archives/2017/06/">六月 2017</a></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2017/04/">四月 2017</a></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2017/03/">三月 2017</a></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2017/02/">二月 2017</a></li></ul>
+    </div>
+  </div>
+
+
+  
+    
+  <div class="widget-wrap">
+    <h3 class="widget-title">Articles récents</h3>
+    <div class="widget">
+      <ul>
+        
+          <li>
+            <a href="/2017/06/24/Test/">Test</a>
+          </li>
+        
+          <li>
+            <a href="/2017/06/24/hello-world/">Hello World</a>
+          </li>
+        
+          <li>
+            <a href="/2017/04/08/wordpress中文路径出现404错误的解决办法/">wordpress中文路径出现404错误的解决办法</a>
+          </li>
+        
+          <li>
+            <a href="/2017/04/08/java-IO流文件的读写具体实例/">java IO流文件的读写具体实例</a>
+          </li>
+        
+          <li>
+            <a href="/2017/03/25/IntelliJ-IDEA-2016-1建立Strut2工程并使用Tomcat调试/">IntelliJ IDEA 2016.1建立Strut2工程并使用Tomcat调试</a>
+          </li>
+        
+      </ul>
+    </div>
+  </div>
+
+  
+</aside>
+        
+      </div>
+      <footer id="footer">
+  
+  <div class="outer">
+    <div id="footer-info" class="inner">
+      &copy; 2017 i_D.S.<br>
+      Propulsé by <a href="http://hexo.io/" target="_blank">Hexo</a>
+    </div>
+  </div>
+</footer>
+    </div>
+    <nav id="mobile-nav">
+  
+    <a href="/" class="mobile-nav-link">Home</a>
+  
+    <a href="/archives" class="mobile-nav-link">Archives</a>
+  
+</nav>
+    
+
+<script src="//ajax.googleapis.com/ajax/libs/jquery/2.0.3/jquery.min.js"></script>
+
+
+  <link rel="stylesheet" href="/fancybox/jquery.fancybox.css">
+  <script src="/fancybox/jquery.fancybox.pack.js"></script>
+
+
+<script src="/js/script.js"></script>
+
+  </div>
+</body>
+</html>
