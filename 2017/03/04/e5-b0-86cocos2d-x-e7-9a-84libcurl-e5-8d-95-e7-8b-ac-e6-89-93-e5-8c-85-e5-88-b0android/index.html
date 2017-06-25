@@ -94,7 +94,7 @@
 <meta property="og:url" content="http://blog.idingsong.cn/2017/03/04/e5-b0-86cocos2d-x-e7-9a-84libcurl-e5-8d-95-e7-8b-ac-e6-89-93-e5-8c-85-e5-88-b0android/index.html">
 <meta property="og:site_name" content="会思考的生活">
 <meta property="og:description" content="http://blog.csdn.net/yuxikuo_1/article/details/41746869">
-<meta property="og:updated_time" content="2017-06-24T10:59:25.348Z">
+<meta property="og:updated_time" content="2017-06-25T05:25:15.500Z">
 <meta name="twitter:card" content="summary">
 <meta name="twitter:title" content="将Cocos2d-x的libcurl单独打包到Android">
 <meta name="twitter:description" content="http://blog.csdn.net/yuxikuo_1/article/details/41746869">
@@ -419,24 +419,9 @@
 <p>首先阅读下这篇文章，预热一下，了解了解打包静态库和动态库的方法。</p>
 <p>其次我们从NDK的samples的two-libs例子入手，分析mk的写法。（即搭建Android环境时，解压的NDK目录下的samples/two-libs）</p>
 <p>先上代码</p>
-<p>1）first文件：定义了一个加法的方法</p>
-<p><div class="dp-highlighter bg_cpp"></div></p>
-<p><div class="bar"></div></p>
-<p><div class="tools"></div></p>
-<p><pre class="lang:java decode:true ">//first.h  </pre></p>
-<p>#ifndef FIRST_H  </p>
-<p>#define FIRST_H  </p>
-<p>extern int first(int  x, int  y);  </p>
-<p>#endif /<em> FIRST_H </em>/  </p>
-<p>//first.c  </p>
-<p>#include “first.h”<br>int  first(int  x, int  y)<br>{<br>    return x + y;<br>}<br>2）second.c：这个文件是Jni的相关的文件。</p>
-<p><br><br></p>
-<p><div class="dp-highlighter bg_cpp"></div></p>
-<p><div class="bar"></div></p>
-<p><div class="tools"></div></p>
-<p><pre class="lang:java decode:true ">//second.c  </pre></p>
-<p>#include “first.h”  </p>
-<p>#include &lt;jni.h&gt; //添加jni头文件<br>//下面这个函数的意思就是com.example.twolibs包com.example.androidlibcurldemo下MainActivity.java中的add方法。<br>jint<br>Java_com_example_androidlibcurldemo_MainActivity_add( JNIEnv*  env,<br>                                      jobject  this,<br>                                      jint     x,<br>                                      jint     y )<br>{<br>    return first(x, y);<br>}<br>这个add方法，是在我们上一步创建工程的src目录下的MainActivity.java中声明的两个native方法，说白了，second.c的作用就是，定义java中的native方法，并在实现中调用C的代码，如first.c中的first函数。相当于一个中介的样子。</p>
+<p>1）first文件：定义了一个加法的方法<br><figure class="highlight c"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div><div class="line">13</div><div class="line">14</div></pre></td><td class="code"><pre><div class="line"><span class="comment">//first.h  </span></div><div class="line"><span class="meta">#<span class="meta-keyword">ifndef</span> FIRST_H  </span></div><div class="line"><span class="meta">#<span class="meta-keyword">define</span> FIRST_H  </span></div><div class="line"></div><div class="line"><span class="function"><span class="keyword">extern</span> <span class="keyword">int</span> <span class="title">first</span><span class="params">(<span class="keyword">int</span>  x, <span class="keyword">int</span>  y)</span></span>;  </div><div class="line"></div><div class="line"><span class="meta">#<span class="meta-keyword">endif</span> <span class="comment">/* FIRST_H */</span>  </span></div><div class="line"></div><div class="line"><span class="comment">//first.c  </span></div><div class="line"><span class="meta">#<span class="meta-keyword">include</span> <span class="meta-string">"first.h"</span>  </span></div><div class="line"><span class="function"><span class="keyword">int</span>  <span class="title">first</span><span class="params">(<span class="keyword">int</span>  x, <span class="keyword">int</span>  y)</span>  </span></div><div class="line">&#123;  </div><div class="line">    <span class="keyword">return</span> x + y;  </div><div class="line">&#125;</div></pre></td></tr></table></figure></p>
+<p>2）second.c：这个文件是Jni的相关的文件。<br><figure class="highlight c"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div></pre></td><td class="code"><pre><div class="line"><span class="comment">//second.c  </span></div><div class="line"><span class="meta">#<span class="meta-keyword">include</span> <span class="meta-string">"first.h"</span>  </span></div><div class="line"><span class="meta">#<span class="meta-keyword">include</span> &amp;lt;jni.h&amp;gt; <span class="comment">//添加jni头文件  </span></span></div><div class="line"><span class="comment">//下面这个函数的意思就是com.example.twolibs包com.example.androidlibcurldemo下MainActivity.java中的add方法。  </span></div><div class="line"><span class="function">jint  </span></div><div class="line"><span class="title">Java_com_example_androidlibcurldemo_MainActivity_add</span><span class="params">( JNIEnv*  env,  </span></div><div class="line">                                      jobject  <span class="keyword">this</span>,  </div><div class="line">                                      jint     x,  </div><div class="line">                                      jint     y )  </div><div class="line">&#123;  </div><div class="line">    <span class="keyword">return</span> first(x, y);  </div><div class="line">&#125;</div></pre></td></tr></table></figure></p>
+<p>这个add方法，是在我们上一步创建工程的src目录下的MainActivity.java中声明的两个native方法，说白了，second.c的作用就是，定义java中的native方法，并在实现中调用C的代码，如first.c中的first函数。相当于一个中介的样子。</p>
 <p><br><br><br>3）Android.mk：例子中的Android.mk文件</p>
 <p><div class="dp-highlighter bg_cpp"></div></p>
 <p><div class="bar"></div></p>
@@ -479,29 +464,9 @@
 <p><div class="bar"></div></p>
 <p><div class="tools"></div></p>
 <p><pre class="lang:java decode:true ">Android NDK: WARNING: APP_PLATFORM android-19 is larger than android:minSdkVersion 8 in ./AndroidManifest.xml<br>[armeabi-v7a] Compile thumb  : twolib-second &lt;= second.c<br>[armeabi-v7a] Compile thumb  : twolib-first &lt;= first.c<br>[armeabi-v7a] StaticLibrary  : libtwolib-first.a<br>[armeabi-v7a] SharedLibrary  : libtwolib-second.so<br>[armeabi-v7a] Install        : libtwolib-second.so =&gt; libs/armeabi-v7a/libtwolib-second.so //armeabi-v7a<br>[armeabi] Compile thumb  : twolib-second &lt;= second.c<br>[armeabi] Compile thumb  : twolib-first &lt;= first.c<br>[armeabi] StaticLibrary  : libtwolib-first.a<br>[armeabi] SharedLibrary  : libtwolib-second.so<br>[armeabi] Install        : libtwolib-second.so =&gt; libs/armeabi/libtwolib-second.so  //armeabi<br>[x86] Compile        : twolib-second &lt;= second.c<br>[x86] Compile        : twolib-first &lt;= first.c<br>[x86] StaticLibrary  : libtwolib-first.a<br>[x86] SharedLibrary  : libtwolib-second.so<br>[x86] Install        : libtwolib-second.so =&gt; libs/x86/libtwolib-second.so  //x86<br>[mips] Compile        : twolib-second &lt;= second.c<br>[mips] Compile        : twolib-first &lt;= first.c<br>[mips] StaticLibrary  : libtwolib-first.a<br>[mips] SharedLibrary  : libtwolib-second.so<br>[mips] Install        : libtwolib-second.so =&gt; libs/mips/libtwolib-second.so   //mips</pre><br>6）在Java代码中调用。</p>
-<p><br><br><br>在MainActivity.java中添加如下代码</p>
-<p><div class="dp-highlighter bg_java"></div></p>
-<p><div class="bar"></div></p>
-<p><div class="tools"></div></p>
-<p><pre class="lang:java decode:true ">@Override<br>   protected void onCreate(Bundle savedInstanceState) {<br>       super.onCreate(savedInstanceState);  </pre></p>
-<pre><code>//super.onCreate(savedInstanceState);  
-
-TextView  tv = new TextView(this);  
-int       x  = 1000;  
-int       y  = 42;  
-
-// here, we dynamically load the library at runtime  
-// before calling the native method.  
-//把生成的库load进来，注意去掉libXXX.so中的lib和so。只保留XXX  
-System.loadLibrary(&quot;twolib-second&quot;);  
-
-int  z = add(x, y);  
-
-tv.setText( &quot;The sum of &quot; + x + &quot; and &quot; + y + &quot; is &quot; + z );  
-setContentView(tv);  
-</code></pre><p>   }  </p>
+<p><br><br><br>在MainActivity.java中添加如下代码<br><figure class="highlight java"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div><div class="line">13</div><div class="line">14</div><div class="line">15</div><div class="line">16</div><div class="line">17</div><div class="line">18</div><div class="line">19</div><div class="line">20</div></pre></td><td class="code"><pre><div class="line"><span class="meta">@Override</span>  </div><div class="line">   <span class="function"><span class="keyword">protected</span> <span class="keyword">void</span> <span class="title">onCreate</span><span class="params">(Bundle savedInstanceState)</span> </span>&#123;  </div><div class="line">       <span class="keyword">super</span>.onCreate(savedInstanceState);  </div><div class="line"></div><div class="line">       <span class="comment">//super.onCreate(savedInstanceState);  </span></div><div class="line"></div><div class="line">       TextView  tv = <span class="keyword">new</span> TextView(<span class="keyword">this</span>);  </div><div class="line">       <span class="keyword">int</span>       x  = <span class="number">1000</span>;  </div><div class="line">       <span class="keyword">int</span>       y  = <span class="number">42</span>;  </div><div class="line"></div><div class="line">       <span class="comment">// here, we dynamically load the library at runtime  </span></div><div class="line">       <span class="comment">// before calling the native method.  </span></div><div class="line">       <span class="comment">//把生成的库load进来，注意去掉libXXX.so中的lib和so。只保留XXX  </span></div><div class="line">       System.loadLibrary(<span class="string">"twolib-second"</span>);  </div><div class="line"></div><div class="line">       <span class="keyword">int</span>  z = add(x, y);  </div><div class="line"></div><div class="line">       tv.setText( <span class="string">"The sum of "</span> + x + <span class="string">" and "</span> + y + <span class="string">" is "</span> + z );  </div><div class="line">       setContentView(tv);  </div><div class="line">   &#125;</div></pre></td></tr></table></figure></p>
 <p>   public native int add(int  x, int  y);//native函数声明，在我们的second.c文件中定义，并使用了first.c中的first函数，实现加法<br>注意，如果出现错误或崩溃，看看second.c的函数包名是不是错误，然后看看有没有在java中声明native的add方法</p>
-<p><br><br><br>截图稍后上传。</p>
+<p>截图稍后上传。</p>
 <h3 id="3-3重头戏-使用libcurl-a打包的so库到Android"><a href="#3-3重头戏-使用libcurl-a打包的so库到Android" class="headerlink" title="3.3重头戏:使用libcurl.a打包的so库到Android"></a><a name="t8"></a>3.3重头戏:使用libcurl.a打包的so库到Android</h3><p>1）首先，看看我们之前拷贝到jni目录下的两个文件夹include和prebuilt。对了，这两个目录是我阉割的，把其它无关平台的目录删除了。</p>
 <p>2）include目录下是libcurl.a库中源文件的头文件。我们也需要将它打包进包里面，才能在涉及到包时，自动引入头文件。</p>
 <p>3）prebuilt目录是存放libcurl.a的目录，我们暂时保存Cocos2d-x的目录结构，这样，我们就免得修改下面的Android.mk文件了</p>
@@ -534,25 +499,8 @@ setContentView(tv);
 <p>#include &lt;curl/curl.h&gt;  </p>
 <p>jint<br>Java_com_example_androidlibcurldemo_MainActivity_add( JNIEnv<em>  env,<br>                                      jobject  this,<br>                                      jint     x,<br>                                      jint     y )<br>{<br>    CURL</em> curl;<br>    CURLcode res;<br>    curl = curl_easy_init();<br>    if(NULL == curl)//如果初始化失败，返回1000<br>    {<br>        return first(1,999);<br>    }<br>    curl_easy_setopt(curl, CURLOPT_URL,”<a href="http://www.baidu.com&quot;);//以get请求www.baidu.com" target="_blank" rel="external">http://www.baidu.com&quot;);//以get请求www.baidu.com</a><br>    curl_easy_setopt(curl, CURLOPT_READFUNCTION,NULL);<br>    curl_easy_setopt(curl, CURLOPT_NOSIGNAL,1);<br>    curl_easy_setopt(curl, CURLOPT_CONNECTTIMEOUT,20);//连接时间，由于网络不好，为了达到测试效果，我设置的时间较长<br>    curl_easy_setopt(curl, CURLOPT_TIMEOUT,20);<br>    res = curl_easy_perform(curl);//执行<br>    curl_easy_cleanup(curl);//清除<br>&lt;span style=”white-space:pre”&gt;    &lt;/span&gt;<br>    return first(res,res);//根据res值返回到Android中的TextView中，如果res是0，表示请求成功，如果是6表示无法解析主机，即没联网<br>}<br>6）编译库文件</p>
 <p><br><br><br>同样还是在终端中，先进入到Android工程目录，然后执行ndk-build。最终在obj和libs目录下生成了我们的libtwolib-second库</p>
-<h3 id="3-4如何使用库"><a href="#3-4如何使用库" class="headerlink" title="3.4如何使用库"></a><a name="t9"></a>3.4如何使用库</h3><p><div>1）首先，还是要修改我们的MainActivity.java类，修改如下：</div></p>
-<p><div></div></p>
-<p><div class="dp-highlighter bg_java"></div></p>
-<p><div class="bar"></div></p>
-<p><div class="tools"></div></p>
-<p><pre class="lang:java decode:true ">private Button button;<br>    private TextView tv;<br>    private int x  = 123;<br>    private int y  = 456;<br>    @Override<br>    protected void onCreate(Bundle savedInstanceState) {<br>        super.onCreate(savedInstanceState);<br>        setContentView(R.layout.activity_main);<br>        // here, we dynamically load the library at runtime<br>        // before calling the native method.<br>        //<br>        System.loadLibrary(“twolib-second”);  </pre></p>
-<pre><code>    tv = (TextView)findViewById(R.id.textView2);  
-    button = (Button) this.findViewById(R.id.button1);  
-    this.button.setOnClickListener(new OnClickListener() {  
-
-        @Override  
-        public void onClick(View arg0) {                  
-             int  z = add(x, y);  
-             tv.setText( &quot;网络请求结果&quot; + z );  
-        }  
-    });  
-}  
-
-public native int add(int  x, int  y);&lt;/pre&gt;
+<h3 id="3-4如何使用库"><a href="#3-4如何使用库" class="headerlink" title="3.4如何使用库"></a><a name="t9"></a>3.4如何使用库</h3><p><div>1）首先，还是要修改我们的MainActivity.java类，修改如下：</div><br><figure class="highlight java"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div><div class="line">13</div><div class="line">14</div><div class="line">15</div><div class="line">16</div><div class="line">17</div><div class="line">18</div><div class="line">19</div><div class="line">20</div><div class="line">21</div><div class="line">22</div><div class="line">23</div><div class="line">24</div></pre></td><td class="code"><pre><div class="line"><span class="keyword">private</span> Button button;  </div><div class="line">    <span class="keyword">private</span> TextView tv;  </div><div class="line">    <span class="keyword">private</span> <span class="keyword">int</span> x  = <span class="number">123</span>;  </div><div class="line">    <span class="keyword">private</span> <span class="keyword">int</span> y  = <span class="number">456</span>;  </div><div class="line">    <span class="meta">@Override</span>  </div><div class="line">    <span class="function"><span class="keyword">protected</span> <span class="keyword">void</span> <span class="title">onCreate</span><span class="params">(Bundle savedInstanceState)</span> </span>&#123;  </div><div class="line">        <span class="keyword">super</span>.onCreate(savedInstanceState);  </div><div class="line">        setContentView(R.layout.activity_main);  </div><div class="line">        <span class="comment">// here, we dynamically load the library at runtime  </span></div><div class="line">        <span class="comment">// before calling the native method.  </span></div><div class="line">        <span class="comment">//  </span></div><div class="line">        System.loadLibrary(<span class="string">"twolib-second"</span>);  </div><div class="line"></div><div class="line">        tv = (TextView)findViewById(R.id.textView2);  </div><div class="line">        button = (Button) <span class="keyword">this</span>.findViewById(R.id.button1);  </div><div class="line">        <span class="keyword">this</span>.button.setOnClickListener(<span class="keyword">new</span> OnClickListener() &#123;  </div><div class="line"></div><div class="line">            <span class="meta">@Override</span>  </div><div class="line">            <span class="function"><span class="keyword">public</span> <span class="keyword">void</span> <span class="title">onClick</span><span class="params">(View arg0)</span> </span>&#123;                  </div><div class="line">                 <span class="keyword">int</span>  z = add(x, y);  </div><div class="line">                 tv.setText( <span class="string">"网络请求结果"</span> + z );  </div><div class="line">            &#125;  </div><div class="line">        &#125;);  </div><div class="line">    &#125;</div></pre></td></tr></table></figure></p>
+<pre><code>public native int add(int  x, int  y);&lt;/pre&gt;
 </code></pre><p>我们要在activity_main布局中，添加一个按钮和一个TextView，按钮用于出发网络请求，TextView用于显示请求结果。</p>
 <p><br><br><br></p>
 <p><div>显示0表示请求成功。显示12表示无法解析主机，没联网。</div></p>
