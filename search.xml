@@ -86,8 +86,8 @@
     <content type="text"><![CDATA[http://jingyan.baidu.com/article/5d6edee22d908799eadeec9f.html 使用最新ndk，直接抛弃cygwin，以前做Android的项目要用到NDK就必须要下载NDK，下载安装Cygwin(模拟Linux环境用的)，下载CDT（Eclipse C/C++开发插件），还要配置编译器，环境变量，特别麻烦，新版就不需要了## 工具/原料* ADT NDK &lt;/div&gt; ## 方法/步骤1. 1Android官网下载Android的开发工具ADT(Android Development Tool的缩写)，该工具集成了最新的ADT和NDK插件以及Eclipse，还有一个最新版本SDK。解压之后就可以用了 2 ADT插件：管理Android SDK和相关的开发工具的 NDK插件：用于开发Android NDK的插件，ADT版本在20以上，就能安装NDK插件，另外NDK集成了CDT插件 下载链接见：http://developer.android.com/sdk/index.html &lt;/div&gt; 3 Android官网下载最新的NDK，注：NDK版本在r7以上之后就集成了Cygwin，而且还是十分精简版。 下载链接见：http://developer.android.com/tools/sdk/ndk/index.html &lt;/div&gt; END## eclipse配置1. 打开Eclipse，点Window-&gt;Preferences-&gt;Android-&gt;NDK,设置NDK路径，例如Shamoo的是E:\android-ndk-r9c 新建一个Android工程，在工程上右键点击Android Tools-&gt;Add Native Support&#8230;,然后给我们的.so文件取个名字，例如:my-ndk &lt;/div&gt; 这时候工程就会多一个jni的文件夹，jni下有Android.mk和my-ndk.cpp文件。Android.mk是NDK工程的Makefile，my-ndk.cpp就是NDK的源文件。 &lt;/div&gt; 接下来仿着NDK的demo,Hello-JNI工程写一下。使用Alt + &#8216;/&#8217;可以代码提示！很爽！有木有？之前用CDT时候死活都按不出代码提示，郁闷&#8230; &lt;/div&gt; JNI接口的命名规范是：Java + 调用该方法的包名(包名的点用代替) + + 调用该接口的类名 + + 方法名，对于实例方法，有两个参数是必要的，一个JNI的环境指针JNIEnv * &lt;/div&gt; 完成了，然后运行。运行之前先编译NDK，然后在编译JAVA代码。编译也许会遇到Unable to launch cygpath. Is Cygwin on the path?如何解决？如下 &lt;/div&gt; 工程右键，点Properties-&gt;C/C++ Build的Building Settings中去掉Use default build command，然后输入${NDKROOT}/ndk-build.cmd &lt;/div&gt; 在C/C++ Build中点击Environment，点Add&#8230;添加环境变量NDKROOT，值为NDK的根目录 &lt;/div&gt; END经验内容仅供参考，如果您需解决具体问题(尤其法律、医学等领域)，建议您详细咨询相关领域专业人士。举报作者声明：本篇经验系本人依照真实经历原创，未经许可，谢绝转载。]]></content>
       <tags>
         <tag>Android</tag>
-        <tag>android</tag>
         <tag>ndk</tag>
+        <tag>android</tag>
       </tags>
   </entry>
   <entry>
