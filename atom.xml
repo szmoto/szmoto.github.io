@@ -2,18 +2,18 @@
 <feed xmlns="http://www.w3.org/2005/Atom">
     <id>https://blog.idingsong.cn/</id>
     <title>Math.D</title>
-    <updated>2019-12-18T11:39:58.263Z</updated>
+    <updated>2020-01-16T11:27:22.498Z</updated>
     <generator>https://github.com/jpmonette/feed</generator>
     <link rel="alternate" href="https://blog.idingsong.cn/"/>
-    <link rel="self" href="https://blog.idingsong.cn//atom.xml"/>
+    <link rel="self" href="https://blog.idingsong.cn/atom.xml"/>
     <subtitle>温故而知新</subtitle>
-    <logo>https://blog.idingsong.cn//images/avatar.png</logo>
-    <icon>https://blog.idingsong.cn//favicon.ico</icon>
-    <rights>All rights reserved 2019, Math.D</rights>
+    <logo>https://blog.idingsong.cn/images/avatar.png</logo>
+    <icon>https://blog.idingsong.cn/favicon.ico</icon>
+    <rights>All rights reserved 2020, Math.D</rights>
     <entry>
         <title type="html"><![CDATA[洛神赋，一篇凄美的爱情诗赋]]></title>
-        <id>https://blog.idingsong.cn//post/luo-shen-fu-yi-pian-qi-mei-de-ai-qing-shi-fu</id>
-        <link href="https://blog.idingsong.cn//post/luo-shen-fu-yi-pian-qi-mei-de-ai-qing-shi-fu">
+        <id>https://blog.idingsong.cn/post/luo-shen-fu-yi-pian-qi-mei-de-ai-qing-shi-fu</id>
+        <link href="https://blog.idingsong.cn/post/luo-shen-fu-yi-pian-qi-mei-de-ai-qing-shi-fu">
         </link>
         <updated>2019-12-18T11:37:56.000Z</updated>
         <content type="html"><![CDATA[<p>那天看央视的《国家宝藏》，里面一篇是介绍洛神赋图的，栏目演绎了曹植与洛神的人神殊道的凄美的爱情故事，我看得眼泪婆娑，内心难以平复。</p>
@@ -60,8 +60,8 @@
     </entry>
     <entry>
         <title type="html"><![CDATA[《红楼梦》读书笔记精彩段落摘抄]]></title>
-        <id>https://blog.idingsong.cn//post/lesslesshong-lou-meng-greatergreater-du-shu-bi-ji-jing-cai-duan-luo-zhai-chao</id>
-        <link href="https://blog.idingsong.cn//post/lesslesshong-lou-meng-greatergreater-du-shu-bi-ji-jing-cai-duan-luo-zhai-chao">
+        <id>https://blog.idingsong.cn/post/lesslesshong-lou-meng-greatergreater-du-shu-bi-ji-jing-cai-duan-luo-zhai-chao</id>
+        <link href="https://blog.idingsong.cn/post/lesslesshong-lou-meng-greatergreater-du-shu-bi-ji-jing-cai-duan-luo-zhai-chao">
         </link>
         <updated>2019-12-18T11:23:27.000Z</updated>
         <content type="html"><![CDATA[<p>1、为官的，家业凋零；富贵的，金银散尽；有恩的，死里逃生；无情的，分明报应。看破的，遁入空门；痴迷的，枉送了性命。好一似食尽鸟投林，落了片白茫茫大地真干净！</p>
