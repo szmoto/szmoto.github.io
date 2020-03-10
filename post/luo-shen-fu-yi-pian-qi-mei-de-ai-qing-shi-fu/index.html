@@ -1,93 +1,102 @@
+<!DOCTYPE html>
 <html>
   <head>
-    <meta charset="utf-8" />
-<meta name="viewport" content="width=device-width, initial-scale=1" />
+    <meta charset="utf-8" >
+
 <title>洛神赋，一篇凄美的爱情诗赋 | Math.D</title>
-<meta name="description" content="温故而知新" />
-<link rel="shortcut icon" href="https://idingsong.cn//favicon.ico?v=1583837188241">
+<meta name="description" content="温故而知新">
+
+<meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1, user-scalable=no">
+
 <link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.7.2/css/all.css" integrity="sha384-fnmOCqbTlWIlj8LyTjo7mOUStjsKC4pOpQbqyi7RrhN7udi9RwhKkMHpvLbHG9Sr" crossorigin="anonymous">
+<link rel="shortcut icon" href="https://idingsong.cn//favicon.ico?v=1583838872237">
 <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/KaTeX/0.10.0/katex.min.css">
 <link rel="stylesheet" href="https://idingsong.cn//styles/main.css">
 
+
+
+<script src="https://cdn.jsdelivr.net/npm/vue/dist/vue.js"></script>
 <script src="https://cdn.bootcss.com/highlight.js/9.12.0/highlight.min.js"></script>
-<link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Droid+Serif:400,700">
+
+<link rel="stylesheet" href="https://unpkg.com/aos@next/dist/aos.css" />
 
 
 
   </head>
   <body>
-    <div class="main">
-      <div class="main-content">
-        <div class="site-header">
-  <a href="https://idingsong.cn/">
-  <img class="avatar" src="https://idingsong.cn//images/avatar.png?v=1583837188241" alt="">
-  </a>
-  <h1 class="site-title">
-    Math.D
-  </h1>
-  <p class="site-description">
-    温故而知新
-  </p>
-  <div class="menu-container">
-    
+    <div id="app" class="main">
+
+      <div class="sidebar" :class="{ 'full-height': menuVisible }">
+  <div class="top-container" data-aos="fade-right">
+    <div class="top-header-container">
+      <a class="site-title-container" href="https://idingsong.cn/">
+        <img src="https://idingsong.cn//images/avatar.png?v=1583838872237" class="site-logo">
+        <h1 class="site-title">Math.D</h1>
+      </a>
+      <div class="menu-btn" @click="menuVisible = !menuVisible">
+        <div class="line"></div>
+      </div>
+    </div>
+    <div>
       
-        <a href="/" class="menu">
-          首页
-        </a>
+        
+          <a href="/" class="site-nav">
+            首页
+          </a>
+        
       
-    
+        
+          <a href="/archives" class="site-nav">
+            归档
+          </a>
+        
       
-        <a href="/archives" class="menu">
-          归档
-        </a>
+        
+          <a href="/tags" class="site-nav">
+            标签
+          </a>
+        
       
-    
+        
+          <a href="/post/about" class="site-nav">
+            关于
+          </a>
+        
       
-        <a href="/tags" class="menu">
-          标签
-        </a>
-      
-    
-      
-        <a href="/post/about" class="menu">
-          关于
-        </a>
-      
-    
+    </div>
   </div>
-  <div class="social-container">
-    
+  <div class="bottom-container" data-aos="flip-up" data-aos-offset="0">
+    <div class="social-container">
       
-    
+        
       
-    
+        
       
-    
+        
       
-    
+        
       
-    
+        
+      
+    </div>
+    <div class="site-description">
+      温故而知新
+    </div>
+    <div class="site-footer">
+      Powered by <a href="https://github.com/getgridea/gridea" target="_blank">Gridea</a> | <a class="rss" href="https://idingsong.cn//atom.xml" target="_blank">RSS</a>
+    </div>
   </div>
 </div>
 
-        <div class="post-detail">
-          <article class="post">
-            <h2 class="post-title">
-              洛神赋，一篇凄美的爱情诗赋
-            </h2>
-            <div class="post-info">
-              <span>
-                2019-12-18
-              </span>
-              <span>
-                9 min read
-              </span>
-              
-            </div>
+
+      <div class="main-container">
+        <div class="content-container" data-aos="fade-up">
+          <div class="post-detail">
+            <h2 class="post-title">洛神赋，一篇凄美的爱情诗赋</h2>
+            <div class="post-date">2019-12-18</div>
             
-            <div class="post-content-wrapper">
-              <div class="post-content">
-                <p>那天看央视的《国家宝藏》，里面一篇是介绍洛神赋图的，栏目演绎了曹植与洛神的人神殊道的凄美的爱情故事，我看得眼泪婆娑，内心难以平复。</p>
+            <div class="post-content">
+              <p>那天看央视的《国家宝藏》，里面一篇是介绍洛神赋图的，栏目演绎了曹植与洛神的人神殊道的凄美的爱情故事，我看得眼泪婆娑，内心难以平复。</p>
 <p>上中学的时候，就知道东晋顾恺之的《洛神赋图》，知道顾恺之有“才绝、画绝、痴绝”之称，是我国东晋时期杰出的艺术家。他的绘画作品与绘画理论对传统绘画的发展有着深远的影响，《洛神赋》就是他的杰作之一。然，并不知《洛神赋图》是根据曹植的《洛神赋》绘画而成的，更不清楚《洛神赋》里包含着凄美的爱情故事。</p>
 <p>看完电视，我迫不及待的找来曹植的《洛神赋》仔细读过，全赋辞采华美，描写细腻，想象丰富，情思绻缱，若有寄托。</p>
 <p>在这篇文章里，曹植说自己在途经洛水时邂逅了传说中的伏羲之女洛神，极尽描摹这位佳人的风采神姿，字里行间充斥着强烈的倾慕之情。他就像是一位陷入疯狂热恋的年轻诗人，把所能想象到的最美好的词汇，都毫不吝惜地加在这位女子身上。其中诸如“翩若惊鸿，婉若游龙”、“凌波微步，罗袜生尘”之类的描绘，已成为千古名句。</p>
@@ -128,75 +137,46 @@
 <p>席慕蓉《一棵开花的树》：如何让你遇见我，在我最美丽的时刻为这，我已在佛前求了五百年，求他让我们结一段尘缘。</p>
 <p>人们尽其所有的词汇也不能描述出爱情的美好！所以，自有文字记录以来，爱情就是人们歌颂的最美好的感情。无论你的爱情是欢愉的，无论你的爱情是凄美的，无论你的爱情是卑微的，无论你的爱情是高尚的，无论你的爱情是自私的，无论你的爱情是无私的，总之，都是美好的！</p>
 
-              </div>
-              <div class="toc-container">
-                
-              </div>
             </div>
-          </article>
-        </div>
+            
+            
+              <div class="next-post">
+                <div class="next">下一篇</div>
+                <a href="https://idingsong.cn/post/lesslesshong-lou-meng-greatergreater-du-shu-bi-ji-jing-cai-duan-luo-zhai-chao/">
+                  <h3 class="post-title">
+                    《红楼梦》读书笔记精彩段落摘抄
+                  </h3>
+                </a>
+              </div>
+            
 
-        
-          <div class="next-post">
-            <div class="next">下一篇</div>
-            <a href="https://idingsong.cn/post/lesslesshong-lou-meng-greatergreater-du-shu-bi-ji-jing-cai-duan-luo-zhai-chao/">
-              <h3 class="post-title">
-                《红楼梦》读书笔记精彩段落摘抄
-              </h3>
-            </a>
+            
+
           </div>
-        
 
-        
+        </div>
+      </div>
+    </div>
 
-        <div class="site-footer">
-  Powered by <a href="https://github.com/getgridea/gridea" target="_blank">Gridea</a> | 
-  <a class="rss" href="https://idingsong.cn//atom.xml" target="_blank">RSS</a>
-</div>
+    <script src="https://unpkg.com/aos@next/dist/aos.js"></script>
 
-<script>
-  hljs.initHighlightingOnLoad()
+<script type="application/javascript">
 
-  let mainNavLinks = document.querySelectorAll(".markdownIt-TOC a");
+AOS.init();
 
-  // This should probably be throttled.
-  // Especially because it triggers during smooth scrolling.
-  // https://lodash.com/docs/4.17.10#throttle
-  // You could do like...
-  // window.addEventListener("scroll", () => {
-  //    _.throttle(doThatStuff, 100);
-  // });
-  // Only not doing it here to keep this Pen dependency-free.
+hljs.initHighlightingOnLoad()
 
-  window.addEventListener("scroll", event => {
-    let fromTop = window.scrollY;
-
-    mainNavLinks.forEach((link, index) => {
-      let section = document.getElementById(decodeURI(link.hash).substring(1));
-      let nextSection = null
-      if (mainNavLinks[index + 1]) {
-        nextSection = document.getElementById(decodeURI(mainNavLinks[index + 1].hash).substring(1));
-      }
-      console.log('section.offsetHeight', section.offsetHeight);
-      if (section.offsetTop <= fromTop) {
-        if (nextSection) {
-          if (nextSection.offsetTop > fromTop) {
-            link.classList.add("current");
-          } else {
-            link.classList.remove("current");    
-          }
-        } else {
-          link.classList.add("current");
-        }
-      } else {
-        link.classList.remove("current");
-      }
-    });
-  });
+var app = new Vue({
+  el: '#app',
+  data: {
+    menuVisible: false,
+  },
+})
 
 </script>
 
-      </div>
-    </div>
+
+
+
   </body>
 </html>
